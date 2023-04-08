@@ -10,7 +10,7 @@
     ).then((data) => {
       dataset = data.features;
 
-      console.log(data.features)
+      //console.log(data.features)
     });
     const width = 1200,
       height = 600;
