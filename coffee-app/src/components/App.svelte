@@ -12,12 +12,21 @@
 
       //console.log(data.features)
     });
-    const width = 1200,
-      height = 600;
   </script>
   
   <main>
-    <svg {width} {height}>
+    <title>
+      CoffeeApp
+    </title>
+    <h1>
+      The coffee belt: global coffee production is concentrated in the tropics
+    </h1>
       <GlobalMap {dataset} />
-    </svg>
   </main>
+
+  <style>
+    h1 {
+      text-align: center;
+      font-size: 25px;
+    }
+  </style>
