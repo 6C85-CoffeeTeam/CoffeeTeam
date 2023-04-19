@@ -2,18 +2,18 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="./sveltekit-gh-pages/favicon.png" />
+		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./sveltekit-gh-pages/_app/immutable/assets/_page.57ec814f.css" rel="stylesheet">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/entry/start.33021aaf.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/chunks/index.d4447b65.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/chunks/singletons.619bb145.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/entry/app.8b3fd013.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/entry/layout.svelte.6ccfcb1f.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/entry/_layout.js.984db11e.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/chunks/_layout.da46b06b.js">
-		<link rel="modulepreload" href="./sveltekit-gh-pages/_app/immutable/entry/_page.svelte.2428465b.js">
+		<link href="./_app/immutable/assets/_page.57ec814f.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.ef18bd70.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.d4447b65.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.c0c09683.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.2c30e3cc.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/layout.svelte.6ccfcb1f.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.js.984db11e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_page.svelte.2428465b.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
@@ -43,20 +43,19 @@
 			
 			<script>
 				{
-					__sveltekit_6cqi1i = {
+					__sveltekit_8mo1rt = {
 						env: {},
-						assets: "/sveltekit-gh-pages",
-						base: new URL("./sveltekit-gh-pages", location).pathname,
+						base: new URL(".", location).pathname.slice(0, -1),
 						element: document.currentScript.parentElement
 					};
 
 					const data = [null,null];
 
 					Promise.all([
-						import("./sveltekit-gh-pages/_app/immutable/entry/start.33021aaf.js"),
-						import("./sveltekit-gh-pages/_app/immutable/entry/app.8b3fd013.js")
+						import("./_app/immutable/entry/start.ef18bd70.js"),
+						import("./_app/immutable/entry/app.2c30e3cc.js")
 					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_6cqi1i.element, {
+						kit.start(app, __sveltekit_8mo1rt.element, {
 							node_ids: [0, 2],
 							data,
 							form: null,
