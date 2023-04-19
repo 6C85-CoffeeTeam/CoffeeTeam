@@ -14,8 +14,6 @@ https://github.com/johan/world.geo.json
 
 ## Tasks ##
 
-1. Get the app hosted on github pages
-	- Should be a matter of following the instructions on here: https://github.com/metonym/sveltekit-gh-pages
 2. First visualization:
 	- Fix the color scheme from continuous to discrete by modifying the colorScale object in coffee-app/src/components/GlobalMap.svelte
 	- Get a decent legend going, with tick marks, either by finding your own solution, or modifying the Legend.svelte file and uncommenting the call to it in GlobalMap.svelte (in the <main> block)
@@ -27,3 +25,12 @@ https://github.com/johan/world.geo.json
 4. Once 3 is done, someone can be in charge of gathering, cleaning, and entering the data that we'll need for the second visualization
 5. Rinse and repeat steps 3-4 for remaining two visualizations
 6. (This is pretty independent of the other steps I think) find a way to put coffee beans and other coffee aesthetic into the visualization, should be a matter of putting in <svg>s somewhere with images that you choose, but I'm not 100% sure
+
+## Notes on deploying to our github page ##
+
+If you want to get your changes to the app to reflect on the website, then run "npm run build" followed by "npm run deploy"
+
+If you want to view the app as you're working on it, do "npm run dev -- --open"
+
+I ended up finding that these instructions worked for us: https://javascript.plainenglish.io/sveltekit-github-pages-4fe2844773de .
+

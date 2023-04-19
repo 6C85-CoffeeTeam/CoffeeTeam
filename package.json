@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^2.0.2",
+    "gh-pages": "^5.0.0"
+  }
+}

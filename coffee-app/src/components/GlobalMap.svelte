@@ -2,7 +2,7 @@
     import * as d3 from "d3";
     import Legend from "./Legend.svelte";
 
-    export let dataset = [];
+    export let GlobalMapDataset = [];
     import { draw } from "svelte/transition";
     import { quadInOut } from "svelte/easing";
     const projection = d3.geoNaturalEarth1();
@@ -22,7 +22,7 @@
 
 <div class=visualization>
   <svg width="1000", height="600">
-    {#each dataset as data, index}
+    {#each GlobalMapDataset as data, index}
       <path
         d={path(data)}
         
@@ -42,9 +42,9 @@
     class={hovered === -1 ? "tooltip-hidden": "tooltip-visible"}	
     style="left: {recorded_mouse_position.x}px; top: {recorded_mouse_position.y}px">>
     {#if hovered !== -1}
-        Country: {dataset[hovered]["properties"]["name"]}
+        Country: {GlobalMapDataset[hovered]["properties"]["name"]}
         <br>
-        Coffee production (thousand 60 kg bags): {dataset[hovered]["properties"]["coffee"]}
+        Coffee production (thousand 60 kg bags): {GlobalMapDataset[hovered]["properties"]["coffee"]}
     {/if}
   </div>
 
