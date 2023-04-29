@@ -2,7 +2,7 @@
   import { fly, draw } from "svelte/transition";
   import { tweened } from "svelte/motion";
   import { cubicOut, cubicInOut } from "svelte/easing";
-  import { beanbelt } from "../data/beanbelt";
+  import { beanbelt } from "../data/beanbelt.geojson";
 
   export let index, width, height, projection;
 

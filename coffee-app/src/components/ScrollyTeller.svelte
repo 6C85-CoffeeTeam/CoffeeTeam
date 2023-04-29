@@ -68,7 +68,7 @@
   <div class="foreground" slot="foreground">
     <section>Intro 1    </section>
     <section>Intro 2</section>
-    <section>Global Coffee Productiont</section>
+    <section>Global Coffee Production</section>
     <section>Global Bean Belt</section>
     <section>Northern Triangle</section>
     <section>Farmer story</section>
@@ -85,7 +85,7 @@
       width: 100%;
       height: 100vh;
       position: relative;
-      top: -15px; /**To get rid of a weird gap on top of background*/
+      top: -15px; /**sTo get rid of a weird gap on top of background*/
       outline: green solid 0px;
       /* pointer-events: fill; */
     }

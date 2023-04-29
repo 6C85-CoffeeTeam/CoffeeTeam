@@ -5,7 +5,7 @@
     export let GlobalMapDataset = [];
     import { draw } from "svelte/transition";
     import { quadInOut } from "svelte/easing";
-    const projection = d3.geoNaturalEarth1();
+    const projection = d3.geoMercator();
     const path = d3.geoPath(projection);
 
     let recorded_mouse_position = {

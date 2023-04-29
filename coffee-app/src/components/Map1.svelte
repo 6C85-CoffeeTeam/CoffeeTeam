@@ -29,7 +29,7 @@
         style: "mapbox://styles/mapbox/light-v11",
         center: [-89.24528748786891,15.367303607422386],
         zoom: zoomLevel,
-        attributionControl: true, // removes attribution from the bottom of the map
+        attributionControl: false, // removes attribution from the bottom of the map
       });
   
       window.addEventListener("resize", handleResize);
