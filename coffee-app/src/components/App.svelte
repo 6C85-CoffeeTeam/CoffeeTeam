@@ -4,6 +4,7 @@
     import NorthernTriangleClimate from "./NorthernTriangleClimate.svelte";
     let GlobalMapDataset = [];
     let NorthernTriangleClimateDataset = [];
+
     // note from Austin: for some reason I can't get d3.json to load local json files. So I have been forced
     // to pull from a url that points to our file in github. Thus, to see edits to the data reflected in your local
     // web app, you'll need to push to github and wait a couple of minutes. Would be nice if we could fix this.
