@@ -2,8 +2,9 @@
     import Scroller from "@sveltejs/svelte-scroller";
     import Map from "./Map.svelte";
     import Map1 from "./Map1.svelte";
+    import MapBelt from "./MapBelt.svelte";
     import { geoMercator } from "d3-geo";
-    import Graph from "./Graph.svelte";
+    // import Graph from "./Graph.svelte";
   
     let count, index, offset, progress;
     let width, height;
@@ -47,6 +48,9 @@
     bind:clientHeight={height}
     >
     <Map bind:geoJsonToFit {index} />
+    <!-- <Graph {index} {width} {height} {projection} /> -->
+    <MapBelt bind:geoJsonToFit {index} />
+
     <Map1 {index} />
 
     <div class="progress-bars">

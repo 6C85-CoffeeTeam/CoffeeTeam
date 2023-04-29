@@ -70,7 +70,7 @@
     }
   let isVisible = false;
   
-  $: if (index > 3 && index <10) {
+  $: if (index >= 4 && index <10) {
     isVisible = true;
   } else {
     isVisible = false;

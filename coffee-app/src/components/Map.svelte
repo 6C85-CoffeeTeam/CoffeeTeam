@@ -38,25 +38,8 @@
       ],
       "paint": {
         "fill-color": "rgba(66,100,251, 0.3)",
-        "fill-outline-color": "#0000ff"
-      }
-    },
-    {
-      "id": "disputed area boundary fill",
-      "source": "country-boundaries",
-      "source-layer": "country_boundaries",
-      "type": "fill",
-      "filter": [
-        "==",
-        [
-          "get",
-          "disputed"
-        ],
-        "true"
-      ],
-      "paint": {
-        "fill-color": "rgba(200,100,251, 0.3)",
-        "fill-outline-color": "#ff0000"
+        "fill-outline-color": "#0000ff",
+        // "fill-outline-width": 1
       }
     },
     {
@@ -169,9 +152,10 @@
       bounds._sw.lat,
     ];
   }
+
 let isVisible = false;
 
-$: if (index >= 2 && index <4) {
+$: if (index === 2) {
   isVisible = true;
 } else {
   isVisible = false;
