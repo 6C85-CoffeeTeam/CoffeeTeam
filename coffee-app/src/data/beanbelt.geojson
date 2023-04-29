@@ -1,0 +1,60 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "line" : "equator",
+          "coordinates": [
+            [
+              -180,
+              0
+            ],
+            [
+              180,
+              0
+            ]
+          ],
+          "type": "LineString"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "line" : "beanbelt",
+          "coordinates": [
+            [
+              -180,
+              23.5
+            ],
+            [
+              180,
+              23.5
+            ]
+          ],
+          "type": "LineString"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "line" : "beanbelt",
+          "coordinates": [
+            [
+              -180,
+              -23.5
+            ],
+            [
+              180,
+              -23.5
+            ]
+          ],
+          "type": "LineString"
+        }
+      }
+    ]
+  }
+  

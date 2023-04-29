@@ -4,7 +4,7 @@
 
 </script>
 
-<!-- <App /> -->
+<App />
 
 <main>
     <h1>

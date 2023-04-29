@@ -3,6 +3,7 @@
     import Map from "./Map.svelte";
     import Map1 from "./Map1.svelte";
     import { geoMercator } from "d3-geo";
+    import Graph from "./Graph.svelte";
   
     let count, index, offset, progress;
     let width, height;
@@ -45,7 +46,7 @@
     bind:clientWidth={width} 
     bind:clientHeight={height}
     >
-    <Map {index} />
+    <Map bind:geoJsonToFit {index} />
     <Map1 {index} />
 
     <div class="progress-bars">
