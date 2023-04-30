@@ -70,7 +70,7 @@
     }
   let isVisible = false;
   
-  $: if (index >= 4 && index <10) {
+  $: if (index >= 5 && index <10) {
     isVisible = true;
   } else {
     isVisible = false;
@@ -82,11 +82,11 @@
     <link
       rel="stylesheet"
       href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"
-    />
+    />  
   </svelte:head>
-  
+
   <div class="map" class:visible={isVisible} bind:this={container} />
-  
+
   <style>
     .map {
       width: 100%;
