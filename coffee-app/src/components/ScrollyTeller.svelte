@@ -152,15 +152,18 @@
     <section class="eight">Climate change in Northern Triangle</section>
     <section class="nine">Natural disasters in Norther Triangle</section>
     <section class="ten">Migration from Norther Triangle</section>
+    <p>Click the "play" button to see how migration flow changes over the years.
+      <br />
+      Hover outside the map to continue scrolling down.</p>
     <iframe 
       width="100%" 
       height="700"
       title = "flowmap" 
-      src="https://flowmap.blue/1ODcincYj0MjnBWdE6v2FFHltR2JCNV6buBM3aQlLhc0/embed?v=20.173050%2C-94.563081%2C4.77%2C0%2C0&a=1&as=1&b=1&bo=88&c=0&ca=0&cz=4&d=0&fe=1&lt=0&lfm=ALL&t=19900101T000000%2C20210101T000000&col=BuGn&f=19" 
+      src="https://flowmap.blue/1ODcincYj0MjnBWdE6v2FFHltR2JCNV6buBM3aQlLhc0?v=23.301426%2C-92.632810%2C4.43%2C0%2C0&a=1&as=1&b=1&bo=84&c=0&ca=0&cz=4&d=0&fe=1&lt=0&lfm=ALL&t=19900101T000000%2C19960101T000000&col=BuGn&f=19" 
       frameborder="0" 
       allowfullscreen
       ></iframe>
-      <p>Place your mouse on the borders to continue scrolling down.</p>
+      
       <br />
     <section class="eleven">
       What are you waiting for? Take action now!
@@ -211,7 +214,7 @@
     p {
       text-align: center;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
+      line-height: 1.65;
       margin: 1em;
     }
 
