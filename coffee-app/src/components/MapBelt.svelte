@@ -4,6 +4,7 @@
     import { onMount } from "svelte";
     export let index;
     export let geoJsonToFit;
+    import { fade } from 'svelte/transition';
   
     mapboxgl.accessToken =
       "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
@@ -13,62 +14,7 @@
   
     let zoomLevel;
   
-    const beanbeltData = {
-    "type": "FeatureCollection",
-    "features": [
-      {
-        "type": "Feature",
-        "properties": {"line" : "equator"},
-        "geometry": {
-          "coordinates": [
-            [
-              -180,
-              0
-            ],
-            [
-              180,
-              0
-            ]
-          ],
-          "type": "LineString"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {"line" : "belt"},
-        "geometry": {
-          "coordinates": [
-            [
-              -180,
-              23.5
-            ],
-            [
-              180,
-              23.5
-            ]
-          ],
-          "type": "LineString"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {"line" : "belt"},
-        "geometry": {
-          "coordinates": [
-            [
-              -180,
-              -23.5
-            ],
-            [
-              180,
-              -23.5
-            ]
-          ],
-          "type": "LineString"
-        }
-      }
-    ]
-  }
+    const beanbeltData = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"coordinates":[[[-180,23.5],[-180,-23.5],[180,-23.5],[180,23.5],[-180,23.5]]],"type":"Polygon"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[0,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[180,0],"type":"Point"}}]}
   
     // Define your filter condition
     const filter_equator = (feature) => {
@@ -301,42 +247,79 @@
       }
   
       map.on("load", () => {
-        map.addSource('lineSource', {
+        map.loadImage('/src/images/smallbean-hor.png', function (error, image) {
+          if (error) throw error;
+          map.addImage('small-bean', image);
+          });
+
+        map.addSource('pointSource', {
             type: 'geojson',
             data: beanbeltData
             
         });
   
+
         map.addLayer({
-            id: 'equator',
-            type: 'line',
-            source: 'lineSource',
-            filter: ['==', ['get', 'line'], 'equator'],
-            layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
-            },
-            paint: {
-            'line-color': '#a4aac6',
-            'line-width': 2,
-              'line-dasharray': [2, 4] // This creates a dotted line (2 px line, 2 px gap)
-            }
+          id: 'polygon',
+          type: 'fill',
+          source: 'pointSource', // Use the same source as before
+          filter: ['==', '$type', 'Polygon'],
+          paint: {
+            'fill-color': '#a4aac6', // Change the color as needed
+            'fill-opacity': 0.5, // Adjust the opacity as needed
+            // 'transition': {
+            //   'duration': 1000, // Duration in milliseconds
+            //   'delay': 1000, // Delay in milliseconds
+            // },
+            // 'fill-opacity-transition': {
+            //   'duration': 1000, // Duration in milliseconds
+            //   'delay': 1000, // Delay in milliseconds
+            // },
+          }
         });
 
         map.addLayer({
-            id: 'beanbelt',
-            type: 'line',
-            source: 'lineSource',
-            filter: ['==', ['get', 'line'], 'belt'],
-            layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
-            },
-            paint: {
-            'line-color': '#a4aac6',
-            'line-width': 2,
-            }
+          id: 'equator',
+          type: 'symbol',
+          source: 'pointSource',
+          filter: ['==', '$type', 'Point'],
+          layout: {
+            'icon-image': 'small-bean',
+            'icon-size': 0.15, // Adjust the icon size as needed
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true,
+          }
         });
+        // map.addLayer({
+        //     id: 'equator',
+        //     type: 'line',
+        //     source: 'lineSource',
+        //     filter: ['==', ['get', 'line'], 'equator'],
+        //     layout: {
+        //     'line-join': 'round',
+        //     'line-cap': 'round'
+        //     },
+        //     paint: {
+        //     'line-color': '#a4aac6',
+        //     'line-width': 2,
+        //       'line-dasharray': [2, 4] // This creates a dotted line (2 px line, 2 px gap)
+        //     }
+        // });
+
+        // map.addLayer({
+        //     id: 'beanbelt',
+        //     type: 'line',
+        //     source: 'lineSource',
+        //     filter: ['==', ['get', 'line'], 'belt'],
+        //     layout: {
+        //     'line-join': 'round',
+        //     'line-cap': 'round'
+        //     },
+        //     paint: {
+        //     'line-color': '#a4aac6',
+        //     'line-width': 2,
+        //     }
+        // });
         
         hideLabelLayers();
         updateBounds();
