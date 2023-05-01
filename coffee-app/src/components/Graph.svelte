@@ -1,10 +1,13 @@
 <script>
-  import { fly, draw } from "svelte/transition";
+  import { fly, draw, fade } from "svelte/transition";
   import { tweened } from "svelte/motion";
   import { cubicOut, cubicInOut } from "svelte/easing";
-  import { beanbelt } from "../data/beanbelt.geojson";
+  import { beanbelt2 } from "/src/data/beanbelt2.geojson";
 
   export let index, width, height, projection;
+
+  const points = beanBelt2.features.filter((feature) => feature.geometry.type === "Point");
+
 
   const tweenOptions = {
     delay: 0,
@@ -12,20 +15,22 @@
     easing: cubicOut,
   }
 
+
   const tweenedX = tweened(
-    beanbelt.features.map((line) => projection(line.geometry.coordinates)[0]),
+    points.map((point) => projection(point.geometry.coordinates)[0]),
     tweenOptions
   );
 
   const tweenedY = tweened(
-    beanbelt.features.map((line) => projection(line.geometry.coordinates)[1]),
+    points.map((point) => projection(point.geometry.coordinates)[1]),
     tweenOptions
   );
 
-  $: tweenedData = beanbelt.features.map((line, i) => ({
+
+  $: tweenedData = points.map((point, i) => ({
     x: $tweenedX[i],
     y: $tweenedY[i],
-    properties: line.properties,
+    properties: point.properties,
   }));
 
   $: {
@@ -34,12 +39,12 @@
     //   tweenedY.set(beanbelt.features.map((city, i) => height / 2 + i * 20));
     // }
 
-    if (index === 1) {
+    if (index === 3) {
       tweenedX.set(
-        beanbelt.features.map((line) => projection(line.geometry.coordinates)[0])
+        points.map((point) => projection(point.geometry.coordinates)[0])
       );
       tweenedY.set(
-        beanbelt.features.map((line) => projection(line.geometry.coordinates)[1])
+        points.map((point) => projection(point.geometry.coordinates)[1])
       );
     }
   }
@@ -47,12 +52,12 @@
 // Define your filter condition
 const filter_equator = (feature) => {
     return (
-      feature.properties.line === "equator"
+      feature.properties.point === "equator"
     );
   };
 const filter_belt = (feature) => {
     return (
-      feature.properties.line === "belt"
+      feature.properties.geometry === "belt"
     );
   };
 

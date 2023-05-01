@@ -260,7 +260,7 @@
   
 
         map.addLayer({
-          id: 'polygon',
+          id: 'belt',
           type: 'fill',
           source: 'pointSource', // Use the same source as before
           filter: ['==', '$type', 'Polygon'],
@@ -271,10 +271,10 @@
             //   'duration': 1000, // Duration in milliseconds
             //   'delay': 1000, // Delay in milliseconds
             // },
-            // 'fill-opacity-transition': {
-            //   'duration': 1000, // Duration in milliseconds
-            //   'delay': 1000, // Delay in milliseconds
-            // },
+            'fill-opacity-transition': {
+              'duration': 1000, // Duration in milliseconds
+              'delay': 1000, // Delay in milliseconds
+            },
           }
         });
 
@@ -289,6 +289,7 @@
             'icon-allow-overlap': true,
             'icon-ignore-placement': true,
           }
+          
         });
         // map.addLayer({
         //     id: 'equator',
@@ -329,7 +330,8 @@
         
       });
     });
-    
+
+
     function updateBounds() {
       const bounds = map.getBounds();
       geoJsonToFit.features[0].geometry.coordinates = [
@@ -345,7 +347,7 @@
   
   let isVisible = false;
   
-  $: if (index === 3) {
+  $: if (index === 5) {
     isVisible = true;
   } else {
     isVisible = false;

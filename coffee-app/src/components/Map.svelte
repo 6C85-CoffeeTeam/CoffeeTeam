@@ -397,7 +397,7 @@
 
 let isVisible = false;
 
-$: if (index === 2) {
+$: if (index === 4) {
   isVisible = true;
 } else {
   isVisible = false;
@@ -430,4 +430,3 @@ $: if (index === 2) {
     visibility: visible;
   }
 </style>
-
