@@ -87,12 +87,7 @@
       <br />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      Hi there, how's the coffee?
-      <br />
-      <br />
+      <h1>Hi there, how's the coffee?</h1>
       Have you ever wondered where your coffee comes from? Let's take a step back.
       <br />
       <br />
@@ -105,13 +100,23 @@
     <section class="intro">
       
       [enter some kind of fancy transition]
-      <br/>
+      <br />
       <br />
       <br />
       <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <img class="smallbean" src="./images/coffeeplant.jpg" alt="coffeeplant" width="300"/>
     </section>
 
     <section class="aboutCoffee">
@@ -133,7 +138,7 @@
       <p>
         Generally, coffee needs 1500-2500mm annual rainfall, spread evenly, with a dry season under three months. However, some plants tolerate different conditions depending on the growing region.
       </p>
-      <br />
+
       <br />
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <br />
@@ -181,13 +186,18 @@
       <br />
       This region includes: <br />Guatemala, <br />Honduras <br />and <br />El Salvador. 
     </section>
+    
     <section class="farmerStory">
-      
-      <img class="farmer" src="./images/farmer.png" alt="farmer" width="600"/>
-      <br />
-      <br />
-      Meet Juan, <br />a smallholder coffee farmer in the Huehuetenango region in Guatemala.
+      <div class="container">
+        <div class="farmertext">
+          Meet Juan, <br />a smallholder coffee farmer in the Huehuetenango region in Guatemala.
+        </div>
+        <div class="farmerimage">
+          <img class="farmer" src="./images/farmer.png" alt="farmer" />
+        </div>
+      </div>
     </section>
+
     <section class="farmerStory">
       Continue Farmer story
     </section>
@@ -222,6 +232,16 @@
       </button>
 
       <br />
+      <br />
+      <br />
+      <h3>References</h3>
+      
+      USDA coffee data<br />
+      International Coffee Organization (ICO) <br />
+      United Nation Population Division <br />
+      World Food Programme
+      
+
       <p class="credit">
         Copyright info
       </p>
@@ -231,6 +251,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
     .background {
       width: 105%; /* to get rid of the weird margin */
@@ -268,7 +289,7 @@
       text-align: center;
       font-family: 'Poppins', sans-serif;
       font-size: 18px;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .aboutCoffee {
@@ -281,9 +302,26 @@
     .farmerStory {
       height: 120vh;
       max-width: 80%; /* adjust at will */
-      padding: 5em 2em;
+      padding: 5em 3em;
       margin: 2em auto; 
       background-color: rgba(255, 255, 255, 0.65); 
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .farmer {
+      max-width: 100%;
+      max-height:100%;
+    }
+    .farmertext {
+      font-size: 28px;
+      padding-left: 20px;
+      font-family: 'Noto Serif', serif;
+      font-style: italic;
     }
     .flowmap {
       height: 80vh;
@@ -302,7 +340,7 @@
     p {
       text-align: center;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.65;
+      line-height: 1.7;
       margin: 1em;
     }
 

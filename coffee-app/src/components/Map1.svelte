@@ -107,7 +107,7 @@
     }
   let isVisible = false;
   
-  $: if (index >= 6 && index <11) {
+  $: if (index >= 6 && index <12) {
     isVisible = true;
   } else {
     isVisible = false;
