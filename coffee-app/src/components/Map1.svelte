@@ -77,10 +77,10 @@
             data: norTriData
         });
 
-      map.addSource('hondurasDrought', {
-            type: 'geojson',
-            data: hondurasDroughtData
-        });
+      // map.addSource('hondurasDrought', {
+      //       type: 'geojson',
+      //       data: hondurasDroughtData
+      //   });
   
         map.addLayer({
             id: 'country-fills',
@@ -106,41 +106,41 @@
             }
           });
 
-        map.addLayer({
-            'id': 'HondurasDroughtLow',
-            filter: ['==', ['get', 'Dr_Text'], 'Low'],
-            'type': 'fill',
-            'source': 'hondurasDrought',
-            'layout': {},
-            'paint': {
-              'fill-color': '#A59555',
-              'fill-opacity': 0.4
-            }
-          });
+        // map.addLayer({
+        //     'id': 'HondurasDroughtLow',
+        //     filter: ['==', ['get', 'Dr_Text'], 'Low'],
+        //     'type': 'fill',
+        //     'source': 'hondurasDrought',
+        //     'layout': {},
+        //     'paint': {
+        //       'fill-color': '#A59555',
+        //       'fill-opacity': 0.4
+        //     }
+        //   });
 
-          map.addLayer({
-            'id': 'HondurasDroughtMedium',
-            filter: ['==', ['get', 'Dr_Text'], 'Medium'],
-            'type': 'fill',
-            'source': 'hondurasDrought',
-            'layout': {},
-            'paint': {
-              'fill-color': '#DD9d12',
-              'fill-opacity': 0.4
-            }
-          });
+        //   map.addLayer({
+        //     'id': 'HondurasDroughtMedium',
+        //     filter: ['==', ['get', 'Dr_Text'], 'Medium'],
+        //     'type': 'fill',
+        //     'source': 'hondurasDrought',
+        //     'layout': {},
+        //     'paint': {
+        //       'fill-color': '#DD9d12',
+        //       'fill-opacity': 0.4
+        //     }
+        //   });
 
-          map.addLayer({
-            'id': 'HondurasDroughtHigh',
-            filter: ['==', ['get', 'Dr_Text'], 'High'],
-            'type': 'fill',
-            'source': 'hondurasDrought',
-            'layout': {},
-            'paint': {
-              'fill-color': '#E12D02',
-              'fill-opacity': 0.4
-            }
-          });
+        //   map.addLayer({
+        //     'id': 'HondurasDroughtHigh',
+        //     filter: ['==', ['get', 'Dr_Text'], 'High'],
+        //     'type': 'fill',
+        //     'source': 'hondurasDrought',
+        //     'layout': {},
+        //     'paint': {
+        //       'fill-color': '#E12D02',
+        //       'fill-opacity': 0.4
+        //     }
+        //   });
       });
     });
     
@@ -157,7 +157,7 @@
     }
   let isVisible = false;
   
-  $: if (index >= 6 && index <12) {
+  $: if (index >= 6 && index < 9) {
     isVisible = true;
   } else {
     isVisible = false;

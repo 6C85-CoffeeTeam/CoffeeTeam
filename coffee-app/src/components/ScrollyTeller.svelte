@@ -2,6 +2,7 @@
     import Scroller from "@sveltejs/svelte-scroller";
     import Map from "./Map.svelte";
     import Map1 from "./Map1.svelte";
+    import Map1_1 from "./Map1-1.svelte";
     import MapBelt from "./MapBelt.svelte";
     import MapMigration from "./MapMigration.svelte";
     import Background from "./Background.svelte";
@@ -65,6 +66,8 @@
 
     <Map1 bind:geoJsonToFit {index} /> 
 
+    <Map1_1 bind:geoJsonToFit {index} /> 
+
     <MapMigration bind:geoJsonToFit {index} />
     
   
@@ -81,13 +84,13 @@
     </div>
 
   <div class="foreground" slot="foreground">
-    <section class="intro">
+    <section class="intro" >
       <br />
       <br />
       <br />
       <br />
       <br />
-      <h1>Hi there, how's the coffee?</h1>
+      <h1 >Hi there, how's the coffee?</h1>
       Have you ever wondered where your coffee comes from? Let's take a step back.
       <br />
       <br />
@@ -190,7 +193,7 @@
     <section class="farmerStory">
       <div class="container">
         <div class="farmertext">
-          Meet Juan, <br />a smallholder coffee farmer in the Huehuetenango region in Guatemala.
+          Meet Juan, <br />a smallholder coffee farmer in Honduras.
         </div>
         <div class="farmerimage">
           <img class="farmer" src="./images/farmer.png" alt="farmer" />
