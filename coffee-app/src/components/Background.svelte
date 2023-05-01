@@ -82,7 +82,7 @@
 
 
 <div class="image" class:visible={isVisible}>
-    <img src="/src/images/coffee.png" alt="coffee" />
+    <img src="./images/coffee.png" alt="coffee" />
 </div>
 
 <!-- <div class="snowframe" aria-hidden="true" class:visible={isVisible}>
@@ -90,7 +90,7 @@
     <div
       class="snowflake"
       style={`opacity: ${flake.opacity}; rotate(${flake.rotation}deg); left: ${flake.x}%; top: calc(${flake.y}% - ${flake.scale}rem)`}>
-      <img class="fallingbeans" src='/src/images/smallbean.png' alt="coffee bean" width="1"/>
+      <img class="fallingbeans" src='./images/smallbean.png' alt="coffee bean" width="1"/>
     </div>
   {/each}
 </div> -->

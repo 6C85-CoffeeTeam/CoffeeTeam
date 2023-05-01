@@ -97,7 +97,7 @@
       <br />
       <br />
       <button on:click={scrollToNextPage}>
-        <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       </button>
       
     </section>
@@ -108,46 +108,46 @@
       <br/>
       <br />
       <br />
-      <img class="smallbean" src="/src/images/smallbean-hor.png" alt="coffeebean" width="50"/>
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
-      <img class="smallbean" src="/src/images/smallbean-hor.png" alt="coffeebean" width="50"/>
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
     </section>
 
     <section class="aboutCoffee">
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <h3>Coffee Fun Fact #1</h3>
       <p>
         Coffee's flavor and quality depend on factors like plant type, soil chemistry, climate conditions such as rainfall and sunshine, altitude, and minimal pests or diseases that affect the plants.
       </p> 
         <br />
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <h3>Coffee Fun Fact #2</h3>
       <p>
         The optimal temperature range of the Coffea arabica tree—source of 70% of the world's coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C). 
         <!-- Arabica coffee, which is of higher quality, prefers high altitudes and nutrient-rich soil, while Robusta coffee can tolerate lower altitudes and higher temperatures. -->
       </p>
         <br />
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <h3>Coffee Fun Fact #3</h3>
       <p>
         Generally, coffee needs 1500-2500mm annual rainfall, spread evenly, with a dry season under three months. However, some plants tolerate different conditions depending on the growing region.
       </p>
       <br />
       <br />
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <br />
       <br />
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <br />
       <br />
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"/>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <br />
       <br />
       Now it's your turn!
     </section>
     <section class="aboutCoffee">
-      <img class="coffeegame" src="/src/images/coffeegame_result.png" alt="coffeegame" width="750"/>
+      <img class="coffeegame" src="./images/coffeegame_result.png" alt="coffeegame" width="750"/>
       <br />
 
     </section>
@@ -183,7 +183,7 @@
     </section>
     <section class="farmerStory">
       
-      <img class="farmer" src="/src/images/farmer.png" alt="farmer" width="600"/>
+      <img class="farmer" src="./images/farmer.png" alt="farmer" width="600"/>
       <br />
       <br />
       Meet Juan, <br />a smallholder coffee farmer in the Huehuetenango region in Guatemala.
@@ -218,7 +218,7 @@
       Click the bean to learn more.
       <br />
       <button>
-        <img class="bean" src="/src/images/coffeebean.png" alt="coffeebean" width="500"/>
+        <img class="bean" src="./images/coffeebean.png" alt="coffeebean" width="500"/>
       </button>
 
       <br />

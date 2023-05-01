@@ -247,7 +247,7 @@
       }
   
       map.on("load", () => {
-        map.loadImage('/src/images/smallbean-hor.png', function (error, image) {
+        map.loadImage('./images/smallbean-hor.png', function (error, image) {
           if (error) throw error;
           map.addImage('small-bean', image);
           });

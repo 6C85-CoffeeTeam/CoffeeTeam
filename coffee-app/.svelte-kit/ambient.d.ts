@@ -26,33 +26,24 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const NVM_RC_VERSION: string;
-	export const MANPATH: string;
 	export const TERM_PROGRAM: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
-	export const NVM_CD_FLAGS: string;
 	export const TERM: string;
 	export const SHELL: string;
 	export const npm_config_metrics_registry: string;
 	export const TMPDIR: string;
-	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
-	export const CONDA_SHLVL: string;
 	export const TERM_PROGRAM_VERSION: string;
-	export const CONDA_PROMPT_MODIFIER: string;
 	export const COLOR: string;
 	export const TERM_SESSION_ID: string;
 	export const npm_config_noproxy: string;
 	export const npm_config_local_prefix: string;
 	export const USER: string;
-	export const NVM_DIR: string;
 	export const npm_config_globalconfig: string;
-	export const CONDA_EXE: string;
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_execpath: string;
-	export const _CE_CONDA: string;
 	export const PATH: string;
 	export const npm_package_json: string;
 	export const npm_config_engine_strict: string;
@@ -60,7 +51,6 @@ declare module '$env/static/private' {
 	export const npm_config_userconfig: string;
 	export const npm_config_init_module: string;
 	export const __CFBundleIdentifier: string;
-	export const CONDA_PREFIX: string;
 	export const npm_command: string;
 	export const PWD: string;
 	export const npm_lifecycle_event: string;
@@ -71,18 +61,12 @@ declare module '$env/static/private' {
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
-	export const _CE_M: string;
 	export const HOME: string;
 	export const SHLVL: string;
-	export const HOMEBREW_PREFIX: string;
 	export const npm_config_cache: string;
 	export const LOGNAME: string;
-	export const CONDA_PYTHON_EXE: string;
 	export const npm_lifecycle_script: string;
-	export const CONDA_DEFAULT_ENV: string;
 	export const npm_config_user_agent: string;
-	export const HOMEBREW_CELLAR: string;
-	export const INFOPATH: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
 	export const NODE_ENV: string;
@@ -115,33 +99,24 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		NVM_RC_VERSION: string;
-		MANPATH: string;
 		TERM_PROGRAM: string;
 		NODE: string;
 		INIT_CWD: string;
-		NVM_CD_FLAGS: string;
 		TERM: string;
 		SHELL: string;
 		npm_config_metrics_registry: string;
 		TMPDIR: string;
-		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
-		CONDA_SHLVL: string;
 		TERM_PROGRAM_VERSION: string;
-		CONDA_PROMPT_MODIFIER: string;
 		COLOR: string;
 		TERM_SESSION_ID: string;
 		npm_config_noproxy: string;
 		npm_config_local_prefix: string;
 		USER: string;
-		NVM_DIR: string;
 		npm_config_globalconfig: string;
-		CONDA_EXE: string;
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_execpath: string;
-		_CE_CONDA: string;
 		PATH: string;
 		npm_package_json: string;
 		npm_config_engine_strict: string;
@@ -149,7 +124,6 @@ declare module '$env/dynamic/private' {
 		npm_config_userconfig: string;
 		npm_config_init_module: string;
 		__CFBundleIdentifier: string;
-		CONDA_PREFIX: string;
 		npm_command: string;
 		PWD: string;
 		npm_lifecycle_event: string;
@@ -160,18 +134,12 @@ declare module '$env/dynamic/private' {
 		npm_config_node_gyp: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
-		_CE_M: string;
 		HOME: string;
 		SHLVL: string;
-		HOMEBREW_PREFIX: string;
 		npm_config_cache: string;
 		LOGNAME: string;
-		CONDA_PYTHON_EXE: string;
 		npm_lifecycle_script: string;
-		CONDA_DEFAULT_ENV: string;
 		npm_config_user_agent: string;
-		HOMEBREW_CELLAR: string;
-		INFOPATH: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
 		NODE_ENV: string;

@@ -108,7 +108,7 @@ const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.geoJsonToFit(geoJsonToFit);
   $$result.css.add(css$5);
   {
-    if (index === 2) {
+    if (index === 4) {
       isVisible = true;
     } else {
       isVisible = false;
@@ -135,7 +135,7 @@ const Map1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.geoJsonToFit(geoJsonToFit);
   $$result.css.add(css$4);
   {
-    if (index >= 5 && index < 11) {
+    if (index >= 6 && index < 11) {
       isVisible = true;
     } else {
       isVisible = false;
@@ -285,7 +285,7 @@ const MapBelt = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.geoJsonToFit(geoJsonToFit);
   $$result.css.add(css$3);
   {
-    if (index === 3) {
+    if (index === 5) {
       isVisible = true;
     } else {
       isVisible = false;
@@ -320,7 +320,7 @@ const MapMigration = create_ssr_component(($$result, $$props, $$bindings, slots)
 });
 const Background_svelte_svelte_type_style_lang = "";
 const css$1 = {
-  code: ".image.svelte-6fi1gu{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s}.image.visible.svelte-6fi1gu{opacity:1;visibility:visible}img.svelte-6fi1gu{margin:10em;width:500px}",
+  code: ".image.svelte-mbqlu{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s}.image.visible.svelte-mbqlu{opacity:1;visibility:visible}img.svelte-mbqlu{margin:10em;width:500px}",
   map: null
 };
 const Background = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -330,18 +330,19 @@ const Background = create_ssr_component(($$result, $$props, $$bindings, slots) =
     $$bindings.index(index);
   $$result.css.add(css$1);
   {
-    if (index === 0) {
+    if (index < 1) {
       isVisible = true;
     } else {
       isVisible = false;
     }
   }
-  return `<div class="${["image svelte-6fi1gu", isVisible ? "visible" : ""].join(" ").trim()}"><img src="/src/images/coffee.png" alt="coffee" class="svelte-6fi1gu">
-</div>`;
+  return `<div class="${["image svelte-mbqlu", isVisible ? "visible" : ""].join(" ").trim()}"><img src="./images/coffee.png" alt="coffee" class="svelte-mbqlu"></div>
+
+`;
 });
 const ScrollyTeller_svelte_svelte_type_style_lang = "";
 const css = {
-  code: "@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');.background.svelte-72w122{width:105%;height:100vh;position:relative;top:0px;left:-8px;outline:green solid 0px}.foreground.svelte-72w122{width:90%;margin:0 auto;height:auto;position:relative}section.svelte-72w122{height:80vh;background-color:rgba(0, 0, 0, 0);max-width:100%;color:black;padding:5em 0;margin:1em 0 2em 54em;text-align:center;font-family:'Poppins', sans-serif;line-height:1.65}.aboutCoffee.svelte-72w122{height:120vh;max-width:750px;padding:0;margin:20em auto}.farmerStory.svelte-72w122{height:120vh;max-width:100%;padding:3em 2em;margin:2em auto;background-color:rgba(255, 255, 255, 0.6)}.flowmap.svelte-72w122{height:80vh;max-width:900px;padding:0;margin:0 auto}.ending.svelte-72w122{height:80vh;max-width:750px;padding:10em 0 0 0;margin:10em auto}p.svelte-72w122{text-align:center;font-family:'Poppins', sans-serif;line-height:1.65;margin:1em}button.svelte-72w122{background-color:white;border-style:none}.bean.svelte-72w122{margin:2em auto}.credit.svelte-72w122{font-size:12px;color:gray;margin:13em 0 0 0}",
+  code: "@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');.background.svelte-focz00{width:105%;height:100vh;position:relative;top:0px;left:-8px;outline:green solid 0px}.foreground.svelte-focz00{width:90%;margin:0 auto;height:auto;position:relative}section.svelte-focz00{height:80vh;background-color:rgba(255, 255, 255, 0);max-width:100%;color:black;padding:3em 2em;margin:1em 0 2em 45em;text-align:center;font-family:'Poppins', sans-serif;font-size:18px;line-height:1.65}.aboutCoffee.svelte-focz00{height:90vh;max-width:750px;padding:3em 2em 3em 2em;margin:15em auto 5em}.farmerStory.svelte-focz00{height:120vh;max-width:80%;padding:5em 2em;margin:2em auto;background-color:rgba(255, 255, 255, 0.65)}.flowmap.svelte-focz00{height:80vh;max-width:900px;padding:0;margin:0 auto}.ending.svelte-focz00{height:80vh;max-width:750px;padding:10em 0 0 0;margin:10em auto}p.svelte-focz00{text-align:center;font-family:'Poppins', sans-serif;line-height:1.65;margin:1em}button.svelte-focz00{background-color:white;border-style:none}.bean.svelte-focz00{margin:2em auto}.credit.svelte-focz00{font-size:12px;color:gray;margin:13em 0 0 0}",
   map: null
 };
 const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -397,7 +398,7 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       },
       {
         foreground: () => {
-          return `<div class="foreground svelte-72w122" slot="foreground"><section class="intro svelte-72w122"><br>
+          return `<div class="foreground svelte-focz00" slot="foreground"><section class="intro svelte-focz00"><br>
       <br>
       <br>
       <br>
@@ -411,18 +412,48 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       Have you ever wondered where your coffee comes from? Let&#39;s take a step back.
       <br>
       <br>
-      <button class="svelte-72w122"><img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"></button></section>
+      <button class="svelte-focz00"><img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"></button></section>
 
-    <section class="intro svelte-72w122">[enter some kind of fancy transition]
+    <section class="intro svelte-focz00">[enter some kind of fancy transition]
       <br>
       <br>
       <br>
-      <img class="smallbean" src="/src/images/smallbean-hor.png" alt="coffeebean" width="50">
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30">
-      <img class="smallbean" src="/src/images/smallbean-hor.png" alt="coffeebean" width="50">
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30"></section>
+      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50">
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50">
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"></section>
 
-    <section class="chapterOne svelte-72w122">Here’s a map of the world. And these are the countries that produce coffee.
+    <section class="aboutCoffee svelte-focz00"><img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <h3>Coffee Fun Fact #1</h3>
+      <p class="svelte-focz00">Coffee&#39;s flavor and quality depend on factors like plant type, soil chemistry, climate conditions such as rainfall and sunshine, altitude, and minimal pests or diseases that affect the plants.
+      </p> 
+        <br>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <h3>Coffee Fun Fact #2</h3>
+      <p class="svelte-focz00">The optimal temperature range of the Coffea arabica tree—source of 70% of the world&#39;s coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C). 
+        </p>
+        <br>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <h3>Coffee Fun Fact #3</h3>
+      <p class="svelte-focz00">Generally, coffee needs 1500-2500mm annual rainfall, spread evenly, with a dry season under three months. However, some plants tolerate different conditions depending on the growing region.
+      </p>
+      <br>
+      <br>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <br>
+      <br>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <br>
+      <br>
+      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30">
+      <br>
+      <br>
+      Now it&#39;s your turn!
+    </section>
+    <section class="aboutCoffee svelte-focz00"><img class="coffeegame" src="./images/coffeegame_result.png" alt="coffeegame" width="750">
+      <br></section>
+
+    <section class="chapterOne svelte-focz00">Here’s a map of the world. And these are the countries that produce coffee.
       <br>
       <br>
       Hover over each country to see how much coffee they produce.
@@ -431,38 +462,15 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       <br>
       Do you notice a pattern?
     </section>
-    <section class="beanBelt svelte-72w122">Coffee trees grow best in a region called &quot;The Bean Belt,&quot; which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
+    <section class="beanBelt svelte-focz00">Coffee trees grow best in a region called &quot;The Bean Belt,&quot; which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
       <br>
       <br>
       <br>
       The coffee belt passes through some 70 countries, which have tropical climates that provide rich environments that are perfect for growing coffee.
     </section>
     
-    <section class="aboutCoffee svelte-72w122"><img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30">
-      <p class="svelte-72w122">[Provide some cool coffee plant visuals?]
-        <br>
-        <br>
-        <br>
-        Coffee&#39;s flavor and quality depend on factors like plant type, soil chemistry, climate conditions such as rainfall and sunshine, altitude, and minimal pests or diseases that affect the plants.
-        <br>
-        <br>
-        <br>
-        The optimal temperature range of the Coffea arabica tree—source of 70% of the world&#39;s coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C). Arabica coffee, which is of higher quality, prefers high altitudes and nutrient-rich soil, while Robusta coffee can tolerate lower altitudes and higher temperatures.
-        <br>
-        <br>
-        <br>
-        Optimal rainfall for coffee growth varies by plant type and location. Generally, coffee needs 1500-2500mm annual rainfall, spread evenly, with a dry season under three months. However, some plants tolerate different conditions depending on the growing region.
-      </p>
 
-      <img class="smallbean" src="/src/images/smallbean.png" alt="coffeebean" width="30">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br></section>
-
-    <section class="chapterTwo svelte-72w122"><br>
+    <section class="chapterTwo svelte-focz00"><br>
         <br>
         <br>
       Let’s zoom into a region in Central America called the “Northern Triangle.” 
@@ -471,33 +479,36 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       <br>
       This region includes: <br>Guatemala, <br>Honduras <br>and <br>El Salvador. 
     </section>
-    <section class="farmerStory svelte-72w122">Meet Juan, <br>a smallholder coffee farmer in the Huehuetenango region in Guatemala.
+    <section class="farmerStory svelte-focz00"><img class="farmer" src="./images/farmer.png" alt="farmer" width="600">
+      <br>
+      <br>
+      Meet Juan, <br>a smallholder coffee farmer in the Huehuetenango region in Guatemala.
     </section>
-    <section class="farmerStory svelte-72w122">Continue Farmer story
+    <section class="farmerStory svelte-focz00">Continue Farmer story
     </section>
-    <section class="chapterThree svelte-72w122">Climate change in Northern Triangle
+    <section class="chapterThree svelte-focz00">Climate change in Northern Triangle
     </section>
-    <section class="chapterThree svelte-72w122">Natural disasters in Norther Triangle</section>
-    <section class="chapterThree svelte-72w122">Coffee production in Northern Triangle</section>
-    <section class="flowmap svelte-72w122"><h1>Migration from the Northern Triangle</h1>
-      <p class="svelte-72w122">Click the &quot;play&quot; button on the bottom to see how migration flow changes over the years.
+    <section class="chapterThree svelte-focz00">Natural disasters in Norther Triangle</section>
+    <section class="chapterThree svelte-focz00">Coffee production in Northern Triangle</section>
+    <section class="flowmap svelte-focz00"><h1>Migration from the Northern Triangle</h1>
+      <p class="svelte-focz00">Click the &quot;play&quot; button on the bottom to see how migration flow changes over the years.
         <br>
         Hover outside the map to continue scrolling down.</p>
       <iframe width="100%" height="600" title="flowmap" src="https://flowmap.blue/1ODcincYj0MjnBWdE6v2FFHltR2JCNV6buBM3aQlLhc0?v=23.301426%2C-92.632810%2C4.43%2C0%2C0&a=1&as=1&b=1&bo=84&c=0&ca=0&cz=4&d=0&fe=1&lt=0&lfm=ALL&t=19900101T000000%2C19960101T000000&col=BuGn&f=19" frameborder="0" allowfullscreen></iframe>
         <br></section>
     
-    <section class="ending svelte-72w122">Learned something new? Go out there an spill the beans!
+    <section class="ending svelte-focz00">Learned something new? Go out there an spill the beans!
       <br>
       Click the bean to learn more.
       <br>
-      <button class="svelte-72w122"><img class="bean svelte-72w122" src="/src/images/coffeebean.png" alt="coffeebean" width="500"></button>
+      <button class="svelte-focz00"><img class="bean svelte-focz00" src="./images/coffeebean.png" alt="coffeebean" width="500"></button>
 
       <br>
-      <p class="credit svelte-72w122">Copyright info
+      <p class="credit svelte-focz00">Copyright info
       </p></section></div>`;
         },
         background: () => {
-          return `<div class="background svelte-72w122" slot="background">${validate_component(Background, "Background").$$render($$result, { index }, {}, {})}
+          return `<div class="background svelte-focz00" slot="background">${validate_component(Background, "Background").$$render($$result, { index }, {}, {})}
 
     ${validate_component(Map$1, "Map").$$render(
             $$result,
@@ -534,7 +545,7 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
               }
             },
             {}
-          )}
+          )} 
 
     ${validate_component(MapMigration, "MapMigration").$$render(
             $$result,
