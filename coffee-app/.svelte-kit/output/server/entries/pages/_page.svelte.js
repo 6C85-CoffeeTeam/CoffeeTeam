@@ -1,12 +1,12 @@
 import { c as create_ssr_component, d as add_attribute, e as escape, v as validate_component } from "../../chunks/index.js";
-import "d3";
+import * as d3 from "d3";
 import mapboxgl from "mapbox-gl";
 import { geoMercator } from "d3-geo";
 const GlobalMap_svelte_svelte_type_style_lang = "";
 const NorthernTriangleClimate_svelte_svelte_type_style_lang = "";
 const App_svelte_svelte_type_style_lang = "";
 const Scroller_svelte_svelte_type_style_lang = "";
-const css$6 = {
+const css$7 = {
   code: "svelte-scroller-outer.svelte-xdbafy{display:block;position:relative}svelte-scroller-background.svelte-xdbafy{display:block;position:relative;width:100%}svelte-scroller-foreground.svelte-xdbafy{display:block;position:relative;z-index:2}svelte-scroller-foreground.svelte-xdbafy::after{content:' ';display:block;clear:both}svelte-scroller-background-container.svelte-xdbafy{display:block;position:absolute;width:100%;max-width:100%;pointer-events:none;will-change:transform}",
   map: null
 };
@@ -76,7 +76,7 @@ const Scroller = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     $$bindings.progress(progress);
   if ($$props.visible === void 0 && $$bindings.visible && visible !== void 0)
     $$bindings.visible(visible);
-  $$result.css.add(css$6);
+  $$result.css.add(css$7);
   style = `
 		position: ${"absolute"};
 		top: 0;
@@ -92,7 +92,7 @@ const Scroller = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 </svelte-scroller-outer>`;
 });
 const Map_svelte_svelte_type_style_lang = "";
-const css$5 = {
+const css$6 = {
   code: ".map.svelte-if4095{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-if4095{opacity:1;visibility:visible}",
   map: null
 };
@@ -101,12 +101,14 @@ const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { geoJsonToFit } = $$props;
   mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
   let container;
+  d3.json("https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/world.geojson").then((data) => {
+  });
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$5);
+  $$result.css.add(css$6);
   {
     if (index === 4) {
       isVisible = true;
@@ -119,7 +121,7 @@ const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 <div class="${["map svelte-if4095", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const Map1_svelte_svelte_type_style_lang = "";
-const css$4 = {
+const css$5 = {
   code: ".map.svelte-p7w6q1{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-p7w6q1{opacity:1;visibility:visible}",
   map: null
 };
@@ -128,14 +130,16 @@ const Map1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { geoJsonToFit } = $$props;
   mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
   let container;
+  d3.json("https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson").then((data) => {
+  });
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$4);
+  $$result.css.add(css$5);
   {
-    if (index >= 6 && index < 12) {
+    if (index >= 6 && index < 9) {
       isVisible = true;
     } else {
       isVisible = false;
@@ -144,6 +148,35 @@ const Map1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `${$$result.head += `<!-- HEAD_svelte-szwil1_START --><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"><!-- HEAD_svelte-szwil1_END -->`, ""}
 
   <div class="${["map svelte-p7w6q1", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
+});
+const Map11_svelte_svelte_type_style_lang = "";
+const css$4 = {
+  code: ".map.svelte-if4095{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-if4095{opacity:1;visibility:visible}",
+  map: null
+};
+const Map1_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { index } = $$props;
+  let { geoJsonToFit } = $$props;
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
+  let container;
+  d3.json("https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson").then((data) => {
+  });
+  let isVisible = false;
+  if ($$props.index === void 0 && $$bindings.index && index !== void 0)
+    $$bindings.index(index);
+  if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
+    $$bindings.geoJsonToFit(geoJsonToFit);
+  $$result.css.add(css$4);
+  {
+    if (index >= 9 && index < 12) {
+      isVisible = true;
+    } else {
+      isVisible = false;
+    }
+  }
+  return `${$$result.head += `<!-- HEAD_svelte-qm79jp_START --><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"><!-- HEAD_svelte-qm79jp_END -->`, ""}
+
+<div class="${["map svelte-if4095", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const MapBelt_svelte_svelte_type_style_lang = "";
 const css$3 = {
@@ -485,7 +518,7 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       This region includes: <br>Guatemala, <br>Honduras <br>and <br>El Salvador. 
     </section>
     
-    <section class="farmerStory svelte-1iugc4y"><div class="container svelte-1iugc4y"><div class="farmertext svelte-1iugc4y">Meet Juan, <br>a smallholder coffee farmer in the Huehuetenango region in Guatemala.
+    <section class="farmerStory svelte-1iugc4y"><div class="container svelte-1iugc4y"><div class="farmertext svelte-1iugc4y">Meet Juan, <br>a smallholder coffee farmer in Honduras.
         </div>
         <div class="farmerimage"><img class="farmer svelte-1iugc4y" src="./images/farmer.png" alt="farmer"></div></div></section>
 
@@ -551,6 +584,18 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
     
 
     ${validate_component(Map1, "Map1").$$render(
+            $$result,
+            { index, geoJsonToFit },
+            {
+              geoJsonToFit: ($$value) => {
+                geoJsonToFit = $$value;
+                $$settled = false;
+              }
+            },
+            {}
+          )} 
+
+    ${validate_component(Map1_1, "Map1_1").$$render(
             $$result,
             { index, geoJsonToFit },
             {

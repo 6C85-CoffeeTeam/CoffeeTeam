@@ -98,17 +98,7 @@
               'rgb(28,144,153)'
             ]
             }
-            // filter: ['==', ['get', 'line'], 'equator'],
-            // layout: {},
-            // paint: {
-            // 'fill-color': '#627BC1', 
-            // 'fill-opacity': [
-            //   'case',
-            //   ['boolean', ['feature-state', 'hover'], false],
-            //   1,
-            //   0.5
-            //   ]
-            // }
+        
         });
         map.addLayer({
             'id': 'country-borders',

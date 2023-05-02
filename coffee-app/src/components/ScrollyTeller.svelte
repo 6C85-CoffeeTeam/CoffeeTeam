@@ -39,6 +39,7 @@
     const nextPagePosition = window.innerHeight + window.pageYOffset;
     window.scrollTo({ top: nextPagePosition, behavior: "smooth" });
   }
+
 </script>
 
 <Scroller
@@ -84,6 +85,7 @@
     </div>
 
   <div class="foreground" slot="foreground">
+
     <section class="intro" >
       <br />
       <br />
@@ -106,7 +108,7 @@
       <br />
       <br />
       <br />
-      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
