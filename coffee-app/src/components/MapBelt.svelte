@@ -228,6 +228,10 @@
       center: [10,26],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
+      // 'transition': {
+      //         'duration': 5000, // Duration in milliseconds
+      //         'delay': 1000, // Delay in milliseconds
+      //       }
     });
   
       window.addEventListener("resize", handleResize);
@@ -264,18 +268,15 @@
           source: 'pointSource', // Use the same source as before
           filter: ['==', '$type', 'Polygon'],
           paint: {
-            'fill-color': '#a4aac6', // Change the color as needed
-            'fill-opacity': 0.5, // Adjust the opacity as needed
-            // 'transition': {
-            //   'duration': 1000, // Duration in milliseconds
-            //   'delay': 1000, // Delay in milliseconds
+            // 'fill-color': '#a4aac6', // Change the color as needed
+            // 'fill-opacity': 0.5, // Adjust the opacity as needed
+            // 'fill-opacity-transition': {
+            //   'duration': 6000, // Duration in milliseconds
+            //   'delay': 2000, // Delay in milliseconds
             // },
-            'fill-opacity-transition': {
-              'duration': 1000, // Duration in milliseconds
-              'delay': 1000, // Delay in milliseconds
-            },
           }
         });
+        
         map.addLayer({
           id: 'equator',
           type: 'symbol',
@@ -287,6 +288,7 @@
             'icon-allow-overlap': true,
             'icon-ignore-placement': true,
           }
+    
           
         });
         
