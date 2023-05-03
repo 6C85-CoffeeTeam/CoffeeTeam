@@ -61,6 +61,10 @@
       center: [10,10],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
+      // 'transition': {
+      //         'duration': 5000, // Duration in milliseconds
+      //         'delay': 1000, // Delay in milliseconds
+      //       }
     });
   
       window.addEventListener("resize", handleResize);
