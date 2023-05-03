@@ -6,6 +6,7 @@
     import MapBelt from "./MapBelt.svelte";
     import MapMigration from "./MapMigration.svelte";
     import Background from "./Background.svelte";
+    import Quiz from "./Quiz.svelte";
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
@@ -155,9 +156,10 @@
       <br />
       <br />
       Now it's your turn!
+      <br />
     </section>
     <section class="aboutCoffee">
-      <img class="coffeegame" src="./images/coffeegame_result.png" alt="coffeegame" width="750"/>
+      <Quiz />
       <br />
 
     </section>
@@ -245,6 +247,7 @@
       International Coffee Organization (ICO) <br />
       United Nation Population Division <br />
       World Food Programme
+      GADM Data
       
 
       <p class="credit">
