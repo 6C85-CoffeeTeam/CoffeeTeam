@@ -81,7 +81,29 @@
       //       type: 'geojson',
       //       data: hondurasDroughtData
       //   });
+      // const stops =  [[5, '#ffffff'],
+      //   [20, '#ece0d1'],
+      //   [80, '#dbc1ac'],
+      //   [320, '#967259'],
+      //   [1280, '#634832'],
+      //   [5120, '#38220f']]
   
+      //   map.addLayer({
+      //       id: 'country-fills',
+      //       type: 'fill',
+      //       source: 'northernTriangle',
+      //       layout: {},
+
+      //       paint: {
+      //         'fill-color': {
+      //           property: 'coffee',
+      //           stops: stops
+      //         },
+      //         "fill-opacity": 0.6
+      //       }
+        
+      //   });
+
         map.addLayer({
             id: 'country-fills',
             type: 'fill',

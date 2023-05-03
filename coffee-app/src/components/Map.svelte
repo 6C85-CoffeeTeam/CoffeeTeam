@@ -11,6 +11,7 @@
 
   let container;
   let map;
+  let legend;
 
   let zoomLevel;
 
@@ -24,7 +25,7 @@
 
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
-    zoomLevel = screenWidth <= 600 ? 1 : 1.45; // Adjust these values as needed
+    zoomLevel = screenWidth <= 600 ? 1.15 : 1.8; // Adjust these values as needed
   }
 
   function handleResize() {
@@ -38,7 +39,7 @@
       container,
       projection: 'mercator',
       style: "mapbox://styles/mapbox/light-v11",
-      center: [10,26],
+      center: [10,10],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -62,52 +63,62 @@
     let hoveredStateId = null;
 
     map.on("load", () => {
+
       map.addSource('countries', {
             type: 'geojson',
             data: countriesData
         });
+
+      // indicate coffee production quantities and the color that
+      // they get - palette is from https://www.color-hex.com/color-palette/30023
+      const stops =  [[5, '#ffffff'],
+        [20, '#ece0d1'],
+        [80, '#dbc1ac'],
+        [320, '#967259'],
+        [1280, '#634832'],
+        [5120, '#38220f']]
+
+    //     map.addLayer({
+    //     "id": 'counties',
+    //     "type": "fill",
+    //     "source": {
+    //         "type": "geojson",
+    //         "data": {
+    //             "type": "FeatureCollection",
+    //             "features": counties
+    //         }
+    //     },
+    //     "layout": {},
+    //     "paint": {
+    //         "fill-color": oc,
+    //         "fill-opacity": 0.8
+    //     }
+    // });
   
         map.addLayer({
             id: 'country-fills',
-            type: 'heatmap',
+            type: 'fill',
             source: 'countries',
+            layout: {},
 
             paint: {
-              'heatmap-weight': {
+              'fill-color': {
                 property: 'coffee',
-                type: 'linear',
-                stops: [
-                  [1, 0],
-                  [62, 1]
-                ]
+                stops: stops
               },
-
-            'heatmap-color': [
-              'interpolate',
-              ['linear'],
-              ['heatmap-density'],
-              0,
-              'rgba(236,222,239,0)',
-              100,
-              'rgb(208,209,230)',
-              200,
-              'rgb(166,189,219)',
-              300,
-              'rgb(103,169,207)',
-              400,
-              'rgb(28,144,153)'
-            ]
+              "fill-opacity": 0.6
             }
         
         });
+
         map.addLayer({
             'id': 'country-borders',
             'type': 'line',
             'source': 'countries',
             'layout': {},
             'paint': {
-            'line-color': '#000',
-            'line-width': 0
+            'line-color': '#bcbcbc',
+            'line-width': 1
             }
           });
       
@@ -145,6 +156,37 @@
           map.on("drag", updateBounds);
           map.on("move", updateBounds);
         });
+
+
+        // create legend
+        legend = document.getElementById('legend');
+        const item = document.createElement('div');
+        const key = document.createElement('span');
+        key.className = 'legend-key';
+        key.style.backgroundColor = '#ece0d1';
+        const value = document.createElement('span');
+          value.innerHTML = `${'awdawd'}`;
+          //value.innerHTML = stop[0];
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+
+
+        // stops.forEach((stop, i) => {
+        //   const color = stop[1];
+        //   const item = document.createElement('div');
+        //   const key = document.createElement('span');
+        //   key.className = 'legend-key';
+        //   // key.style.backgroundColor = color;
+        //   key.style.backgroundColor = '#ece0d1';
+
+        //   const value = document.createElement('span');
+        //   value.innerHTML = `${'awdawd'}`;
+        //   //value.innerHTML = stop[0];
+        //   item.appendChild(key);
+        //   item.appendChild(value);
+        //   legend.appendChild(item);
+        // });
   });
   
   function updateBounds() {
@@ -176,21 +218,64 @@ $: if (index === 4) {
   />
 </svelte:head>
 
-<div class="map" class:visible={isVisible} bind:this={container} />
+<div id="map" class:visible={isVisible} bind:this={container} />
+<div class='map-overlay' id='legend' class:visible={isVisible} bind:this={container}/>
 
+
+
+<!-- <div class="legend" class:visible={isVisible} bind:this={container} /> -->
+<!-- <div class="legend" class:visible={isVisible} bind:this={container} /> -->
+<!-- <div class='map-overlay' id='legend' class:visible={isVisible} bind:this={container}></div> -->
 <style>
-  .map {
+  .map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    margin-right: 0px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+  }
+
+  #map {
     width: 100%;
     height: 100vh; /* check problem when setting width */
     position: absolute;
-    opacity: 0;
+    opacity: 1;
     visibility: hidden;
     transition: opacity 2s, visibility 2s;
     outline: blue solid 0px;
   }
 
-  .map.visible {
+  #map.visible {
     opacity: 1;
     visibility: visible;
   }
+
+
+  #legend {
+  padding: 0px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 100vh;
+  margin-bottom: 0px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s, visibility 2s;
+}
+
+#legend.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+#legend-key {
+  display: inline-block;
+  border-radius: 20%;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
 </style>

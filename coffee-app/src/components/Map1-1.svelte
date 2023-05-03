@@ -27,6 +27,12 @@
     hondurasDroughtData = data;
   });
 
+  d3.json(
+    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
+  ).then((data) => {
+    hondurasDroughtData = data;
+  });
+
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
     zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
