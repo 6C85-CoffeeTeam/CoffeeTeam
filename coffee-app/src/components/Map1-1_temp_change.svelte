@@ -113,11 +113,13 @@
         });
 
 
+
+        // color palette from: https://www.color-hex.com/color-palette/20901
         const stops =  [[0, '#62a1db'],
-        [0.5, '#e7d87d'],
-        [1.0, '#dd9f40'],
-        [1.5, '#b4451f'],
-        [2.0, '#b01111']]
+        [1.0, '#e7d87d'],
+        [1.5, '#dd9f40'],
+        [2.0, '#b4451f'],
+        [2.5, '#b01111']]
   
         map.addLayer({
             id: 'temp-fills',

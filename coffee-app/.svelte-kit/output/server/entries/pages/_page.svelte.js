@@ -1,12 +1,9 @@
 import { c as create_ssr_component, d as add_attribute, e as escape, v as validate_component } from "../../chunks/index.js";
-import * as d3 from "d3";
 import mapboxgl from "mapbox-gl";
+import * as d3 from "d3";
 import { geoMercator } from "d3-geo";
-const GlobalMap_svelte_svelte_type_style_lang = "";
-const NorthernTriangleClimate_svelte_svelte_type_style_lang = "";
-const App_svelte_svelte_type_style_lang = "";
 const Scroller_svelte_svelte_type_style_lang = "";
-const css$7 = {
+const css$8 = {
   code: "svelte-scroller-outer.svelte-xdbafy{display:block;position:relative}svelte-scroller-background.svelte-xdbafy{display:block;position:relative;width:100%}svelte-scroller-foreground.svelte-xdbafy{display:block;position:relative;z-index:2}svelte-scroller-foreground.svelte-xdbafy::after{content:' ';display:block;clear:both}svelte-scroller-background-container.svelte-xdbafy{display:block;position:absolute;width:100%;max-width:100%;pointer-events:none;will-change:transform}",
   map: null
 };
@@ -76,7 +73,7 @@ const Scroller = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     $$bindings.progress(progress);
   if ($$props.visible === void 0 && $$bindings.visible && visible !== void 0)
     $$bindings.visible(visible);
-  $$result.css.add(css$7);
+  $$result.css.add(css$8);
   style = `
 		position: ${"absolute"};
 		top: 0;
@@ -92,8 +89,8 @@ const Scroller = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 </svelte-scroller-outer>`;
 });
 const Map_svelte_svelte_type_style_lang = "";
-const css$6 = {
-  code: ".map.svelte-if4095{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-if4095{opacity:1;visibility:visible}",
+const css$7 = {
+  code: ".map-overlay.svelte-15r05yz{position:absolute;bottom:0;right:0;background:#fff;margin-right:0px;font-family:Arial, sans-serif;overflow:auto;border-radius:3px}#map.svelte-15r05yz{width:100%;height:100vh;position:absolute;opacity:1;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}#map.visible.svelte-15r05yz{opacity:1;visibility:visible}#legend.svelte-15r05yz{padding:0px;box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);line-height:18px;height:100vh;margin-bottom:0px;width:100%;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s}#legend.visible.svelte-15r05yz{opacity:1;visibility:visible}",
   map: null
 };
 const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -108,7 +105,7 @@ const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$6);
+  $$result.css.add(css$7);
   {
     if (index === 4) {
       isVisible = true;
@@ -118,10 +115,17 @@ const Map$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   }
   return `${$$result.head += `<!-- HEAD_svelte-1s9kg0l_START --><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"><!-- HEAD_svelte-1s9kg0l_END -->`, ""}
 
-<div class="${["map svelte-if4095", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
+<div id="map" class="${["svelte-15r05yz", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>
+<div class="${["map-overlay svelte-15r05yz", isVisible ? "visible" : ""].join(" ").trim()}" id="legend"${add_attribute("this", container, 0)}></div>
+
+
+
+
+
+`;
 });
 const Map1_svelte_svelte_type_style_lang = "";
-const css$5 = {
+const css$6 = {
   code: ".map.svelte-p7w6q1{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-p7w6q1{opacity:1;visibility:visible}",
   map: null
 };
@@ -137,7 +141,7 @@ const Map1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$5);
+  $$result.css.add(css$6);
   {
     if (index >= 6 && index < 9) {
       isVisible = true;
@@ -150,7 +154,7 @@ const Map1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   <div class="${["map svelte-p7w6q1", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const Map11_svelte_svelte_type_style_lang = "";
-const css$4 = {
+const css$5 = {
   code: ".map.svelte-if4095{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-if4095{opacity:1;visibility:visible}",
   map: null
 };
@@ -166,9 +170,9 @@ const Map1_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$4);
+  $$result.css.add(css$5);
   {
-    if (index >= 9 && index < 12) {
+    if (index >= 10 && index < 12) {
       isVisible = true;
     } else {
       isVisible = false;
@@ -179,7 +183,7 @@ const Map1_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 <div class="${["map svelte-if4095", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const MapBelt_svelte_svelte_type_style_lang = "";
-const css$3 = {
+const css$4 = {
   code: ".map.svelte-p7w6q1{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-p7w6q1{opacity:1;visibility:visible}",
   map: null
 };
@@ -188,12 +192,14 @@ const MapBelt = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { geoJsonToFit } = $$props;
   mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
   let container;
+  d3.json("https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/world.geojson").then((data) => {
+  });
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
   if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
     $$bindings.geoJsonToFit(geoJsonToFit);
-  $$result.css.add(css$3);
+  $$result.css.add(css$4);
   {
     if (index === 5) {
       isVisible = true;
@@ -206,7 +212,7 @@ const MapBelt = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   <div class="${["map svelte-p7w6q1", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const MapMigration_svelte_svelte_type_style_lang = "";
-const css$2 = {
+const css$3 = {
   code: ".flowmap.svelte-toeph5{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.flowmap.visible.svelte-toeph5{opacity:1;visibility:visible}",
   map: null
 };
@@ -216,7 +222,7 @@ const MapMigration = create_ssr_component(($$result, $$props, $$bindings, slots)
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
-  $$result.css.add(css$2);
+  $$result.css.add(css$3);
   {
     if (index === 9) {
       isVisible = true;
@@ -229,7 +235,7 @@ const MapMigration = create_ssr_component(($$result, $$props, $$bindings, slots)
   <div class="${["flowmap svelte-toeph5", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const Background_svelte_svelte_type_style_lang = "";
-const css$1 = {
+const css$2 = {
   code: ".image.svelte-mbqlu{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s}.image.visible.svelte-mbqlu{opacity:1;visibility:visible}img.svelte-mbqlu{margin:10em;width:500px}",
   map: null
 };
@@ -238,7 +244,7 @@ const Background = create_ssr_component(($$result, $$props, $$bindings, slots) =
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
-  $$result.css.add(css$1);
+  $$result.css.add(css$2);
   {
     if (index < 1) {
       isVisible = true;
@@ -249,6 +255,35 @@ const Background = create_ssr_component(($$result, $$props, $$bindings, slots) =
   return `<div class="${["image svelte-mbqlu", isVisible ? "visible" : ""].join(" ").trim()}"><img src="./images/coffee.png" alt="coffee" class="svelte-mbqlu"></div>
 
 `;
+});
+const Map11_temp_change_svelte_svelte_type_style_lang = "";
+const css$1 = {
+  code: ".map.svelte-if4095{width:100%;height:100vh;position:absolute;opacity:0;visibility:hidden;transition:opacity 2s, visibility 2s;outline:blue solid 0px}.map.visible.svelte-if4095{opacity:1;visibility:visible}",
+  map: null
+};
+const Map1_1_temp_change = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { index } = $$props;
+  let { geoJsonToFit } = $$props;
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
+  let container;
+  d3.json("https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk_temp_retry.geojson").then((data) => {
+  });
+  let isVisible = false;
+  if ($$props.index === void 0 && $$bindings.index && index !== void 0)
+    $$bindings.index(index);
+  if ($$props.geoJsonToFit === void 0 && $$bindings.geoJsonToFit && geoJsonToFit !== void 0)
+    $$bindings.geoJsonToFit(geoJsonToFit);
+  $$result.css.add(css$1);
+  {
+    if (index === 9) {
+      isVisible = true;
+    } else {
+      isVisible = false;
+    }
+  }
+  return `${$$result.head += `<!-- HEAD_svelte-qm79jp_START --><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"><!-- HEAD_svelte-qm79jp_END -->`, ""}
+
+<div class="${["map svelte-if4095", isVisible ? "visible" : ""].join(" ").trim()}"${add_attribute("this", container, 0)}></div>`;
 });
 const ScrollyTeller_svelte_svelte_type_style_lang = "";
 const css = {
@@ -401,9 +436,12 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
 
     <section class="farmerStory svelte-1iugc4y">Continue Farmer story
     </section>
-    <section class="chapterThree svelte-1iugc4y">Climate change in Northern Triangle
+    <section class="chapterThree svelte-1iugc4y"><h1>Climate change in Northern Triangle</h1>
+      Change in average temperature between 2010 and 2020
     </section>
-    <section class="chapterThree svelte-1iugc4y">Natural disasters in Norther Triangle</section>
+    <section class="chapterThree svelte-1iugc4y"><h1>Natural disasters in Norther Triangle</h1>
+      Mapping the drought risk in Honduras
+    </section>
     <section class="chapterThree svelte-1iugc4y">Coffee production in Northern Triangle</section>
     <section class="flowmap svelte-1iugc4y"><h1>Migration from the Northern Triangle</h1>
       <p class="svelte-1iugc4y">Click the &quot;play&quot; button on the bottom to see how migration flow changes over the years.
@@ -412,7 +450,7 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
       <iframe width="100%" height="600" title="flowmap" src="https://flowmap.blue/1ODcincYj0MjnBWdE6v2FFHltR2JCNV6buBM3aQlLhc0?v=23.301426%2C-92.632810%2C4.43%2C0%2C0&a=1&as=1&b=1&bo=84&c=0&ca=0&cz=4&d=0&fe=1&lt=0&lfm=ALL&t=19900101T000000%2C19960101T000000&col=BuGn&f=19" frameborder="0" allowfullscreen></iframe>
         <br></section>
     
-    <section class="ending svelte-1iugc4y">Learned something new? Go out there an spill the beans!
+    <section class="ending svelte-1iugc4y">Learned something new? Go out there and spill the beans!
       <br>
       Click the bean to learn more.
       <br>
@@ -483,6 +521,18 @@ const ScrollyTeller = create_ssr_component(($$result, $$props, $$bindings, slots
             },
             {}
           )} 
+
+    ${validate_component(Map1_1_temp_change, "Map1_1TempChange").$$render(
+            $$result,
+            { index, geoJsonToFit },
+            {
+              geoJsonToFit: ($$value) => {
+                geoJsonToFit = $$value;
+                $$settled = false;
+              }
+            },
+            {}
+          )}
 
     ${validate_component(MapMigration, "MapMigration").$$render(
             $$result,
