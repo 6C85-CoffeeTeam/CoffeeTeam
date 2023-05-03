@@ -22,7 +22,7 @@
   ]}
 
   d3.json(
-    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
+    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk_temp_retry.geojson"
   ).then((data) => {
     hondurasDroughtData = data;
   });
@@ -112,43 +112,66 @@
           }
         });
 
-      map.addLayer({
-          'id': 'HondurasDroughtLow',
-          filter: ['==', ['get', 'Dr_Text'], 'Low'],
-          'type': 'fill',
-          'source': 'hondurasDrought',
-          'layout': {},
-          'paint': {
-            'fill-color': '#A59555',
-            'fill-opacity': 0.4
-          }
-        });
 
+        const stops =  [[0, '#62a1db'],
+        [0.5, '#e7d87d'],
+        [1.0, '#dd9f40'],
+        [1.5, '#b4451f'],
+        [2.0, '#b01111']]
+  
         map.addLayer({
-          'id': 'HondurasDroughtMedium',
-          filter: ['==', ['get', 'Dr_Text'], 'Medium'],
-          'type': 'fill',
-          'source': 'hondurasDrought',
-          'layout': {},
-          'paint': {
-            'fill-color': '#DD9d12',
-            'fill-opacity': 0.4
-          }
-        });
+            id: 'temp-fills',
+            type: 'fill',
+            source: 'hondurasDrought',
+            layout: {},
 
-        map.addLayer({
-          'id': 'HondurasDroughtHigh',
-          filter: ['==', ['get', 'Dr_Text'], 'High'],
-          'type': 'fill',
-          'source': 'hondurasDrought',
-          'layout': {},
-          'paint': {
-            'fill-color': '#E12D02',
-            'fill-opacity': 0.4
-          }
-        });
+            paint: {
+              'fill-color': {
+                property: 'temp_change',
+                stops: stops
+              },
+              "fill-opacity": 0.6
+            }
+                
+          });
+
+      // map.addLayer({
+      //     'id': 'HondurasDroughtLow',
+      //     filter: ['==', ['get', 'Dr_Text'], 'Low'],
+      //     'type': 'fill',
+      //     'source': 'hondurasDrought',
+      //     'layout': {},
+      //     'paint': {
+      //       'fill-color': '#A59555',
+      //       'fill-opacity': 0.4
+      //     }
+      //   });
+
+      //   map.addLayer({
+      //     'id': 'HondurasDroughtMedium',
+      //     filter: ['==', ['get', 'Dr_Text'], 'Medium'],
+      //     'type': 'fill',
+      //     'source': 'hondurasDrought',
+      //     'layout': {},
+      //     'paint': {
+      //       'fill-color': '#DD9d12',
+      //       'fill-opacity': 0.4
+      //     }
+      //   });
+
+      //   map.addLayer({
+      //     'id': 'HondurasDroughtHigh',
+      //     filter: ['==', ['get', 'Dr_Text'], 'High'],
+      //     'type': 'fill',
+      //     'source': 'hondurasDrought',
+      //     'layout': {},
+      //     'paint': {
+      //       'fill-color': '#E12D02',
+      //       'fill-opacity': 0.4
+      //     }
+      //   });
     });
-  });
+    });
   
   function updateBounds() {
     const bounds = map.getBounds();
@@ -163,8 +186,7 @@
   }
 let isVisible = false;
 
-// $: if (index >= 10 && index <12) {
-$: if (index >=10 && index < 12) {
+$: if (index ===9) {
   isVisible = true;
 } else {
   isVisible = false;

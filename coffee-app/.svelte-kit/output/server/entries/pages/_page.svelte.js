@@ -188,129 +188,6 @@ const MapBelt = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { geoJsonToFit } = $$props;
   mapboxgl.accessToken = "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
   let container;
-  const beanbeltData = {
-    "type": "FeatureCollection",
-    "features": [
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": {
-          "coordinates": [[[-180, 23.5], [-180, -23.5], [180, -23.5], [180, 23.5], [-180, 23.5]]],
-          "type": "Polygon"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": {
-          "coordinates": [-160, 0],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": {
-          "coordinates": [-140, 0],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": {
-          "coordinates": [-120, 0],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": {
-          "coordinates": [-100, 0],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [-80, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [-60, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [-40, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [-20, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [0, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [20, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [40, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [60, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [80, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [100, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [120, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [140, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [160, 0], "type": "Point" }
-      },
-      {
-        "type": "Feature",
-        "properties": {},
-        "geometry": { "coordinates": [180, 0], "type": "Point" }
-      }
-    ]
-  };
-  const filter_equator = (feature) => {
-    return feature.properties.line === "equator";
-  };
-  const filter_belt = (feature) => {
-    return feature.properties.line === "belt";
-  };
-  beanbeltData.features.filter(filter_equator);
-  beanbeltData.features.filter(filter_belt);
   let isVisible = false;
   if ($$props.index === void 0 && $$bindings.index && index !== void 0)
     $$bindings.index(index);
@@ -631,6 +508,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `
 
 <main>${validate_component(ScrollyTeller, "ScrollyTeller").$$render($$result, {}, {}, {})}
+    
 </main>`;
 });
 export {

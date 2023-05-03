@@ -9,6 +9,7 @@
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
+    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
 
     let count, index, offset, progress;
     let width, height;
@@ -68,6 +69,8 @@
     <Map1 bind:geoJsonToFit {index} /> 
 
     <Map1_1 bind:geoJsonToFit {index} /> 
+
+    <Map1_1TempChange bind:geoJsonToFit {index} />
 
     <MapMigration bind:geoJsonToFit {index} />
     
@@ -207,9 +210,13 @@
       Continue Farmer story
     </section>
     <section class="chapterThree">
-      Climate change in Northern Triangle
+      <h1>Climate change in Northern Triangle</h1>
+      Change in average temperature between 2010 and 2020
     </section>
-    <section class="chapterThree">Natural disasters in Norther Triangle</section>
+    <section class="chapterThree">
+      <h1>Natural disasters in Norther Triangle</h1>
+      Mapping the drought risk in Honduras
+    </section>
     <section class="chapterThree">Coffee production in Northern Triangle</section>
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
@@ -228,7 +235,7 @@
     </section>
     
     <section class="ending">
-      Learned something new? Go out there an spill the beans!
+      Learned something new? Go out there and spill the beans!
       <br />
       Click the bean to learn more.
       <br />
