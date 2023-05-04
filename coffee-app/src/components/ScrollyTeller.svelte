@@ -217,7 +217,10 @@
       <h1>Natural disasters in Norther Triangle</h1>
       Mapping the drought risk in Honduras
     </section>
-    <section class="chapterThree">Coffee production in Northern Triangle</section>
+    <section class="chapterThree">
+      Coffee production in Northern Triangle
+      
+    </section>
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>Click the "play" button on the bottom to see how migration flow changes over the years.
