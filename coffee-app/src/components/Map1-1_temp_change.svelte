@@ -35,7 +35,7 @@
 
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
-    zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
+    zoomLevel = screenWidth <= 600 ? 5 : 6.2; // Adjust these values as needed
   }
 
   function handleResize() {
@@ -48,7 +48,7 @@
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v11",
-      center: [-87.7061124431702,15.595604847428021],
+      center: [-86.34342167629684,15.368649575406508],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -96,7 +96,7 @@
           layout: {},
           paint: {
           'fill-color': '#627BC1', 
-          'fill-opacity': 0.2
+          'fill-opacity': 0
           }
       });
 
@@ -130,47 +130,11 @@
                 property: 'temp_change',
                 stops: stops
               },
-              "fill-opacity": 0.6
+              "fill-opacity": 0.5
             }
                 
           });
-
-      // map.addLayer({
-      //     'id': 'HondurasDroughtLow',
-      //     filter: ['==', ['get', 'Dr_Text'], 'Low'],
-      //     'type': 'fill',
-      //     'source': 'hondurasDrought',
-      //     'layout': {},
-      //     'paint': {
-      //       'fill-color': '#A59555',
-      //       'fill-opacity': 0.4
-      //     }
-      //   });
-
-      //   map.addLayer({
-      //     'id': 'HondurasDroughtMedium',
-      //     filter: ['==', ['get', 'Dr_Text'], 'Medium'],
-      //     'type': 'fill',
-      //     'source': 'hondurasDrought',
-      //     'layout': {},
-      //     'paint': {
-      //       'fill-color': '#DD9d12',
-      //       'fill-opacity': 0.4
-      //     }
-      //   });
-
-      //   map.addLayer({
-      //     'id': 'HondurasDroughtHigh',
-      //     filter: ['==', ['get', 'Dr_Text'], 'High'],
-      //     'type': 'fill',
-      //     'source': 'hondurasDrought',
-      //     'layout': {},
-      //     'paint': {
-      //       'fill-color': '#E12D02',
-      //       'fill-opacity': 0.4
-      //     }
-      //   });
-    });
+      });
     });
   
   function updateBounds() {
@@ -186,7 +150,7 @@
   }
 let isVisible = false;
 
-$: if (index ===9) {
+$: if (index === 8) {
   isVisible = true;
 } else {
   isVisible = false;

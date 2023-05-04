@@ -29,7 +29,7 @@
   
     function updateZoomLevel() {
       const screenWidth = window.innerWidth;
-      zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
+      zoomLevel = screenWidth <= 600 ? 5 : 6.2; // Adjust these values as needed
     }
   
     function handleResize() {
@@ -42,7 +42,7 @@
       map = new mapboxgl.Map({
         container,
         style: "mapbox://styles/mapbox/light-v11",
-        center: [-87.7061124431702,15.595604847428021],
+        center: [-86.34342167629684,15.368649575406508],
         zoom: zoomLevel,
         attributionControl: false, // removes attribution from the bottom of the map
       });
@@ -123,8 +123,8 @@
             'source': 'northernTriangle',
             'layout': {},
             'paint': {
-            'line-color': '#627BC1',
-            'line-width': 0
+              'line-color': '#627BC1',
+              'line-width': 0
             }
           });
 
@@ -179,7 +179,7 @@
     }
   let isVisible = false;
   
-  $: if (index >= 6 && index < 9) {
+  $: if (index >= 5 && index < 8) {
     isVisible = true;
   } else {
     isVisible = false;

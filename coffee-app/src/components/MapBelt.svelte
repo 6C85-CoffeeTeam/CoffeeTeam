@@ -15,7 +15,7 @@
   
     let zoomLevel;
   
-    const beanbeltData = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"coordinates":[[[-180,23.5],[-180,-23.5],[180,-23.5],[180,23.5],[-180,23.5]]],"type":"Polygon"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[0,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[180,0],"type":"Point"}}]}
+    const beanbeltData = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"line":"equator"},"geometry":{"coordinates":[[-180,0],[180,0]],"type":"LineString"}},{"type":"Feature","properties":{"line":"belt"},"geometry":{"coordinates":[[-180,23.5],[180,23.5]],"type":"LineString"}},{"type":"Feature","properties":{"line":"belt"},"geometry":{"coordinates":[[-180,-23.5],[180,-23.5]],"type":"LineString"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[[[-180,23.5],[-180,-23.5],[180,-23.5],[180,23.5],[-180,23.5]]],"type":"Polygon"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[-20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[0,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[20,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[40,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[60,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[80,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[100,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[120,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[140,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[160,0],"type":"Point"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[180,0],"type":"Point"}}]}
   
     // // Define your filter condition
     // const filter_equator = (feature) => {
@@ -84,7 +84,7 @@
       }
   
       map.on("load", () => {
-        map.loadImage('./images/smallbean-hor.png', (error, image) => {
+        map.loadImage('./images/smallbean.png', (error, image) => {
           if (error) throw error;
         map.addImage('small-bean', image);
         });
@@ -142,7 +142,7 @@
           filter: ['==', '$type', 'Polygon'],
           paint: {
             'fill-color': '#a4aac6', // Change the color as needed
-            'fill-opacity': 0.5, // Adjust the opacity as needed
+            'fill-opacity': 0.35, // Adjust the opacity as needed
             'fill-opacity-transition': {
               'duration': 6000, // Duration in milliseconds
               'delay': 2000, // Delay in milliseconds
@@ -152,18 +152,28 @@
         
         map.addLayer({
           id: 'equator',
-          type: 'symbol',
+          type: 'line',
           source: 'pointSource',
-          filter: ['==', '$type', 'Point'],
-          layout: {
-            'icon-image': 'small-bean',
-            'icon-size': 0.15, // Adjust the icon size as needed
-            'icon-allow-overlap': true,
-            'icon-ignore-placement': true,
+          filter: ['==', ['get', 'line'], 'equator'],
+          'layout': {},
+          'paint': {
+            'line-color': '#a4aac6',
+            'line-width': 2.5
           }
-    
-          
         });
+
+        // map.addLayer({
+        //   id: 'equator',
+        //   type: 'symbol',
+        //   source: 'pointSource',
+        //   filter: ['==', '$type', 'Point'],
+        //   layout: {
+        //     'icon-image': 'small-bean',
+        //     'icon-size': 0.08, // Adjust the icon size as needed
+        //     'icon-allow-overlap': true,
+        //     'icon-ignore-placement': true,
+        //   } 
+        // });
         
         
         hideLabelLayers();
@@ -190,7 +200,7 @@
   
   let isVisible = false;
   
-  $: if (index === 5) {
+  $: if (index === 4) {
     isVisible = true;
   } else {
     isVisible = false;
