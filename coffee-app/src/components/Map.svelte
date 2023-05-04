@@ -203,7 +203,7 @@
 
 let isVisible = false;
 
-$: if (index === 4) {
+$: if (index === 3) {
   isVisible = true;
 } else {
   isVisible = false;

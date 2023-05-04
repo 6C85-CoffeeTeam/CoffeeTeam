@@ -6,6 +6,7 @@
     import MapBelt from "./MapBelt.svelte";
     import MapMigration from "./MapMigration.svelte";
     import Background from "./Background.svelte";
+    import Quiz from "./Quiz.svelte";
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
@@ -72,7 +73,7 @@
 
     <Map1_1TempChange bind:geoJsonToFit {index} />
 
-    <MapMigration bind:geoJsonToFit {index} />
+    <MapMigration {index} />
     
   
     <!-- <div class="progress-bars">
@@ -90,22 +91,19 @@
   <div class="foreground" slot="foreground">
 
     <section class="intro" >
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1 >Hi there, how's the coffee?</h1>
-      Have you ever wondered where your coffee comes from? Let's take a step back.
-      <br />
-      <br />
-      <button on:click={scrollToNextPage}>
-        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      </button>
+      <div class="textbox">
+        <h1 >Hi there, how's the coffee?</h1>
+        Have you ever wondered where your coffee comes from? Let's take a step back.
+        <br />
+        <br />
+        <button on:click={scrollToNextPage}>
+          <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+        </button>
+      </div>
       
     </section>
 
-    <section class="intro">
+    <section>
       
       [enter some kind of fancy transition]
       <br />
@@ -115,112 +113,86 @@
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <img class="smallbean" src="./images/coffeeplant.jpg" alt="coffeeplant" width="300"/>
     </section>
 
     <section class="aboutCoffee">
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <h3>Coffee Fun Fact #1</h3>
-      <p>
-        Coffee's flavor and quality depend on factors like plant type, soil chemistry, climate conditions such as rainfall and sunshine, altitude, and minimal pests or diseases that affect the plants.
-      </p> 
-        <br />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <h3>Coffee Fun Fact #2</h3>
-      <p>
-        The optimal temperature range of the Coffea arabica tree—source of 70% of the world's coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C). 
-        <!-- Arabica coffee, which is of higher quality, prefers high altitudes and nutrient-rich soil, while Robusta coffee can tolerate lower altitudes and higher temperatures. -->
-      </p>
-        <br />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <h3>Coffee Fun Fact #3</h3>
-      <p>
-        Generally, coffee needs 1500-2500mm annual rainfall, spread evenly, with a dry season under three months. However, some plants tolerate different conditions depending on the growing region.
-      </p>
-
-      <br />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <br />
-      <br />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <br />
-      <br />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <br />
-      <br />
-      Now it's your turn!
-    </section>
-    <section class="aboutCoffee">
-      <img class="coffeegame" src="./images/coffeegame_result.png" alt="coffeegame" width="750"/>
-      <br />
-
+      <Quiz />
+   
     </section>
 
     <section class="chapterOne">
-      Here’s a map of the world. And these are the countries that produce coffee.
-      <br />
-      <br />
-      Hover over each country to see how much coffee they produce.
+      <div class="textbox">
+        Here’s a map of the world. And these are the countries that produce coffee.
+        <br />
+        <br />
+        Hover over each country to see how much coffee they produce.
 
-      <br />
-      <br />
-      Do you notice a pattern?
+        <br />
+        <br />
+        Do you notice a pattern?
+      </div>
     </section>
-    <section class="beanBelt">
-      Coffee trees grow best in a region called "The Bean Belt," which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
-      <br />
-      <br />
-      <br />
-      The coffee belt passes through some 70 countries, which have tropical climates that provide rich environments that are perfect for growing coffee.
+    <section class="beanbelt">
+      <div class="textbox">
+        Coffee trees grow best in a region called "The Bean Belt," which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
+        <br />
+        <br />
+        <br />
+        The coffee belt passes through some 70 countries, which have tropical climates that provide rich environments that are perfect for growing coffee.
+      </div>
+  
     </section>
     
 
     <section class="chapterTwo" transition:fade>
-      <br />
-        <br />
-        <br />
-      Let’s zoom into a region in Central America called the “Northern Triangle.” 
-      <br />
-      <br />
-      <br />
-      This region includes: <br />Guatemala, <br />Honduras <br />and <br />El Salvador. 
+      <div class="textbox"> 
+        Did you know that the Northern Triangle, a region that produces x% of the world's coffee, is facing challenges that threaten the future of coffee production?
+      </div>
+      
     </section>
     
     <section class="farmerStory">
       <div class="container">
+        <div >
+          <img class="farmerimage" src="./images/farmer.png" alt="farmer" />
+        </div>
         <div class="farmertext">
           Meet Juan, <br />a smallholder coffee farmer in Honduras.
-        </div>
-        <div class="farmerimage">
-          <img class="farmer" src="./images/farmer.png" alt="farmer" />
         </div>
       </div>
     </section>
 
-    <section class="farmerStory">
-      Continue Farmer story
+    <section >
+      <div class="textbox">
+        Continue Farmer story
+      </div>
+    </section>
+
+    <section class="chapterThree">
+      <div class="textbox">
+        <h1>Climate change in Northern Triangle</h1>
+        Change in average temperature between 2010 and 2020
+      </div>
     </section>
     <section class="chapterThree">
-      <h1>Climate change in Northern Triangle</h1>
-      Change in average temperature between 2010 and 2020
+      <div class="textbox">
+        <h1>Natural disasters in Norther Triangle</h1>
+        Mapping the drought risk in Honduras
+      </div>
+
     </section>
     <section class="chapterThree">
-      <h1>Natural disasters in Norther Triangle</h1>
-      Mapping the drought risk in Honduras
+      <div class="textbox">
+        Coffee production in Northern Triangle
+      </div>
     </section>
+<<<<<<< HEAD
     <section class="chapterThree">
       Coffee production in Northern Triangle
       
     </section>
+=======
+>>>>>>> 5b9aa7ca7f1b37be0b5d0036c829d95bea7ccbe9
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>Click the "play" button on the bottom to see how migration flow changes over the years.
@@ -254,7 +226,8 @@
       USDA coffee data<br />
       International Coffee Organization (ICO) <br />
       United Nation Population Division <br />
-      World Food Programme
+      World Food Programme <br />
+      GADM Data
       
 
       <p class="credit">
@@ -274,16 +247,14 @@
       position: relative;
       top: 0px; 
       left: -8px; /* to get rid of the weird margin */
-      outline: green solid 0px;
       /* pointer-events: fill; */
     }
   
     .foreground {
-      width: 90%;
+      width: 95%;
       margin: 0 auto;
       height: auto;
       position: relative;
-      /* outline: red solid 3px; */
     }
   
     /* .progress-bars {
@@ -293,20 +264,32 @@
     } */
   
     section {
-      height: 80vh;
+      height: 100vh;
       background-color: rgba(255, 255, 255, 0); 
-      /* color: white; */
-      /* outline: magenta solid 3px; */
-      max-width: 100%; /* adjust at will */
+      max-width: 33%; /* adjust at will */
       color: black;
-      padding: 3em 2em;
-      margin: 1em 0 2em 45em;
+      padding: 1em;
+      /* margin: 1em 0 2em 45em; */
+      margin-left: auto;
+      margin-right: 0px;
       text-align: center;
       font-family: 'Poppins', sans-serif;
       font-size: 18px;
       line-height: 1.7;
     }
 
+    .intro {
+      position: relative;
+    }
+
+    .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 2em 2em;
+      position: relative;
+      top: 50%; /* vertically center */
+      -ms-transform: translateY(-50%); /* vertically center */
+      transform: translateY(-50%); /* vertically center */
+    }
     .aboutCoffee {
       height: 90vh;
       max-width: 750px; /* adjust at will */
@@ -316,10 +299,10 @@
 
     .farmerStory {
       height: 120vh;
-      max-width: 80%; /* adjust at will */
+      max-width: 100%; /* adjust at will */
       padding: 5em 3em;
-      margin: 2em auto; 
-      background-color: rgba(255, 255, 255, 0.65); 
+      margin: 2em 1em; 
+      /* background-color: rgba(255, 255, 255, 0.65);  */
     }
 
     .container {
@@ -328,9 +311,9 @@
       justify-content: center
     }
 
-    .farmer {
-      max-width: 100%;
-      max-height:100%;
+    .farmerimage {
+      max-width: 70%;
+      max-height: 70%;
     }
     .farmertext {
       font-size: 28px;
@@ -362,6 +345,10 @@
     button {
       background-color: white;
       border-style: none;
+    }
+
+    h1 {
+      margin: 8px 0 20px 0;
     }
 
     .bean {
