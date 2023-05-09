@@ -3,6 +3,8 @@
     import Map from "./Map.svelte";
     import Map1 from "./Map1.svelte";
     import Map1_1 from "./Map1-1.svelte";
+    import Map1_1Coffee from "./Map1-1_coffee.svelte";
+    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
     import MapBelt from "./MapBelt.svelte";
     import MapMigration from "./MapMigration.svelte";
     import Background from "./Background.svelte";
@@ -10,7 +12,7 @@
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
-    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
+
 
     let count, index, offset, progress;
     let width, height;
@@ -65,9 +67,10 @@
     <Map bind:geoJsonToFit {index} />
     
     <MapBelt bind:geoJsonToFit {index} />
-    <!-- <Graph {index} {width} {height} {projection} /> -->
 
-    <Map1 bind:geoJsonToFit {index} /> 
+    <Map1 bind:geoJsonToFit {index} />
+
+    <Map1_1Coffee bind:geoJsonToFit {index} />
 
     <Map1_1 bind:geoJsonToFit {index} /> 
 
