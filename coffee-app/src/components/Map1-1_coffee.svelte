@@ -83,10 +83,7 @@
             type: 'geojson',
             data: nortriCoffeeRegions
         });
-        // map.loadImage('/static/images/smallbean.png', (error, image) => {
-        //   if (error) throw error;
-        // map.addImage('small-bean', image);
-        // });
+
   
         map.addLayer({
             id: 'country-fills',
@@ -107,8 +104,8 @@
             'source': 'northernTriangle',
             'layout': {},
             'paint': {
-            'line-color': '#627BC1',
-            'line-width': 0
+            'line-color': '#A2B4AB',
+            'line-width': 2.5
             }
           });
   
