@@ -82,7 +82,7 @@
 
 
 <div class="image" class:visible={isVisible}>
-    <img src="./images/coffee.png" alt="coffee" />
+    <img src="./images/latte.png" alt="coffee" />
 </div>
 
 <!-- <div class="snowframe" aria-hidden="true" class:visible={isVisible}>
@@ -102,10 +102,12 @@
       width: 100%;
       height: 100vh; /* check problem when setting width */
       position: absolute;
-      top:8%;
+      top: 23%;
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s, visibility 2s;
+      text-align: center;
+      filter: drop-shadow(5px 5px 5px #848484)
     }
   
     .image.visible {
@@ -114,9 +116,10 @@
     }
 
     img {
-      margin: 10em;
+      margin: 5em;
       width: 500px;
     }
+
     /* .snowflake {
     color: #fff;
     font-size: 1.2rem;

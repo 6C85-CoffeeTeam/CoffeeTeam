@@ -111,7 +111,7 @@
             // filter: ['==', ['get', 'name'], 'Guatemala'],
             layout: {},
             paint: {
-            'fill-color': '#627BC1', 
+            'fill-color': '#508571', 
             'fill-opacity': 0.2
             }
         });
@@ -123,7 +123,7 @@
             'source': 'northernTriangle',
             'layout': {},
             'paint': {
-              'line-color': '#627BC1',
+              'line-color': '#98B6A8',
               'line-width': 0
             }
           });
@@ -204,7 +204,6 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s, visibility 2s;
-      outline: blue solid 0px;
     }
   
     .map.visible {

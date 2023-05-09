@@ -10,6 +10,17 @@
 			"explanation" : "Arabica coffee is known for its sweeter, more complex taste with lower caffeine content, grown at higher altitudes in nutrient-rich soil, and accounts for about 60% of global coffee production. Robusta coffee, on the other hand, has a stronger, more bitter taste with higher caffeine content, is grown at lower altitudes in hotter climates, and accounts for about 40% of global coffee production."
 		},
 		{
+			"question": "What is the ideal temperature range for coffee farming?",
+			"options": [
+				"0 - 5 C",
+				"5 - 15 C",
+				"15 - 20 C",
+				"20 - 30 C"
+			],
+			"correctIndex": 2,
+			"explanation" : "The optimal temperature range of the Coffea arabica tree—source of 60% of the world's coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C)."
+		},
+		{
 			"question": "What altitude do coffee plants grow in?",
 			"options": [
 				"0-1000 ft above sea level",
@@ -21,28 +32,6 @@
 			"explanation" : "Coffee plants grow between 3,000 and 6,000 feet above sea level. Some experts may argue that high elevations produce a better harvest with more flavorful beans."
 		},
 		{
-			"question": "What is the ideal temperature range for coffee farming?",
-			"options": [
-				"0 - 5 C",
-				"5 - 15 C",
-				"15 - 20 C",
-				"20 - 30 C"
-			],
-			"correctIndex": 2,
-			"explanation" : "The optimal temperature range of the Coffea arabica tree—source of 70% of the world's coffee—is 64°–70°F (18°C–21°C), while it can tolerate up to 73°F (24°C)."
-		},
-		{
-			"question": "What is the optimal annual rainfall for coffee plants?",
-			"options": [
-				"0 - 1000 mm",
-				"1000 - 1500 mm",
-				"2000 - 2500 mm",
-				"3000 - 4000 mm"
-			],
-			"correctIndex": 1,
-			"explanation" : "An annual rainfall of 1 to 1.5 meters that is spread evenly throughout the year is ideal. However, some plants tolerate different conditions depending on the growing region and plant type."
-		},
-		{
 			"question": "How much sunlight is ideal for coffee plants?",
 			"options": [
 				"The more shade, the better",
@@ -52,7 +41,18 @@
 			],
 			"correctIndex": 2,
 			"explanation" : "Farmers are careful to plant in areas where the coffee will not get full sunlight. Instead, coffee requires ample sunlight for part of the day with shade for the rest."
-		}
+		},
+		{
+			"question": "What is the optimal annual rainfall for coffee plants?",
+			"options": [
+				"0 - 1000 mm",
+				"1000 - 1500 mm",
+				"2500 - 3000 mm",
+				"3000 - 4000 mm"
+			],
+			"correctIndex": 1,
+			"explanation" : "An annual rainfall of 1 to 1.5 meters that is spread evenly throughout the year is ideal. However, some plants tolerate different conditions depending on the growing region and plant type."
+		},
 	];
 	let answers = new Array(questions.length).fill(null);
 	let questionPointer = -1;
@@ -86,7 +86,11 @@
       }
     }
   }
-	
+
+  function scrollToNextPage() {
+    const nextPagePosition = window.innerHeight + window.pageYOffset;
+    window.scrollTo({ top: nextPagePosition, behavior: "smooth" });
+  }
 
 </script>
 
@@ -151,6 +155,11 @@
 			<button on:click={restartQuiz}>
 				Restart Quiz
 			</button>
+			<br />
+			<button class="nextPageButtonText" on:click={scrollToNextPage}>
+				Continue to next section
+			</button>
+			
 		</div>
 	{/if}
 </div>
@@ -164,9 +173,10 @@
 		left:0px;
 		width:70vw;
 		height:80vh;
-    max-width: 800px;
+    	max-width: 800px;
 		font-family: 'Space Mono', monospace;
-    font-size: 16px;
+    	font-size: 16px;
+		margin: 0 auto;
 	}
 	.app > div {
 		width:100%;
@@ -191,10 +201,10 @@
 /* 		outline:solid; */
 		border-radius:0px;
 		cursor:pointer;
-		margin: 20px auto;
+		margin: 20px auto 0;
 		display:block;
-    font-family: 'Space Mono', monospace;
-    font-size: 16px;
+    	font-family: 'Space Mono', monospace;
+    	font-size: 16px;
 		
 	}
 	
@@ -202,15 +212,15 @@
 	.app .score-screen button:hover,
 	.app .quiz-screen .next-button:hover {
       background-color:#000000;
-			color: #FFFFFF;
+		color: #FFFFFF;
       transition: 0.2s;
   }
 	
 	.app .quiz-screen .next-button:disabled {
 		background: #FFFFFF;
-    color: #FFFFFF;
+    	color: #FFFFFF;
 		border-color:#FFFFFF;
-    cursor: default;
+    	cursor: default;
 		text-align: center;
 	}
 	.app .quiz-screen .main{
@@ -227,20 +237,20 @@
 		border-radius:50px;
 		margin:10px 0px;
 		padding: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: 16px;
+		font-family: 'Space Mono', monospace;
+		font-size: 16px;
 	}
 	.app .quiz-screen .main .options button:hover {
 		background-color:#B3D3C5;
 		color: #FFFFFF;
-    transition: 0.2s;
-    cursor:pointer;
+		transition: 0.2s;
+		cursor:pointer;
 	}
 
   .app .quiz-screen .main .options button:disabled {
 		background-color:#D1D1D1;
 		color: #FFFFFF;
-    cursor:default;
+    	cursor:default;
 	}
 	.app .quiz-screen .main .options button.selected {
 		background:#1A6444;

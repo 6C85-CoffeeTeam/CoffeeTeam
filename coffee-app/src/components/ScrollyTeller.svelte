@@ -60,7 +60,7 @@
     bind:clientHeight={height}
     >
 
-    <Background {index} />
+    <!-- <Background {index} /> -->
 
     <Map bind:geoJsonToFit {index} />
     
@@ -91,23 +91,25 @@
   <div class="foreground" slot="foreground">
 
     <section class="intro" >
-      <div class="textbox-centered">
+      <div class="textbox">
         <h1 >Hi there, how's the coffee?</h1>
-        <p>Have you ever wondered where your coffee comes from? </p>
-        <p>
+        <p>Have you ever wondered where your coffee comes from? 
+          <br />
           Let's take a step back.
         </p>
-        <br />
-        <button on:click={scrollToNextPage}>
-          <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-        </button>
-      </div>
+      
+      <button on:click={scrollToNextPage}>
+        <img class="latte" src="./images/latte.png" alt="coffee" width="500"/>
+      </button>
+      <p style:font-size="14px">Click the latte or scroll down</p>
+    </div>
       
     </section>
 
-    <section>
-      <div class="textbox-centered">
-        <p></p>
+    <section class="intro">
+      <div class="textbox">
+        <p>Actually, why don't we go all the way back, <br /> when coffee was just a little plant...</p>
+        <br />
         <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
         <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
         <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
@@ -117,13 +119,14 @@
     </section>
 
     <section class="coffeeQuiz">
-      <div class="quiz">
+      <div>
         <Quiz />
       </div>
+        
        
-      <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
+      <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
         Or, jump to next section
-      </button>
+      </button> -->
     </section>
 
     <section class="chapterOne">
@@ -238,6 +241,8 @@
 
       <p class="credit">
         Copyright info
+        <br />
+        Image source: Vecteezy
       </p>
     </section>
   </div>
@@ -279,15 +284,33 @@
       margin-left: auto;
       margin-right: 0px;
       text-align: center;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 18px;
       line-height: 1.7;
-    }
-
-    .intro {
       position: relative;
     }
 
+    .intro {
+      height: 70vh;
+      max-width: 100%; /* adjust at will */
+      padding: 5em 3em;
+      margin: 2em 1em; 
+    }
+
+    .intro .textbox {
+      background-color: rgba(255, 255, 255, 0); 
+      padding: 2em 2em;
+      /* position: relative; */
+      top: 50%; /* vertically center */
+    }
+    .intro .latte {
+      margin: 0 0 0 50px;
+    }
+    .intro .latte:hover {
+      filter: drop-shadow(8px 8px 8px #848484);
+      text-align: center;
+      margin: 0 0 0 35px;
+    }
     .textbox {
       background-color: rgba(255, 255, 255, 0.8); 
       padding: 2em 2em;
@@ -296,20 +319,9 @@
       -ms-transform: translateY(-50%); /* vertically center */
       transform: translateY(-50%); /* vertically center */
     }
-
-    /* trying to center textbox but is not working yet */
-    .textbox-centered {
-      background-color: rgba(255, 255, 255, 0.8); 
-      padding: 2em 2em;
-      position: relative;
-      top: 50%; /* vertically center */
-      -ms-transform: translateY(-50%); /* vertically center */
-      transform: translateY(-50%); /* vertically center */
-      margin: 0 auto;
-    }
     .coffeeQuiz {
       height: 100vh;
-      max-width: 60%; /* adjust at will */
+      max-width: 70%; /* adjust at will */
       padding: 0em;
       /* margin-left: 10px;
       margin-right: 10px; */
@@ -366,17 +378,16 @@
     }
     p {
       text-align: center;
-      line-height: 1.7;
     }
 
     button {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0);
       border-style: none;
       cursor: pointer;
     }
     .nextPageButtonText {
       padding:10px 30px;
-      background:#FFFFFF;
+      background:rgba(255, 255, 255, 0);
       color:#000000;
       border:none;
       text-decoration: underline;

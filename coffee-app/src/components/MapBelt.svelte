@@ -141,8 +141,8 @@
           source: 'pointSource', // Use the same source as before
           filter: ['==', '$type', 'Polygon'],
           paint: {
-            'fill-color': '#a4aac6', // Change the color as needed
-            'fill-opacity': 0.35, // Adjust the opacity as needed
+            'fill-color': '#508571', // Change the color as needed
+            'fill-opacity': 0.2, // Adjust the opacity as needed
             'fill-opacity-transition': {
               'duration': 6000, // Duration in milliseconds
               'delay': 2000, // Delay in milliseconds
@@ -157,8 +157,8 @@
           filter: ['==', ['get', 'line'], 'equator'],
           'layout': {},
           'paint': {
-            'line-color': '#a4aac6',
-            'line-width': 2.5
+            'line-color': '#3E3E3E',
+            'line-width': 0,
           }
         });
 
