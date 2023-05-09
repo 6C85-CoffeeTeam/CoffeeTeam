@@ -103,31 +103,22 @@
       </button>
       <p style:font-size="14px">Click the latte or scroll down</p>
     </div>
-      
     </section>
 
-    <section class="intro">
+    <!-- <section class="intro">
       <div class="textbox">
         <p>Actually, why don't we go all the way back, <br /> when coffee was just a little plant...</p>
-        <br />
+        <p>
         <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
         <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
         <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
         <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+        </p>
+        <button style:font-size="14px" on:click={scrollToNextPage}>
+          Click this or continue scrolling
+        </button>
       </div>
-
-    </section>
-
-    <section class="coffeeQuiz">
-      <div>
-        <Quiz />
-      </div>
-        
-       
-      <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
-        Or, jump to next section
-      </button> -->
-    </section>
+    </section> -->
 
     <section class="chapterOne">
       <div class="textbox">
@@ -152,14 +143,51 @@
   
     </section>
     
+    <section class="coffeeQuiz">
+      <div>
+        <Quiz />
+      </div>       
+      <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
+        Or, jump to next section
+      </button> -->
+    </section>
 
-    <section class="chapterTwo" transition:fade>
+    <section>
       <div class="textbox"> 
         <p>
-          Did you know that the Northern Triangle, a region that produces x% of the world's coffee, is facing challenges that threaten the future of coffee production?
-        </p>
+          Warming climate may affect coffee in many ways, including reduced growing area, increased pests, and loss of quality.
+        </p> 
+        <p>
+          While these changes would be inconvenient for coffee drinkers, they could be catastrophic for coffee growers.
+        </p> 
       </div>
-      
+    </section>
+
+    <section class="chapterTwo">
+      <div class="textbox"> 
+        <p>
+          Let's zoom into a region named the <span class="emphasize">Northern Triangle</span>, which includes Guatemala, Honduras, and El Salvador.
+        </p>
+        <p>
+          <span class="emphasize">1.3 million</span> people in this region grow coffee for a living, and their livelihoods are increasingly impacted by climate change. 
+          <a class="source" href="https://www.ipcc.ch/site/assets/uploads/2018/02/WGIIAR5-Chap27_FINAL.pdf" target="_blank" rel="noopener noreferrer">[1]</a>,
+          <a class="source" href="https://crsreports.congress.gov/product/pdf/IF/IF11151/7" target="_blank" rel="noopener noreferrer">[2]</a>.
+        </p>
+
+      </div>
+    </section>
+    <section>
+      <div class="textbox" transition:fade="{{duration: 5000}}"> 
+        <p>
+          Rising temperatures and heavy rain driven by climate change has caused a severe coffee rust outbreak in Central America since 2012. 
+        </p>
+        <p>Unlike the outbreaks in the 1970s and 1980s, which were limited to warm, low altitudes, the new wave of coffee rust spread quickly to high altitudes.</p>
+
+        <p>
+          This affected over <span class="emphasize">55%</span> of the region's coffee farms and left around <span class="emphasize">350,000</span> people jobless.
+        </p>
+
+      </div>
     </section>
     
     <section class="farmerStory">
@@ -176,7 +204,11 @@
     <section class="farmerStory" >
       <div class="farmertext-body">
         <p>
-          Continue Farmer story
+          "My family has been growing coffee for generations and I have been working on our farm ever since I was a kid. I am deeply connected to the land and the coffee we produce... 
+
+        </p>
+        <p>
+          However, we have been struggling. Over the past few years, I have noticed significant changes in the climate that are affecting the coffee production and our daily lives."           
         </p>
       </div>
     </section>
@@ -184,7 +216,12 @@
     <section class="chapterThree">
       <div class="textbox">
         <h1>Climate change in Northern Triangle</h1>
-        Change in average temperature between 2010 and 2020
+        <p>Change in average temperature between 2010 and 2020</p>
+        
+
+        <p>
+          We have seen temperatures rise above 25 degrees during the day, which has caused the coffee plants to grow slowly, decreasing yield and quality.
+        </p>
       </div>
     </section>
     <section class="chapterThree">
@@ -195,6 +232,15 @@
         </p>
       </div>
 
+    </section>
+    <section class="quote">
+      <div class="textbox">
+        <p>
+          "When coffee is not doing well, that's when you see big migrations from Honduras, El Salvador, Guatemala, Nicaragua."
+        </p>
+        <em>– René León-Gómez, executive secretary of PROMECAFE</em>
+
+      </div>
     </section>
     <section class="chapterThree">
       <div class="textbox">
@@ -230,7 +276,7 @@
       <br />
       <br />
       <br />
-      <h3>References</h3>
+      <h3>Data Sources</h3>
       
       USDA coffee data<br />
       International Coffee Organization (ICO) <br />
@@ -301,7 +347,7 @@
       background-color: rgba(255, 255, 255, 0); 
       padding: 2em 2em;
       /* position: relative; */
-      top: 50%; /* vertically center */
+      top: 40%; /* vertically center */
     }
     .intro .latte {
       margin: 0 0 0 50px;
@@ -318,6 +364,29 @@
       top: 50%; /* vertically center */
       -ms-transform: translateY(-50%); /* vertically center */
       transform: translateY(-50%); /* vertically center */
+      margin: 3em auto;
+    }
+
+    .textbox .emphasize {
+      font-weight: 800;
+      color:rgb(185, 48, 27);
+      font-size: larger;
+      display: inline;
+    }
+
+    .quote {
+      height: 70vh;
+      max-width: 80%; /* adjust at will */
+      padding: 5em 3em;
+      margin: 0 auto;
+    }
+
+    .quote .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 3em;
+      /* position: relative; */
+      top: 50%; /* vertically center */
+      text-align: center;
     }
     .coffeeQuiz {
       height: 100vh;
@@ -332,7 +401,7 @@
     .farmerStory {
       height: 120vh;
       max-width: 100%; /* adjust at will */
-      padding: 5em 3em;
+      padding: 3em;
       margin: 2em 1em; 
       /* background-color: rgba(255, 255, 255, 0.65);  */
     }
@@ -356,11 +425,10 @@
     }
     .farmertext-body {
       font-size: 18px;
-      padding-left: 20px;
       font-style: italic;
       font-family: 'Space Mono', monospace;
       background-color: rgba(255, 255, 255, 0.8); 
-      padding: 20em 0;
+      padding: 6em;
     }
     .flowmap {
       height: 80vh;
@@ -376,6 +444,9 @@
       margin: 10em auto;
 
     }
+    .source {
+      font-size: 14px;
+    }
     p {
       text-align: center;
     }
@@ -384,6 +455,10 @@
       background-color: rgba(255, 255, 255, 0);
       border-style: none;
       cursor: pointer;
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      text-decoration: underline;
+      text-align: center;
     }
     .nextPageButtonText {
       padding:10px 30px;

@@ -200,7 +200,7 @@
   
   let isVisible = false;
   
-  $: if (index === 4) {
+  $: if (index === 2) {
     isVisible = true;
   } else {
     isVisible = false;

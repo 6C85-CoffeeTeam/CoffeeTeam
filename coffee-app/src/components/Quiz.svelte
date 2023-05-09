@@ -100,7 +100,7 @@
 			<h1>
 				How well do you know your coffee? 
 			</h1>
-      <p>Choose the right conditions for your coffee farm!</p>
+      <p>Choose the right conditions for your coffee plant!</p>
       <img class="coffeeplant" src="./images/coffeeplant.jpg" alt="plant" width="300" />
 			<button on:click={()=>{questionPointer=0}}>
 				Start Quiz
@@ -123,7 +123,7 @@
 						</button>
 					{/each}
 				</div>
-				<p>{result}</p>
+				<p class="result">{result}</p>
 				<button
 					class="next-button"
 					on:click={() => { questionPointer++; result = ""; }}
@@ -175,7 +175,7 @@
 		height:80vh;
     	max-width: 800px;
 		font-family: 'Space Mono', monospace;
-    	font-size: 16px;
+    	font-size: 18px;
 		margin: 0 auto;
 	}
 	.app > div {
@@ -260,6 +260,10 @@
   .app .quiz-screen .main .options button.correct {
     background: #AF897E;
     color: #fff;
+  }
+
+  .app .quiz-screen .main .result {
+	font-size: 16px;
   }
 
 	.app .quiz-screen .footer {

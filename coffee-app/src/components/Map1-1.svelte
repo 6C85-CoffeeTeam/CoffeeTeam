@@ -163,7 +163,7 @@
   }
 let isVisible = false;
 
-$: if (index >=9 && index < 11) {
+$: if (index === 10 ) {
   isVisible = true;
 } else {
   isVisible = false;

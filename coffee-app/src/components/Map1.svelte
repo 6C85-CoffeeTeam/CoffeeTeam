@@ -179,7 +179,7 @@
     }
   let isVisible = false;
   
-  $: if (index >= 5 && index < 8) {
+  $: if (index >= 5 && index < 9) {
     isVisible = true;
   } else {
     isVisible = false;
