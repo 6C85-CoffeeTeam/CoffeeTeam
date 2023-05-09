@@ -11,7 +11,7 @@
     let container;
     let map;
   
-    let guatemalaCoffeeRegions;
+    let nortriCoffeeRegions;
   
     let zoomLevel;
   
@@ -22,9 +22,9 @@
     ]}
   
     d3.json(
-      "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/guatemala-coffee-regions.geojson"
+      "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/nortri-coffee-regions.geojson"
     ).then((data) => {
-      guatemalaCoffeeRegions = data;
+      nortriCoffeeRegions = data;
     });
   
     function updateZoomLevel() {
@@ -79,10 +79,14 @@
             data: norTriData
         });
   
-      map.addSource('guatemalaCoffeeRegions', {
+      map.addSource('nortriCoffeeRegions', {
             type: 'geojson',
-            data: guatemalaCoffeeRegions
+            data: nortriCoffeeRegions
         });
+        // map.loadImage('/static/images/smallbean.png', (error, image) => {
+        //   if (error) throw error;
+        // map.addImage('small-bean', image);
+        // });
   
         map.addLayer({
             id: 'country-fills',
@@ -108,18 +112,18 @@
             }
           });
   
-          map.addLayer({
-            'id': 'guatemalaCoffee',
-            filter: ['==', ['get', 'coffee'], 'yes'],
+        map.addLayer({
+            'id': 'nortriCoffee',
+            'filter': ['==', ['get', 'coffee'], 'yes'],
             'type': 'fill',
-            'source': 'guatemalaCoffeeRegions',
+            'source': 'nortriCoffeeRegions',
             'layout': {},
             'paint': {
                 'fill-color': '#952E23',
-                'fill-opacity': 0.7
+                'fill-opacity': 0.6
             }
-            });  
-  
+        });  
+       
         });
       });
     
