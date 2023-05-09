@@ -91,12 +91,14 @@
   <div class="foreground" slot="foreground">
 
     <section class="intro" >
-      <div class="textbox">
+      <div class="textbox-centered">
         <h1 >Hi there, how's the coffee?</h1>
-        Have you ever wondered where your coffee comes from? Let's take a step back.
+        <p>Have you ever wondered where your coffee comes from? </p>
+        <p>
+          Let's take a step back.
+        </p>
         <br />
-        <br />
-        <button class="nextPageButton" on:click={scrollToNextPage}>
+        <button on:click={scrollToNextPage}>
           <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
         </button>
       </div>
@@ -104,20 +106,24 @@
     </section>
 
     <section>
-      
-      [enter some kind of fancy transition]
-      <br />
-      <br />
-      <br />
-      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
-      <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
-      <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+      <div class="textbox-centered">
+        <p></p>
+        <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
+        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+        <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+      </div>
+
     </section>
 
     <section class="coffeeQuiz">
+      <div class="quiz">
         <Quiz />
-
+      </div>
+       
+      <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
+        Or, jump to next section
+      </button>
     </section>
 
     <section class="chapterOne">
@@ -146,7 +152,9 @@
 
     <section class="chapterTwo" transition:fade>
       <div class="textbox"> 
-        Did you know that the Northern Triangle, a region that produces x% of the world's coffee, is facing challenges that threaten the future of coffee production?
+        <p>
+          Did you know that the Northern Triangle, a region that produces x% of the world's coffee, is facing challenges that threaten the future of coffee production?
+        </p>
       </div>
       
     </section>
@@ -156,15 +164,17 @@
         <div >
           <img class="farmerimage" src="./images/farmer.png" alt="farmer" />
         </div>
-        <div class="farmertext">
+        <div class="farmertext-title">
           Meet Juan, <br />a smallholder coffee farmer in Honduras.
         </div>
       </div>
     </section>
 
-    <section >
-      <div class="textbox">
-        Continue Farmer story
+    <section class="farmerStory" >
+      <div class="farmertext-body">
+        <p>
+          Continue Farmer story
+        </p>
       </div>
     </section>
 
@@ -177,13 +187,17 @@
     <section class="chapterThree">
       <div class="textbox">
         <h1>Natural disasters in Norther Triangle</h1>
-        Mapping the drought risk in Honduras
+        <p>
+          Mapping the drought risk in Honduras
+        </p>
       </div>
 
     </section>
     <section class="chapterThree">
       <div class="textbox">
-        Coffee production in Northern Triangle
+        <h1>
+          Coffee production in Northern Triangle
+        </h1>
       </div>
     </section>
     <section class="flowmap">
@@ -203,10 +217,9 @@
     </section>
     
     <section class="ending">
-      Learned something new? Go out there and spill the beans!
-      <br />
-      Click the bean to learn more.
-      <br />
+      <p>Learned something new? Go out there and spill the beans!</p>
+      <p>Click the bean to learn more.</p>
+
       <button>
         <img class="bean" src="./images/coffeebean.png" alt="coffeebean" width="500"/>
       </button>
@@ -283,8 +296,19 @@
       -ms-transform: translateY(-50%); /* vertically center */
       transform: translateY(-50%); /* vertically center */
     }
+
+    /* trying to center textbox but is not working yet */
+    .textbox-centered {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 2em 2em;
+      position: relative;
+      top: 50%; /* vertically center */
+      -ms-transform: translateY(-50%); /* vertically center */
+      transform: translateY(-50%); /* vertically center */
+      margin: 0 auto;
+    }
     .coffeeQuiz {
-      height: 90vh;
+      height: 100vh;
       max-width: 60%; /* adjust at will */
       padding: 0em;
       /* margin-left: 10px;
@@ -304,18 +328,27 @@
     .container {
       display: flex;
       align-items: center;
-      justify-content: center
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
     }
 
     .farmerimage {
       max-width: 70%;
       max-height: 70%;
     }
-    .farmertext {
+    .farmertext-title {
       font-size: 28px;
       padding-left: 20px;
-      font-family: 'Noto Serif', serif;
       font-style: italic;
+      font-family: 'Space Mono', monospace;
+    }
+    .farmertext-body {
+      font-size: 18px;
+      padding-left: 20px;
+      font-style: italic;
+      font-family: 'Space Mono', monospace;
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 20em 0;
     }
     .flowmap {
       height: 80vh;
@@ -333,17 +366,26 @@
     }
     p {
       text-align: center;
-      font-family: 'Poppins', sans-serif;
       line-height: 1.7;
-      margin: 1em;
     }
 
-    .nextPageButton {
+    button {
       background-color: white;
       border-style: none;
       cursor: pointer;
     }
-
+    .nextPageButtonText {
+      padding:10px 30px;
+      background:#FFFFFF;
+      color:#000000;
+      border:none;
+      text-decoration: underline;
+      cursor:pointer;
+      margin: 30px auto 10px;
+      display:block;
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+    }
     h1 {
       margin: 8px 0 20px 0;
     }

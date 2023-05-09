@@ -83,7 +83,6 @@
 			shake = i;
 			await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for 500ms
 			shake = -1;
-			answers[questionPointer] = questions[questionPointer].correctIndex;
       }
     }
   }
@@ -95,8 +94,9 @@
 	{#if questionPointer==-1}
 		<div class="start-screen">
 			<h1>
-				Choose the right conditions for your coffee farm!
+				How well do you know your coffee? 
 			</h1>
+      <p>Choose the right conditions for your coffee farm!</p>
       <img class="coffeeplant" src="./images/coffeeplant.jpg" alt="plant" width="300" />
 			<button on:click={()=>{questionPointer=0}}>
 				Start Quiz
@@ -234,11 +234,24 @@
 		background-color:#B3D3C5;
 		color: #FFFFFF;
     transition: 0.2s;
+    cursor:pointer;
+	}
+
+  .app .quiz-screen .main .options button:disabled {
+		background-color:#D1D1D1;
+		color: #FFFFFF;
+    cursor:default;
 	}
 	.app .quiz-screen .main .options button.selected {
 		background:#1A6444;
 		color:#FFFFFF;
 	}
+
+  .app .quiz-screen .main .options button.correct {
+    background: #AF897E;
+    color: #fff;
+  }
+
 	.app .quiz-screen .footer {
 		position:absolute;
 		bottom:0px;
@@ -253,8 +266,8 @@
 		margin:0px 10px;
 	}
 	.app .quiz-screen .footer .progress-bar {
-		width:180px;
-		height:12px;
+		width:200px;
+		height:14px;
 		background:#E5E5E5;
 		border-radius:10px;
 		overflow:hidden;
@@ -265,15 +278,33 @@
 		height:100%;
 		background:#1A6444;
 	}
+
+  .app .quiz-screen .footer .buttons button {
+    border: none;
+    background:#FFF;
+    color: black;
+    font-size: 18px;
+    margin: 10px auto;
+  }
+
+  .app .quiz-screen .footer .buttons button:hover {
+    border: none;
+    background:#FFF;
+    cursor:pointer;
+    color: gray
+  }
 	.app .score-screen,
 	.app .start-screen {
 		flex-direction:column;
 		margin: 0px;
 	} 
-	.app .score-screen h1, 
-	.app .start-screen h1 {
+	.app .score-screen h1 {
 		margin: 50px;
 	}
+
+  .app .start-screen h1 {
+    margin: 10px;
+  }
 	
   .shake {
     animation: shake 0.5s linear;
@@ -297,5 +328,8 @@
 
   img {
     margin: 0px auto 30px;
+  }
+  h2 {
+    margin: 0 auto 45px;
   }
 </style>

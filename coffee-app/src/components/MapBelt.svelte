@@ -225,7 +225,6 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s, visibility 2s;
-      outline: blue solid 0px;
     }
   
     .map.visible {
