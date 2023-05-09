@@ -17,7 +17,7 @@
 				"3000-5000 ft above sea level",
 				"Above 7000 ft above sea level"
 			],
-			"correctIndex": 1,
+			"correctIndex": 2,
 			"explanation" : "Coffee plants grow between 3,000 and 6,000 feet above sea level. Some experts may argue that high elevations produce a better harvest with more flavorful beans."
 		},
 		{
