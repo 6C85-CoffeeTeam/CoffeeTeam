@@ -116,7 +116,7 @@
             'layout': {},
             'paint': {
                 'fill-color': '#952E23',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.7
             }
             });  
   
