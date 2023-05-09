@@ -96,7 +96,7 @@
         Have you ever wondered where your coffee comes from? Let's take a step back.
         <br />
         <br />
-        <button on:click={scrollToNextPage}>
+        <button class="nextPageButton" on:click={scrollToNextPage}>
           <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
         </button>
       </div>
@@ -115,9 +115,9 @@
       <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
     </section>
 
-    <section class="aboutCoffee">
-      <Quiz />
-   
+    <section class="coffeeQuiz">
+        <Quiz />
+
     </section>
 
     <section class="chapterOne">
@@ -186,13 +186,6 @@
         Coffee production in Northern Triangle
       </div>
     </section>
-<<<<<<< HEAD
-    <section class="chapterThree">
-      Coffee production in Northern Triangle
-      
-    </section>
-=======
->>>>>>> 5b9aa7ca7f1b37be0b5d0036c829d95bea7ccbe9
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>Click the "play" button on the bottom to see how migration flow changes over the years.
@@ -290,11 +283,14 @@
       -ms-transform: translateY(-50%); /* vertically center */
       transform: translateY(-50%); /* vertically center */
     }
-    .aboutCoffee {
+    .coffeeQuiz {
       height: 90vh;
-      max-width: 750px; /* adjust at will */
-      padding: 3em 2em 3em 2em;
-      margin: 15em auto 5em;
+      max-width: 60%; /* adjust at will */
+      padding: 0em;
+      /* margin-left: 10px;
+      margin-right: 10px; */
+      margin: 0 auto;
+      position: relative;
     }
 
     .farmerStory {
@@ -342,9 +338,10 @@
       margin: 1em;
     }
 
-    button {
+    .nextPageButton {
       background-color: white;
       border-style: none;
+      cursor: pointer;
     }
 
     h1 {
