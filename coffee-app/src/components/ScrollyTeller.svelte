@@ -6,7 +6,7 @@
     import Map1_1Coffee from "./Map1-1_coffee.svelte";
     import Map1_1TempChange from "./Map1-1_temp_change.svelte";
     import MapBelt from "./MapBelt.svelte";
-    import MapMigration from "./MapMigration.svelte";
+    // import MapMigration from "./MapMigration.svelte";
     import Background from "./Background.svelte";
     import Quiz from "./Quiz.svelte";
     import { geoMercator } from "d3-geo";
@@ -76,7 +76,7 @@
 
     <Map1_1TempChange bind:geoJsonToFit {index} />
 
-    <MapMigration {index} />
+    <!-- <MapMigration {index} /> -->
     
   
     <!-- <div class="progress-bars">
@@ -137,11 +137,11 @@
     </section>
     <section class="beanbelt">
       <div class="textbox">
-        Coffee trees grow best in a region called "The Bean Belt," which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
+        Coffee trees grow best in a region called <span class="emphasize">"The Bean Belt"</span> which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
         <br />
         <br />
         <br />
-        The coffee belt passes through some 70 countries, which have tropical climates that provide rich environments that are perfect for growing coffee.
+        The coffee belt passes through some <span class="emphasize">70 countries</span>, which have tropical climates that provide rich environments that are perfect for growing coffee.
       </div>
   
     </section>
@@ -213,6 +213,7 @@
         <p>
           However, we have been struggling. Over the past few years, I have noticed significant changes in the climate that are affecting the coffee production and our daily lives."           
         </p>
+        <img class="farmerimage" src="./images/farmer.png" alt="farmer" width="300" />
       </div>
     </section>
 
@@ -225,6 +226,7 @@
         <p>
           We have seen temperatures rise above 25 degrees during the day, which has caused the coffee plants to grow slowly, decreasing yield and quality.
         </p>
+        <img class="farmerimage" src="./images/farmer.png" alt="farmer" width="300" />
       </div>
     </section>
     <section class="chapterThree">
@@ -232,7 +234,9 @@
         <h1>Natural disasters in Norther Triangle</h1>
         <p>
           Mapping the drought risk in Honduras
+          
         </p>
+        <p>Hurricanes in the past few years</p>
       </div>
 
     </section>
@@ -279,19 +283,28 @@
       <br />
       <br />
       <br />
-      <h3>Data Sources</h3>
+      <h3>References</h3>
       
-      USDA coffee data<br />
-      International Coffee Organization (ICO) <br />
-      United Nation Population Division <br />
-      World Food Programme <br />
-      GADM Data
-      
+      <em>Datasets</em>
+      <p>
+        USDA coffee data<br />
+        International Coffee Organization (ICO) <br />
+        United Nation Population Division <br />
+        World Food Programme <br />
+        GADM.org
+      </p>
+      <p>
+        <em>Other Sources</em>
+        Images: Vecteezy
+      </p>
+
 
       <p class="credit">
-        Copyright info
+        This data visualization was made with data contributed by the United Nations World Food Programme.
         <br />
-        Image source: Vecteezy
+        Copyright © All rights reserved by the creators
+        <br />
+        <br />
       </p>
     </section>
   </div>
