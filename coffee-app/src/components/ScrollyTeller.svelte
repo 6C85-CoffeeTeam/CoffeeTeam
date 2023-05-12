@@ -4,13 +4,41 @@
     import Map1 from "./Map1.svelte";
     import Map1_1 from "./Map1-1.svelte";
     import MapBelt from "./MapBelt.svelte";
+<<<<<<< Updated upstream
     import MapMigration from "./MapMigration.svelte";
+=======
+    // import MapMigration from "./MapMigration.svelte";
+    import ChartCoffee from "./Chart_coffee.svelte";
+>>>>>>> Stashed changes
     import Background from "./Background.svelte";
     import Quiz from "./Quiz.svelte";
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
+    // import { weddings } from "../data/weddings.js";
+    import { coffeeProduction } from "../data/coffee-production.js";
+    import {tooltip} from './tooltip';
 
+<<<<<<< Updated upstream
+=======
+    // let weddings_data = [];
+    // weddings.forEach((element) =>
+    //     weddings_data.push({
+    //         index: element["Year"],
+    //         size: element["Civil"],
+    //     })
+    // );
+
+    let coffee_production_data = [];
+    coffeeProduction.forEach((element) =>
+        coffee_production_data.push({
+            index: element["Year"],
+            size: element["Production"],
+            country: element["Country"],
+        })
+    );
+
+>>>>>>> Stashed changes
     let count, index, offset, progress;
     let width, height;
 
@@ -100,7 +128,12 @@
       <button on:click={scrollToNextPage}>
         <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       </button>
+<<<<<<< Updated upstream
       
+=======
+      <p style:font-size="14px">Click the latte!</p>
+    </div>
+>>>>>>> Stashed changes
     </section>
 
     <section class="intro">
@@ -183,6 +216,7 @@
     </section>
     
 
+<<<<<<< Updated upstream
     <section class="chapterTwo" transition:fade>
       <br />
         <br />
@@ -192,6 +226,44 @@
       <br />
       <br />
       This region includes: <br />Guatemala, <br />Honduras <br />and <br />El Salvador. 
+=======
+    <section class="quote">
+      <div class="textbox"> 
+        <p>
+          Warming climate may affect coffee in many ways, including reduced growing area, increased pests, and loss of quality.
+        </p> 
+        <p>
+          While these changes would be inconvenient for coffee drinkers, they could be catastrophic for coffee growers.
+        </p> 
+      </div>
+    </section>
+
+    <section class="chapterTwo">
+      <div class="textbox"> 
+        <p>
+          Let's zoom into a region named the <span class="emphasize">Northern Triangle</span>, which includes Guatemala, Honduras, and El Salvador.
+        </p>
+        <p>
+          <span class="emphasize">1.3 million</span> people in this region grow coffee for a living, and their livelihoods are increasingly impacted by climate change. 
+          <a class="source" href="https://www.ipcc.ch/site/assets/uploads/2018/02/WGIIAR5-Chap27_FINAL.pdf" target="_blank" rel="noopener noreferrer">[1]</a>,
+          <a class="source" href="https://crsreports.congress.gov/product/pdf/IF/IF11151/7" target="_blank" rel="noopener noreferrer">[2]</a>.
+        </p>
+
+      </div>
+    </section>
+    <section>
+      <div class="textbox" transition:fade="{{duration: 5000}}"> 
+        <p>
+          Rising temperatures and heavy rain driven by climate change has caused a <span class="emphasize">severe coffee rust outbreak</span> in Central America since 2012. 
+        </p>
+        <p>Unlike the outbreaks in the 1970s and 1980s, which were limited to warm, low altitudes, the new wave of coffee rust spread quickly to high altitudes.</p>
+
+        <p>
+          This affected over <span class="emphasize">55%</span> of the region's coffee farms and left around <span class="emphasize">350,000</span> people jobless.
+        </p>
+
+      </div>
+>>>>>>> Stashed changes
     </section>
     
     <section class="farmerStory">
@@ -209,10 +281,40 @@
       Continue Farmer story
     </section>
     <section class="chapterThree">
+<<<<<<< Updated upstream
       Climate change in Northern Triangle
     </section>
     <section class="chapterThree">Natural disasters in Norther Triangle</section>
     <section class="chapterThree">Coffee production in Northern Triangle</section>
+=======
+      <div class="textbox">
+        <h1>Natural disasters in Norther Triangle</h1>
+        <p>
+          Mapping the drought risk in Honduras
+          
+        </p>
+        <p>Hurricanes in the past few years</p>
+      </div>
+
+    </section>
+    <section class="quote">
+      <div class="textbox">
+        <p>
+          "When coffee is not doing well, that's when you see big migrations from Honduras, El Salvador, Guatemala, Nicaragua."
+        </p>
+        <em>– René León-Gómez, executive secretary of PROMECAFE</em>
+
+      </div>
+    </section>
+
+    <section class="graph">
+
+
+      <h2 >Coffee production in Northern Triangle</h2>
+      <ChartCoffee bind:data={coffee_production_data}/>
+
+  </section>
+>>>>>>> Stashed changes
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>Click the "play" button on the bottom to see how migration flow changes over the years.
@@ -300,11 +402,74 @@
       line-height: 1.7;
     }
 
+<<<<<<< Updated upstream
     .aboutCoffee {
       height: 90vh;
       max-width: 750px; /* adjust at will */
       padding: 3em 2em 3em 2em;
       margin: 15em auto 5em;
+=======
+    .intro {
+      height: 70vh;
+      max-width: 100%; /* adjust at will */
+      padding: 5em 3em;
+      margin: 2em 1em; 
+    }
+
+    .intro .textbox {
+      background-color: rgba(255, 255, 255, 0); 
+      padding: 2em 2em;
+      /* position: relative; */
+      top: 40%; /* vertically center */
+    }
+    .intro .latte {
+      margin: 0 0 0 50px;
+    }
+    .intro .latte:hover {
+      filter: drop-shadow(8px 8px 8px #848484);
+      text-align: center;
+      margin: 0 0 0 35px;
+    }
+    .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 2em 2em;
+      position: relative;
+      top: 50%; /* vertically center */
+      -ms-transform: translateY(-50%); /* vertically center */
+      transform: translateY(-50%); /* vertically center */
+      margin: 3em auto;
+    }
+
+    .textbox .emphasize {
+      font-weight: 800;
+      color:rgb(185, 48, 27);
+      font-size: larger;
+      display: inline;
+    }
+
+    .quote {
+      height: 70vh;
+      max-width: 70%; /* adjust at will */
+      padding: 5em 3em;
+      margin: 0 auto;
+    }
+
+    .quote .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 3em;
+      /* position: relative; */
+      top: 50%; /* vertically center */
+      text-align: center;
+    }
+    .coffeeQuiz {
+      height: 100vh;
+      max-width: 70%; /* adjust at will */
+      padding: 0em;
+      /* margin-left: 10px;
+      margin-right: 10px; */
+      margin: 0 auto;
+      position: relative;
+>>>>>>> Stashed changes
     }
 
     .farmerStory {
@@ -331,6 +496,13 @@
       font-family: 'Noto Serif', serif;
       font-style: italic;
     }
+
+    .graph {
+        margin: 0 auto;
+        max-width: 80%;
+      
+    }
+
     .flowmap {
       height: 80vh;
       max-width: 900px; /* adjust at will */
