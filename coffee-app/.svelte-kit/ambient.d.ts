@@ -32,8 +32,8 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const NVM_CD_FLAGS: string;
-	export const TERM: string;
 	export const SHELL: string;
+	export const TERM: string;
 	export const npm_config_metrics_registry: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
@@ -41,6 +41,8 @@ declare module '$env/static/private' {
 	export const CONDA_SHLVL: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const CONDA_PROMPT_MODIFIER: string;
+	export const MallocNanoZone: string;
+	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const COLOR: string;
 	export const TERM_SESSION_ID: string;
 	export const npm_config_noproxy: string;
@@ -66,6 +68,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const EDITOR: string;
 	export const npm_package_name: string;
+	export const LOCAL_GIT_DIRECTORY: string;
 	export const LANG: string;
 	export const XPC_FLAGS: string;
 	export const npm_config_node_gyp: string;
@@ -121,8 +124,8 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		INIT_CWD: string;
 		NVM_CD_FLAGS: string;
-		TERM: string;
 		SHELL: string;
+		TERM: string;
 		npm_config_metrics_registry: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
@@ -130,6 +133,8 @@ declare module '$env/dynamic/private' {
 		CONDA_SHLVL: string;
 		TERM_PROGRAM_VERSION: string;
 		CONDA_PROMPT_MODIFIER: string;
+		MallocNanoZone: string;
+		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		COLOR: string;
 		TERM_SESSION_ID: string;
 		npm_config_noproxy: string;
@@ -155,6 +160,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		EDITOR: string;
 		npm_package_name: string;
+		LOCAL_GIT_DIRECTORY: string;
 		LANG: string;
 		XPC_FLAGS: string;
 		npm_config_node_gyp: string;
