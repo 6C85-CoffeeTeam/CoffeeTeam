@@ -2,13 +2,38 @@
     // imports
     import * as d3 from "d3";
     import {scaleLinear} from "d3-scale";
+    import { CoffeeProduction } from "../data/coffeeproduction";
+    import { scaleOrdinal } from 'd3';
+    import { line } from 'd3';
+
+
+    $: colorScale = scaleOrdinal()
+    .domain(Array.from(new Set(data.map(d => d.country)))) // set domain to all unique country values
+    .range(d3.schemeCategory10); // an array of 10 categorical colors provided by d3
+
 
     // exports
     export let data = [];
+    CoffeeProduction.forEach((element) =>
+        data.push({
+            index: element["Year"],
+            size: element["Production"],
+            country: element["Country"],
+        })
+    );
+
+    // Group data by country
+    const groupedData = new Map();
+    data.forEach(d => {
+        if (!groupedData.has(d.country)) groupedData.set(d.country, []);
+        groupedData.get(d.country).push(d);
+    });
+
+    $: lines = Array.from(groupedData.values());
 
     // set general use variables
-    let chartWidth = 600;
-    let chartHeight = 350;
+    let chartWidth = 750;
+    let chartHeight = 450;
 
     const paddings = {
         top: 50,
@@ -16,14 +41,6 @@
         right: 50,
         bottom: 50,
     };
-
-    // set scaling variables
-    // $: xScale = scaleLinear()
-    //     .domain([1, data.length])
-    //     .range([paddings.left, chartWidth - paddings.right]);
-    // $: yScale = scaleLinear()
-    //     .domain([Math.min(0), Math.max(...data.map((d) => d.size))])
-    //     .range([chartHeight - paddings.bottom, paddings.top]);
     
     $: xScale = scaleLinear()
         .domain([
@@ -33,7 +50,7 @@
         .range([paddings.left, chartWidth - paddings.right]);
     $: yScale = scaleLinear()
         .domain([
-            Math.min(...data.map((d) => d.size)),
+            0, //start from 0
             Math.max(...data.map((d) => d.size)),
         ])
         .range([chartHeight - paddings.bottom, paddings.top]);
@@ -41,7 +58,7 @@
         // define tick marks
     let xTicks = [];
     let yTicks = [];
-    let numTicks = 5;
+    // let numTicks = 5;
     $: {
         xTicks = [];
         yTicks = [];
@@ -51,9 +68,7 @@
                 Math.round(Math.min(...data.map((d) => d.index))),
                 Math.round(Math.max(...data.map((d) => d.index)) + 1),
             ];
-            let index_increment = Math.floor(
-                (index_extent[1] - index_extent[0]) / numTicks
-            );
+            let index_increment = 5;
             for (
                 let i = index_extent[0];
                 i < index_extent[1];
@@ -63,12 +78,10 @@
             }
 
             let size_extent = [
-                Math.round(Math.min(...data.map((d) => d.size))),
+                0, //start from 0
                 Math.round(Math.max(...data.map((d) => d.size)) + 1),
             ];
-            let size_increment = Math.floor(
-                (size_extent[1] - size_extent[0]) / numTicks
-            );
+            let size_increment = 1000;
             for (
                 let i = size_extent[0];
                 i < size_extent[1];
@@ -78,19 +91,6 @@
             }
         }
     }
-
-    // $: {
-    //     for (let i = 1; i < data.length + 1; i = i + 2) {
-    //         xTicks.push(i);
-    //     }
-    //     for (
-    //         let i = 0;
-    //         i < Math.round(Math.max(...data.map((d) => d.size)) + 1);
-    //         i = i + 2
-    //     ) {
-    //         yTicks.push(i);
-    //     }
-    // }
 
     // hover effect
     const idContainer = "svg-container-" + Math.random() * 1000000;
@@ -162,6 +162,16 @@
             />
         </g>
         <g>
+            {#each lines as lineData, i (lineData[0].country)}
+                <path
+                    d={line(lineData.map(d => [xScale(d.index), yScale(d.size)]))}
+                    stroke={colorScale(lineData[0].country)}
+                    stroke-width="3"
+                    fill="none"
+                />
+            {/each}
+        </g>
+        <!-- <g>
             {#each data as d, i}
                 {#if i != data.length-1}
                     <line
@@ -174,7 +184,7 @@
                     />
                 {/if}
             {/each}
-        </g>
+        </g> -->
         
         <g transform="translate(0, {chartHeight - paddings.bottom})">
             {#each xTicks as x}
@@ -217,7 +227,27 @@
         </g>
 
         {#if mousePosition.x !== null}
-            <g
+            <g transform="translate({xScale(computeSelectedXValue(mousePosition.x))} 0)">
+                <line
+                    x1="0"
+                    x2="0"
+                    y1={paddings.top}
+                    y2={chartHeight - paddings.bottom - 2}
+                    stroke="black"
+                    stroke-width="1"
+                />
+                {#each lines as lineData, i (lineData[0].country)}
+                    {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
+                        <circle
+                            cx={0}
+                            cy={yScale(lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size)}
+                            r="3"
+                            fill={colorScale(lineData[0].country)}
+                        />
+                    {/if}
+                {/each}
+            </g>
+            <!-- <g
                 transform="translate({xScale(
                     computeSelectedXValue(mousePosition.x)
                 )} 0)"
@@ -242,27 +272,29 @@
                     r="3"
                     fill="#b86a04"
                 />
-            </g>
+            </g> -->
         {/if}
     </svg>
     <div
-        class={mousePosition.x === null ? "tooltip-hidden" : "tooltip-visible"}
         style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y +
             10}px"
     >
-        {#if mousePosition.x !== null}
+        <!-- {#if mousePosition.x !== null}
             At index {currentHoveredPoint.index}, the size was {currentHoveredPoint.size}.
-        {/if}
-    </div>
-{:else}
-        <p>Add some data to see a visualization!</p>
+        {/if} -->
+        In {computeSelectedXValue(mousePosition.x)}:
+        {#each lines as lineData, i (lineData[0].country)}
+            {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
+                <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size}
+            {/if}
+        {/each}
+        </div>
     {/if}
 
 </div>
 
 <style>
     .visualization {
-        font: 25px sans-serif;
         margin: auto;
         margin-top: 1px;
         text-align: middle;

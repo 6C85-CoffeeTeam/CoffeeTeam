@@ -14,15 +14,16 @@
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
     import ChartCoffee from "./Chart_coffee.svelte";
-    import { CoffeeProduction } from "../data/coffeeproduction";
 
-    let coffee_data = [];
-    CoffeeProduction.forEach((element) =>
-        coffee_data.push({
-            index: element["Year"],
-            size: element["Production"],
-        })
-    );
+    // let coffee_data = [];
+    // CoffeeProduction.forEach((element) =>
+    //     coffee_data.push({
+    //         index: element["Year"],
+    //         size: element["Production"],
+    //         country: element["Country"],
+    //     })
+    // );
+
 
     // d3.json(
     //   "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
@@ -271,7 +272,7 @@
           Coffee production in Northern Triangle
         </h1>
         <div class="graph">
-          <ChartCoffee bind:data={coffee_data} />
+          <ChartCoffee />
         </div>
         
       </div>
