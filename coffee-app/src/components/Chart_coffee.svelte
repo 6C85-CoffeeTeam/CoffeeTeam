@@ -4,7 +4,7 @@
     import {scaleLinear} from "d3-scale";
     import { CoffeeProduction } from "../data/coffeeproduction";
     import { scaleOrdinal } from 'd3';
-    import { line } from 'd3';
+    // import { line } from 'd3';
 
 
     $: colorScale = scaleOrdinal()
@@ -31,9 +31,15 @@
 
     $: lines = Array.from(groupedData.values());
 
+    let line = d3.line()
+    .x((d) => xScale(d.index))
+    .y((d) => yScale(d.size));
+
     // set general use variables
     let chartWidth = 750;
     let chartHeight = 450;
+    let legendWidth = 180;
+    let legendHeight = 60;
 
     const paddings = {
         top: 50,
@@ -162,29 +168,23 @@
             />
         </g>
         <g>
-            {#each lines as lineData, i (lineData[0].country)}
+            <!-- {#each lines as lineData, i (lineData[0].country)}
                 <path
                     d={line(lineData.map(d => [xScale(d.index), yScale(d.size)]))}
                     stroke={colorScale(lineData[0].country)}
                     stroke-width="3"
                     fill="none"
                 />
+            {/each} -->
+            {#each lines as lineData, i (lineData[0].country)}
+            <path
+                d={line(lineData)}
+                stroke={colorScale(lineData[0].country)}
+                stroke-width="3"
+                fill="none"
+            />
             {/each}
         </g>
-        <!-- <g>
-            {#each data as d, i}
-                {#if i != data.length-1}
-                    <line
-                        x1={xScale(data[i].index)}
-                        x2={xScale(data[i + 1].index)}
-                        y1={yScale(data[i].size)}
-                        y2={yScale(data[i + 1].size)}
-                        stroke="#b86a04"
-                        stroke-width="3"
-                    />
-                {/if}
-            {/each}
-        </g> -->
         
         <g transform="translate(0, {chartHeight - paddings.bottom})">
             {#each xTicks as x}
@@ -234,60 +234,53 @@
                     y1={paddings.top}
                     y2={chartHeight - paddings.bottom - 2}
                     stroke="black"
-                    stroke-width="1"
+                    stroke-width="1.2"
                 />
+
                 {#each lines as lineData, i (lineData[0].country)}
                     {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
                         <circle
                             cx={0}
                             cy={yScale(lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size)}
-                            r="3"
+                            r="3.5"
                             fill={colorScale(lineData[0].country)}
                         />
                     {/if}
                 {/each}
             </g>
-            <!-- <g
-                transform="translate({xScale(
-                    computeSelectedXValue(mousePosition.x)
-                )} 0)"
-            >
-                <line
-                    x1="0"
-                    x2="0"
-                    y1={paddings.top}
-                    y2={chartHeight - paddings.bottom - 2}
-                    stroke="black"
-                    stroke-width="1"
-                />
-                <circle
-                    cx={0}
-                    cy={yScale(
-                        data.find(
-                            (d) =>
-                                d.index ===
-                                computeSelectedXValue(mousePosition.x)
-                        ).size
-                    )}
-                    r="3"
-                    fill="#b86a04"
-                />
-            </g> -->
         {/if}
+        <!-- <g class="legend" transform="translate({chartWidth - legendWidth}, {chartHeight - legendHeight})">
+            {#each colorScale.domain() as country, i}
+                <g transform="translate(0, {i * 20})">
+                    <circle cx={5} cy={8} r="7" fill={colorScale(country)} />
+                    <text x="24" y="9" dy=".35em">{country}</text>
+                </g>
+            {/each}
+        </g> -->
     </svg>
+    <div class="legend">
+        {#each colorScale.domain() as country, i}
+            <div class="legend-item" style="top: {i * 20}px">
+                <svg width="30" height="20">
+                    <circle cx="10" cy="10" r="7" fill={colorScale(country)} />
+                </svg>
+                <div class="legend-text">{country}</div>
+            </div>
+        {/each}
+    </div>
     <div
         style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y +
             10}px"
     >
-        <!-- {#if mousePosition.x !== null}
-            At index {currentHoveredPoint.index}, the size was {currentHoveredPoint.size}.
-        {/if} -->
-        In {computeSelectedXValue(mousePosition.x)}:
-        {#each lines as lineData, i (lineData[0].country)}
-            {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
-                <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size}
-            {/if}
-        {/each}
+        {#if mousePosition.x !== null}
+            In {computeSelectedXValue(mousePosition.x)}:
+            {#each lines as lineData, i (lineData[0].country)}
+                {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
+                    <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size}
+                {/if}
+            {/each}
+        {/if}
+        
         </div>
     {/if}
 
@@ -318,6 +311,24 @@
         color: black;
         position: absolute;
         padding: 10px;
+    }
+
+    .legend {
+        position: absolute;
+        right: 10px;
+        top: 100px;
+        padding: 10px;
+    }
+
+    .legend-item {
+        position: relative;
+        height: 20px;
+    }
+
+    .legend-text {
+        position: absolute;
+        left: 0px;
+        top: 0;
     }
     .axis {
         stroke-linejoin: round;
