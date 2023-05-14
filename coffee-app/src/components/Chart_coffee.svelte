@@ -4,8 +4,6 @@
     import {scaleLinear} from "d3-scale";
     import { CoffeeProduction } from "../data/coffeeproduction";
     import { scaleOrdinal } from 'd3';
-    // import { line } from 'd3';
-
 
     $: colorScale = scaleOrdinal()
     .domain(Array.from(new Set(data.map(d => d.country)))) // set domain to all unique country values
@@ -135,7 +133,21 @@
             ];
         return data.filter((d) => xScale(d.index) >= value)[0].index - 1;
     }
+    function getDifference(lineData, currentIndex) {
+        let currentData = lineData.find(d => d.index === currentIndex);
+        let prevData = lineData.find(d => d.index === currentIndex - 1);
+        
+        if (!currentData || !prevData) return '';
 
+        let diff = currentData.size - prevData.size;
+        if (diff > 0) {
+            return `<span style="color: green; font-size: 14px";>↑ ${diff}</span>`;
+        } else if (diff < 0) {
+            return `<span style="color: red; font-size: 14px">↓ ${-diff}</span>`;
+        } else {
+            return '';
+        }
+    }
 </script>
 
 <div class="visualization">
@@ -225,7 +237,25 @@
                 </g>
             {/each}
         </g>
+        <!-- Add X axis label -->
+        <text 
+            transform={`translate(${chartWidth / 2}, ${chartHeight - paddings.bottom + 50})`} 
+            text-anchor="middle" 
+            style="font-size: 14px; fill:#6e3003;"
+        >
+            Year
+        </text>
 
+        <!-- Add Y axis label -->
+        <text 
+            transform="rotate(-90)" 
+            text-anchor="middle" 
+            y={paddings.left - 75} 
+            x={-chartHeight / 2}
+            style="font-size: 14px; fill:#6e3003;"
+        >
+            Coffee Production (60kg bags)
+        </text>
         {#if mousePosition.x !== null}
             <g transform="translate({xScale(computeSelectedXValue(mousePosition.x))} 0)">
                 <line
@@ -233,7 +263,7 @@
                     x2="0"
                     y1={paddings.top}
                     y2={chartHeight - paddings.bottom - 2}
-                    stroke="black"
+                    stroke="#6e3003"
                     stroke-width="1.2"
                 />
 
@@ -260,41 +290,56 @@
     </svg>
     <div class="legend">
         {#each colorScale.domain() as country, i}
-            <div class="legend-item" style="top: {i * 20}px">
-                <svg width="30" height="20">
-                    <circle cx="10" cy="10" r="7" fill={colorScale(country)} />
+            <div class="legend-item" style="top: {i * 17}px">
+                <svg width="30" height="30">
+                    <circle cx="15" cy="15" r="7" fill={colorScale(country)} />
                 </svg>
                 <div class="legend-text">{country}</div>
             </div>
         {/each}
     </div>
-    <div
+    <!-- tooltip -->
+    <!-- <div
+    style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y + 10}px"
+    > -->
+    <div class="tooltip">
+        {#if mousePosition.x !== null}
+            The number of 60kg bags of coffee produced in {computeSelectedXValue(mousePosition.x)}:
+            {#each lines as lineData, i (lineData[0].country)}
+                {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
+                    <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size}
+                    {@html getDifference(lineData, computeSelectedXValue(mousePosition.x))}
+                {/if}
+            {/each}
+        {/if}
+    </div>
+    <!-- <div
         style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y +
             10}px"
     >
         {#if mousePosition.x !== null}
-            In {computeSelectedXValue(mousePosition.x)}:
+            In {computeSelectedXValue(mousePosition.x)},
             {#each lines as lineData, i (lineData[0].country)}
                 {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x))}
-                    <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size}
+                    <br>{lineData[0].country} produced {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x)).size} 60kg bags of coffee.
                 {/if}
             {/each}
         {/if}
-        
-        </div>
+    </div> -->
+
     {/if}
 
 </div>
 
 <style>
     .visualization {
-        margin: auto;
+        margin: 60px 160px;
         margin-top: 1px;
         text-align: middle;
     }
 
     /* dynamic classes for the tooltip */
-    .tooltip-hidden {
+    /* .tooltip-hidden {
         visibility: hidden;
         font-family: "Nunito", sans-serif;
         width: 200px;
@@ -311,24 +356,31 @@
         color: black;
         position: absolute;
         padding: 10px;
+        margin-top: 10px;
+    } */
+
+    .tooltip {
+        margin-top: 15px;
     }
 
     .legend {
         position: absolute;
-        right: 10px;
-        top: 100px;
-        padding: 10px;
+        right: 40px;
+        top: 150px;
+        padding: 0px;
     }
 
     .legend-item {
         position: relative;
         height: 20px;
+        width: 300px;
     }
 
     .legend-text {
         position: absolute;
-        left: 0px;
+        left: 165px;
         top: 0;
+        text-align: left;
     }
     .axis {
         stroke-linejoin: round;

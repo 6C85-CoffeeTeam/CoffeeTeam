@@ -273,6 +273,7 @@
         </h1>
         <div class="graph">
           <ChartCoffee />
+          
         </div>
         
       </div>
