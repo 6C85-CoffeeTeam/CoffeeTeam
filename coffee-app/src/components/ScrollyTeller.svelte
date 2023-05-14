@@ -1,5 +1,6 @@
 <script>
     import Scroller from "@sveltejs/svelte-scroller";
+    import * as d3 from "d3";
     import Map from "./Map.svelte";
     import Map1 from "./Map1.svelte";
     import Map1_1 from "./Map1-1.svelte";
@@ -12,7 +13,23 @@
     import { geoMercator } from "d3-geo";
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
+    import ChartCoffee from "./Chart_coffee.svelte";
 
+    // let coffee_data = [];
+    // CoffeeProduction.forEach((element) =>
+    //     coffee_data.push({
+    //         index: element["Year"],
+    //         size: element["Production"],
+    //         country: element["Country"],
+    //     })
+    // );
+
+
+    // d3.json(
+    //   "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
+    // ).then((data) => {
+    //   coffee_data = data;
+    // });
 
     let count, index, offset, progress;
     let width, height;
@@ -155,7 +172,7 @@
       </button> -->
     </section>
 
-    <section>
+    <section class="farmerStory">
       <div class="textbox"> 
         <p>
           Warming climate may affect coffee in many ways, including reduced growing area, increased pests, and loss of quality.
@@ -249,11 +266,16 @@
 
       </div>
     </section>
-    <section class="chapterThree">
+    <section class="farmerStory">
       <div class="textbox">
         <h1>
           Coffee production in Northern Triangle
         </h1>
+        <div class="graph">
+          <ChartCoffee {index}/>
+          
+        </div>
+        
       </div>
     </section>
     <section class="flowmap">
@@ -446,6 +468,10 @@
       background-color: rgba(255, 255, 255, 0.8); 
       padding: 6em;
     }
+
+    .graph {
+      margin: 0 auto;
+    }
     .flowmap {
       height: 80vh;
       max-width: 900px; /* adjust at will */
@@ -454,7 +480,6 @@
     }
     .ending {
       height: 80vh;
-
       max-width: 750px; /* adjust at will */
       padding: 10em 0 0 0;
       margin: 10em auto;
