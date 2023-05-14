@@ -5,6 +5,8 @@
     import { CoffeeProduction } from "../data/coffeeproduction";
     import { scaleOrdinal } from 'd3';
 
+    export let index;
+
     $: colorScale = scaleOrdinal()
     .domain(Array.from(new Set(data.map(d => d.country)))) // set domain to all unique country values
     .range(d3.schemeCategory10); // an array of 10 categorical colors provided by d3
@@ -148,9 +150,35 @@
             return '';
         }
     }
+    let isVisible = false;
+  
+    $: if (index === 12) {
+        isVisible = true;
+    } else {
+        isVisible = false;
+    }
+    
+    let observer = new IntersectionObserver((entries, observer) => { 
+        entries.forEach(entry => {
+            // If the element is in the viewport
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible'); // Add the 'visible' class to the element
+            }
+        });
+    });
+
+    // Get all the '.visualization' elements
+    let elements = document.querySelectorAll('.visualization');
+
+    // Observe each '.visualization' element
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+    
 </script>
 
-<div class="visualization">
+<div class="visualization" class:visible={isVisible}>
+<!-- <div class="visualization"> -->
     {#if data.length > 1}
     <svg
         width={chartWidth}
@@ -328,7 +356,6 @@
     </div> -->
 
     {/if}
-
 </div>
 
 <style>
@@ -336,8 +363,25 @@
         margin: 60px 160px;
         margin-top: 1px;
         text-align: middle;
+        visibility: visible;
+        /* opacity: 0; */
+        /* transition: opacity 2s, visibility 2s; */ 
+    }
+    .visualization.visible {
+        visibility: visible;
+        animation: floatIn 2s forwards; 
     }
 
+    @keyframes floatIn {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
     /* dynamic classes for the tooltip */
     /* .tooltip-hidden {
         visibility: hidden;
@@ -365,8 +409,8 @@
 
     .legend {
         position: absolute;
-        right: 40px;
-        top: 150px;
+        right: -140px;
+        top: 100px;
         padding: 0px;
     }
 
@@ -386,16 +430,16 @@
         stroke-linejoin: round;
         stroke-dasharray: 4400;
         stroke-dashoffset: 0;
-        animation: draw 8.5s ease;
+        /* animation: draw 8.5s ease; */
     }
-    @keyframes draw {
+    /* @keyframes draw {
         from {
             stroke-dashoffset: 4400;
         }
         to {
             stroke-dashoffset: 0;
         }
-    }
+    } */
 
 </style>
 

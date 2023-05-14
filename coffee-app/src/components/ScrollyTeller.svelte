@@ -272,7 +272,7 @@
           Coffee production in Northern Triangle
         </h1>
         <div class="graph">
-          <ChartCoffee />
+          <ChartCoffee {index}/>
           
         </div>
         
@@ -480,7 +480,6 @@
     }
     .ending {
       height: 80vh;
-
       max-width: 750px; /* adjust at will */
       padding: 10em 0 0 0;
       margin: 10em auto;
