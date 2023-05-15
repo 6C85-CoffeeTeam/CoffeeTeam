@@ -61,7 +61,10 @@
       style: "mapbox://styles/mapbox/light-v11",
       center: [10, 10],
       zoom: zoomLevel,
-      attributionControl: false, // removes attribution from the bottom of the map
+      minZoom: zoomLevel,
+      maxZoom: zoomLevel,
+      scrollZoom: false,
+      attributionControl: false // removes attribution from the bottom of the map
     });
 
     window.addEventListener("resize", handleResize);
@@ -120,6 +123,11 @@
             { source: "countries", id: hoveredStateId },
             { hover: true }
           );
+
+         // Add the code here for showing the tooltip
+        popup.setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name) // assuming `name` is the property containing the country name
+            .addTo(map);
         }
       });
       // When the mouse leaves the country-fill layer, update the feature state of the
@@ -132,6 +140,8 @@
           );
         }
         hoveredStateId = null;
+        // Add the code here for hiding the tooltip
+        popup.remove();
       });
 
       map.addLayer({
@@ -165,6 +175,11 @@
       map.on("zoom", updateBounds);
       map.on("drag", updateBounds);
       map.on("move", updateBounds);
+    });
+
+    let popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
     });
 
     // // create legend

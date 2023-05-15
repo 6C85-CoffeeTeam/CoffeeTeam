@@ -60,6 +60,9 @@
       style: "mapbox://styles/mapbox/light-v11",
       center: [10,10],
       zoom: zoomLevel,
+      minZoom: zoomLevel,
+      maxZoom: zoomLevel,
+      scrollZoom: false,
       attributionControl: false, // removes attribution from the bottom of the map
       // 'transition': {
       //         'duration': 5000, // Duration in milliseconds
