@@ -17,8 +17,7 @@
 
   let zoomLevel;
 
-  // let scaleLabel="Change in temperature, 2010 to 2020"
-  let scaleLabel="";
+  let scaleLabel="Change in temperature between 2010 and 2020"
   let stops;
 
   // color palette from: https://www.color-hex.com/color-palette/20901
@@ -202,15 +201,9 @@
     elSalvadorRegions = data;
   });
 
-  // d3.json(
-  //   "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
-  // ).then((data) => {
-  //   hondurasDroughtData = data;
-  // });
-
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
-    zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
+    zoomLevel = screenWidth <= 600 ? 5 : 6.1; // Adjust these values as needed
   }
 
   function handleResize() {
@@ -223,7 +216,7 @@
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v11",
-      center: [-85.0, 15.368649575406508],
+      center: [-85.0, 14.9],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -307,7 +300,7 @@
             property: "temp_change",
             stops: stops,
           },
-          "fill-opacity": 0.5,
+          "fill-opacity": 0.6,
         },
       });
 
@@ -322,7 +315,7 @@
             property: "temp_change",
             stops: stops,
           },
-          "fill-opacity": 0.5,
+          "fill-opacity": 0.6,
         },
       });
 
@@ -337,7 +330,7 @@
             property: "temp_change",
             stops: stops,
           },
-          "fill-opacity": 0.5,
+          "fill-opacity": 0.6,
         },
       });
     });
@@ -373,8 +366,8 @@
 <div class="map" class:visible={isVisible} bind:this={container} />
 
 {#if isVisible}
-  <div class="scale">
-    <p><strong style:font-size="30px">{scaleLabel}</strong></p>
+  <div class="scale" class:visible={isVisible}>
+    <p><strong style:font-size="18px">{scaleLabel}</strong></p>
     <div>
       <span class="legend-key" style:background-color={stops[0][1]} />
       <span class="legend-label"> &lt;{stops[0][0]}</span>
@@ -418,24 +411,27 @@
     position: absolute;
     /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
     z-index: 1000;
-    bottom: -10px;
+    bottom: 25px;
     left: 30px;
     width: 25vh;
-    height: 40vh;
+    height: 36vh;
+    /* background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 30px; */
+    opacity: 0;
+    visibility: hidden;
+  }
 
-    /* background-color: rgb(255, 255, 255); */
+  .scale.visible {
+    visibility: visible;
     opacity: 1;
-    /* outline-style: solid;
-    outline-width: 5px;
-    outline-color: rgb(0, 0, 0); */
-    transition: 1s all;
+    transition: opacity 10s, visibility 10s;
   }
 
   .scale div {
     width: max(300px, 100%);
-    height: 50px;
+    height: 35px;
     margin: 5px;
-    opacity: 0.9;
+    opacity: 1;
   }
 
   .scale p {
@@ -447,15 +443,16 @@
   .legend-key {
     display: inline-block;
     border-radius: 20%;
-    width: 50px;
-    height: 50px;
-    margin-right: 5px;
-    opacity: 0.8;
+    width: 30px;
+    height: 30px;
+    margin-left: 0px;
+    opacity: 1;
   }
   
   .legend-label {
-    font-size: 25px;
-    margin-top: 40px;
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 10px;
     font-family: "Space Mono", monospace;
   }
 </style>

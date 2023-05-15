@@ -35,7 +35,7 @@
 
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
-    zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
+    zoomLevel = screenWidth <= 600 ? 5 : 6.1; // Adjust these values as needed
   }
 
   function handleResize() {
@@ -48,7 +48,7 @@
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v11",
-      center: [-85.0,15.368649575406508],
+      center: [-85.0,14.9],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -120,7 +120,7 @@
           'layout': {},
           'paint': {
             'fill-color': '#A59555',
-            'fill-opacity': 0.4
+            'fill-opacity': 0.6
           }
         });
 
@@ -132,7 +132,7 @@
           'layout': {},
           'paint': {
             'fill-color': '#DD9d12',
-            'fill-opacity': 0.4
+            'fill-opacity': 0.6
           }
         });
 
@@ -144,7 +144,7 @@
           'layout': {},
           'paint': {
             'fill-color': '#E12D02',
-            'fill-opacity': 0.4
+            'fill-opacity': 0.6
           }
         });
     });

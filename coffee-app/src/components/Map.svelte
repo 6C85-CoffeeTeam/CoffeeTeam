@@ -145,7 +145,7 @@
             property: "coffee",
             stops: stops,
           },
-          "fill-opacity": 0.6,
+          "fill-opacity": 0.8,
         },
       });
 
@@ -225,7 +225,7 @@
   />
 </svelte:head>
 
-<div id="map" class:visible={isVisible} bind:this={container} />
+<div class="map" class:visible={isVisible} bind:this={container}>
 
 <!-- {#if isVisible}
   <div class="scale">
@@ -254,8 +254,8 @@
   ]; -->
 
 {#if isVisible}
-  <div class="scale">
-    <p><strong style:font-size="30px">{scaleLabel}</strong></p>
+  <div class="scale" class:visible={isVisible}>
+    <p><strong style:font-size="18px">{scaleLabel}</strong></p>
     <div>
       <span class="legend-key" style:background-color={stops[0][1]} />
       <span class="legend-label"> &lt;{stops[0][0]}</span>
@@ -294,43 +294,48 @@
       <span style:float="left">{domain[0]}</span>
       <span style:float="right">{domain[1]}</span>
     </p> -->
+</div>
 
 <style>
-  #map {
+  .map {
     width: 100%;
     height: 100vh; /* check problem when setting width */
     position: absolute;
-    opacity: 1;
+    opacity: 0;
     visibility: hidden;
     transition: opacity 2s, visibility 2s;
-    outline: blue solid 0px;
+    /* outline: blue solid 0px; */
+
   }
 
-  #map.visible {
+  .map.visible {
     opacity: 1;
     visibility: visible;
   }
 
   .scale {
     position: absolute;
-    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
     z-index: 1000;
-    bottom: 45px;
+    bottom: 0px;
     left: 30px;
     width: 275px;
-    height: 53vh;
+    height: 45vh;
     opacity: 1;
-    /* outline-style: solid;
-    outline-width: 5px;
-    outline-color: rgb(0, 0, 0); */
-    transition: 1s all;
+    visibility: hidden;
+  }
+
+  .scale.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 10s, visibility 10s;
+
   }
 
   .scale div {
     width: max(300px, 100%);
-    height: 50px;
-    margin: 5px;
-    opacity: 0.9;
+    height: 35px;
+    margin: 10px;
+    opacity: 1;
   }
 
   .scale p {
@@ -342,15 +347,16 @@
   .legend-key {
     display: inline-block;
     border-radius: 20%;
-    width: 50px;
-    height: 50px;
-    margin-right: 5px;
-    opacity: 0.8;
+    width: 35px;
+    height: 35px;
+    margin-left: 0px;
+    opacity: 1;
   }
   
   .legend-label {
-    font-size: 25px;
-    margin-top: 40px;
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 10px;
     font-family: "Space Mono", monospace;
   }
 

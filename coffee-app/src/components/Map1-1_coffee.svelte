@@ -29,7 +29,7 @@
   
     function updateZoomLevel() {
       const screenWidth = window.innerWidth;
-      zoomLevel = screenWidth <= 600 ? 5 : 6.3; // Adjust these values as needed
+      zoomLevel = screenWidth <= 600 ? 5 : 6.1; // Adjust these values as needed
     }
   
     function handleResize() {
@@ -42,7 +42,7 @@
       map = new mapboxgl.Map({
         container,
         style: "mapbox://styles/mapbox/light-v11",
-        center: [-85.0,15.368649575406508],
+        center: [-85.0,14.9],
         zoom: zoomLevel,
         // minZoom: 6.2,
 		// maxZoom: 8,

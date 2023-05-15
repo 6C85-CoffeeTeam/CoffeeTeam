@@ -19,22 +19,6 @@
     let count, index, offset, progress;
     let width, height;
 
-    // let coffee_data = [];
-    // CoffeeProduction.forEach((element) =>
-    //     coffee_data.push({
-    //         index: element["Year"],
-    //         size: element["Production"],
-    //         country: element["Country"],
-    //     })
-    // );
-
-
-    // d3.json(
-    //   "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
-    // ).then((data) => {
-    //   coffee_data = data;
-    // });
-
   let geoJsonToFit = {
     type: "FeatureCollection",
     features: [
@@ -80,7 +64,6 @@
   >
   <!-- on:click={handleClick} -->
 
-    <!-- class="background"  -->
     <!-- <Background {index} /> -->
 
     <!-- <Map bind:geoJsonToFit {index} hover {hovered} on:hover={doHover}/> -->
@@ -181,7 +164,7 @@
       <div>
         <Quiz />
       </div>
-      <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
+      <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
         Or, jump to next section
       </button>
     </section>
@@ -339,7 +322,7 @@
         ></iframe>
         <br /> -->
       <p>Click the bean to learn more.</p>
-
+        <button>
         <img
           class="bean"
           src="./images/coffeebean.png"
@@ -383,7 +366,7 @@
     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Mono&display=swap');
 
   .background {
-    width: 100%; /* to get rid of the weird margin */
+    width: 105%; /* to get rid of the weird margin */
     height: 100vh;
     position: relative;
     top: 0px; 
@@ -609,20 +592,15 @@
     padding: 0;
     margin: 0 auto;
   }
-  .ending {
-    height: 80vh;
-
-    max-width: 750px; /* adjust at will */
-    padding: 10em 0 0 0;
-    margin: 10em auto;
-
-  }
-  .source {
-    font-size: 14px;
-  }
   
   p {
     text-align: center;
+  }
+
+  .emphasize {
+    font-size: 23px;
+    color: #b43223;
+    font-weight:800;
   }
 
   button {
@@ -648,6 +626,18 @@
   }
   h1 {
     margin: 8px 0 20px 0;
+  }
+
+  .ending {
+    height: 80vh;
+
+    max-width: 750px; /* adjust at will */
+    padding: 10em 0 0 0;
+    margin: 10em auto;
+
+  }
+  .source {
+    font-size: 14px;
   }
 
   .bean {

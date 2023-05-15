@@ -118,7 +118,7 @@
                 property: 'coffee',
                 stops: stops
               },
-              "fill-opacity": 0.6
+              "fill-opacity": 0.8
             }
         
         });
