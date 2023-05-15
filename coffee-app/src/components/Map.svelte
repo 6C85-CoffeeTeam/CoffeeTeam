@@ -126,7 +126,8 @@
 
          // Add the code here for showing the tooltip
         popup.setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name) // assuming `name` is the property containing the country name
+            .setHTML(`<strong>Country:</strong> ${e.features[0].properties.name}<br>
+              <strong>Coffee Production:</strong> ${e.features[0].properties.coffee}`)
             .addTo(map);
         }
       });
@@ -143,6 +144,11 @@
         // Add the code here for hiding the tooltip
         popup.remove();
       });
+
+      let popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
 
       map.addLayer({
         id: "country-fills",
@@ -175,11 +181,6 @@
       map.on("zoom", updateBounds);
       map.on("drag", updateBounds);
       map.on("move", updateBounds);
-    });
-
-    let popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
     });
 
     // // create legend
@@ -314,36 +315,33 @@
 <style>
   .map {
     width: 100%;
-    height: 100vh; /* check problem when setting width */
-    position: absolute;
+    height: 100vh; 
+    position: relative;
     opacity: 0;
     visibility: hidden;
     transition: opacity 2s, visibility 2s;
     /* outline: blue solid 0px; */
 
   }
-
   .map.visible {
     opacity: 1;
     visibility: visible;
   }
-
   .scale {
     position: absolute;
     z-index: 1000;
     bottom: 0px;
     left: 30px;
     width: 275px;
-    height: 45vh;
+    height: 42vh;
     opacity: 1;
     visibility: hidden;
+    text-align: left;
   }
-
   .scale.visible {
     visibility: visible;
     opacity: 1;
     transition: opacity 10s, visibility 10s;
-
   }
 
   .scale div {
@@ -352,13 +350,10 @@
     margin: 10px;
     opacity: 1;
   }
-
   .scale p {
     font-family: "Space Mono", monospace;
     width: max(300px, 100%);
   }
-
-
   .legend-key {
     display: inline-block;
     border-radius: 20%;
@@ -367,7 +362,6 @@
     margin-left: 0px;
     opacity: 1;
   }
-  
   .legend-label {
     font-size: 18px;
     margin-top: 0px;

@@ -72,7 +72,7 @@
 
     let isVisible = false;
   
-  $: if (index < 1 ) {
+  $: if (index ===4 ) {
     isVisible = true;
   } else {
     isVisible = false;
@@ -82,7 +82,7 @@
 
 
 <div class="image" class:visible={isVisible}>
-    <img src="./images/latte.png" alt="coffee" />
+    <img src="./images/latte.png" alt="latte" />
 </div>
 
 <!-- <div class="snowframe" aria-hidden="true" class:visible={isVisible}>

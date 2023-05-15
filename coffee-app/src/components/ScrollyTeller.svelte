@@ -64,7 +64,7 @@
   >
   <!-- on:click={handleClick} -->
 
-    <!-- <Background {index} /> -->
+    <Background {index} />
 
     <!-- <Map bind:geoJsonToFit {index}/> -->
 
@@ -145,7 +145,7 @@
         <Map bind:geoJsonToFit {index}/>
       </div>
     </section>
-    <section>
+    <section class="worldmap">
       <div class="textbox">
         Coffee trees grow best in a region called <span class="emphasize"
           >"The Bean Belt"</span
@@ -368,11 +368,11 @@
     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Mono&display=swap');
 
   .background {
-    width: 105%; /* to get rid of the weird margin */
+    width: 100%; /* to get rid of the weird margin */
     height: 100vh;
     position: relative;
     top: 0px; 
-    left: -8px; /* to get rid of the weird margin */
+    left: 0px; /* to get rid of the weird margin */
     /* pointer-events: fill; */
     /* pointer-events: all;
     z-index: 2; */
@@ -404,12 +404,12 @@
   section {
     height: 100vh;
     background-color: rgba(255, 255, 255, 0); 
-    max-width: 100%; /* adjust at will */
+    max-width: 33%; /* adjust at will */
     color: black;
     padding: 1em;
-    /* margin: 1em 0 2em 45em; */
-    /* margin-left: auto;
-    margin-right: 0px; */
+    margin: 1em 0 2em 45em;
+    margin-left: auto;
+    margin-right: 0px;
     text-align: center;
     font-family: 'Space Mono', monospace;
     font-size: 18px;
@@ -450,15 +450,16 @@
     .worldmap {
       height: 150vh;
       max-width: 100%; 
-      padding: 3em;
+      padding: 0em;
       margin: 0 auto;
     }
 
     .worldmap .map {
       z-index: 0;
+      margin-left: 0;
     }
     .worldmap .textbox {
-      top: 20em;
+      top: 25em;
       margin: 0 auto;
       width: 500px;
       background-color: rgba(255, 255, 255, 0.8); 
@@ -474,7 +475,7 @@
     }
 
     .quote .textbox {
-      background-color: rgba(255, 255, 255, 0.8); 
+      background-color: rgba(165, 165, 165, 0.6); 
       padding: 3em;
       /* position: relative; */
       top: 30%; /* vertically center */
