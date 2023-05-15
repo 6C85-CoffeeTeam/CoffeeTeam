@@ -12,19 +12,194 @@
   let map;
 
   let hondurasDroughtData;
+  let guatemalaRegions;
+  let elSalvadorRegions;
 
   let zoomLevel;
 
-  const norTriData = {"type":"FeatureCollection","features":[ 
-    {"type":"Feature","properties":{"name":"Honduras", "coffee":5931},"geometry":{"type":"Polygon","coordinates":[[[-87.316654,12.984686],[-87.489409,13.297535],[-87.793111,13.38448],[-87.723503,13.78505],[-87.859515,13.893312],[-88.065343,13.964626],[-88.503998,13.845486],[-88.541231,13.980155],[-88.843073,14.140507],[-89.058512,14.340029],[-89.353326,14.424133],[-89.145535,14.678019],[-89.22522,14.874286],[-89.154811,15.066419],[-88.68068,15.346247],[-88.225023,15.727722],[-88.121153,15.688655],[-87.901813,15.864458],[-87.61568,15.878799],[-87.522921,15.797279],[-87.367762,15.84694],[-86.903191,15.756713],[-86.440946,15.782835],[-86.119234,15.893449],[-86.001954,16.005406],[-85.683317,15.953652],[-85.444004,15.885749],[-85.182444,15.909158],[-84.983722,15.995923],[-84.52698,15.857224],[-84.368256,15.835158],[-84.063055,15.648244],[-83.773977,15.424072],[-83.410381,15.270903],[-83.147219,14.995829],[-83.489989,15.016267],[-83.628585,14.880074],[-83.975721,14.749436],[-84.228342,14.748764],[-84.449336,14.621614],[-84.649582,14.666805],[-84.820037,14.819587],[-84.924501,14.790493],[-85.052787,14.551541],[-85.148751,14.560197],[-85.165365,14.35437],[-85.514413,14.079012],[-85.698665,13.960078],[-85.801295,13.836055],[-86.096264,14.038187],[-86.312142,13.771356],[-86.520708,13.778487],[-86.755087,13.754845],[-86.733822,13.263093],[-86.880557,13.254204],[-87.005769,13.025794],[-87.316654,12.984686]]]},"id":"HND"},
-    {"type":"Feature","properties":{"name":"Guatemala", "coffee":3606},"geometry":{"type":"Polygon","coordinates":[[[-90.095555,13.735338],[-90.608624,13.909771],[-91.23241,13.927832],[-91.689747,14.126218],[-92.22775,14.538829],[-92.20323,14.830103],[-92.087216,15.064585],[-92.229249,15.251447],[-91.74796,16.066565],[-90.464473,16.069562],[-90.438867,16.41011],[-90.600847,16.470778],[-90.711822,16.687483],[-91.08167,16.918477],[-91.453921,17.252177],[-91.002269,17.254658],[-91.00152,17.817595],[-90.067934,17.819326],[-89.14308,17.808319],[-89.150806,17.015577],[-89.229122,15.886938],[-88.930613,15.887273],[-88.604586,15.70638],[-88.518364,15.855389],[-88.225023,15.727722],[-88.68068,15.346247],[-89.154811,15.066419],[-89.22522,14.874286],[-89.145535,14.678019],[-89.353326,14.424133],[-89.587343,14.362586],[-89.534219,14.244816],[-89.721934,14.134228],[-90.064678,13.88197],[-90.095555,13.735338]]]},"id":"GTM"},
-    {"type":"Feature","properties":{"name":"El Salvador", "coffee":661},"geometry":{"type":"Polygon","coordinates":[[[-87.793111,13.38448],[-87.904112,13.149017],[-88.483302,13.163951],[-88.843228,13.259734],[-89.256743,13.458533],[-89.812394,13.520622],[-90.095555,13.735338],[-90.064678,13.88197],[-89.721934,14.134228],[-89.534219,14.244816],[-89.587343,14.362586],[-89.353326,14.424133],[-89.058512,14.340029],[-88.843073,14.140507],[-88.541231,13.980155],[-88.503998,13.845486],[-88.065343,13.964626],[-87.859515,13.893312],[-87.723503,13.78505],[-87.793111,13.38448]]]},"id":"SLV"},
-  ]}
+  // let scaleLabel="Change in temperature, 2010 to 2020"
+  let scaleLabel="";
+  let stops;
+
+  // color palette from: https://www.color-hex.com/color-palette/20901
+  stops = [
+    [0, "#62a1db"],
+    [1.0, "#e7d87d"],
+    [1.5, "#dd9f40"],
+    [2.0, "#b4451f"],
+    [2.5, "#b01111"],
+  ];
+
+  const norTriData = {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        properties: { name: "Honduras", coffee: 5931 },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [-87.316654, 12.984686],
+              [-87.489409, 13.297535],
+              [-87.793111, 13.38448],
+              [-87.723503, 13.78505],
+              [-87.859515, 13.893312],
+              [-88.065343, 13.964626],
+              [-88.503998, 13.845486],
+              [-88.541231, 13.980155],
+              [-88.843073, 14.140507],
+              [-89.058512, 14.340029],
+              [-89.353326, 14.424133],
+              [-89.145535, 14.678019],
+              [-89.22522, 14.874286],
+              [-89.154811, 15.066419],
+              [-88.68068, 15.346247],
+              [-88.225023, 15.727722],
+              [-88.121153, 15.688655],
+              [-87.901813, 15.864458],
+              [-87.61568, 15.878799],
+              [-87.522921, 15.797279],
+              [-87.367762, 15.84694],
+              [-86.903191, 15.756713],
+              [-86.440946, 15.782835],
+              [-86.119234, 15.893449],
+              [-86.001954, 16.005406],
+              [-85.683317, 15.953652],
+              [-85.444004, 15.885749],
+              [-85.182444, 15.909158],
+              [-84.983722, 15.995923],
+              [-84.52698, 15.857224],
+              [-84.368256, 15.835158],
+              [-84.063055, 15.648244],
+              [-83.773977, 15.424072],
+              [-83.410381, 15.270903],
+              [-83.147219, 14.995829],
+              [-83.489989, 15.016267],
+              [-83.628585, 14.880074],
+              [-83.975721, 14.749436],
+              [-84.228342, 14.748764],
+              [-84.449336, 14.621614],
+              [-84.649582, 14.666805],
+              [-84.820037, 14.819587],
+              [-84.924501, 14.790493],
+              [-85.052787, 14.551541],
+              [-85.148751, 14.560197],
+              [-85.165365, 14.35437],
+              [-85.514413, 14.079012],
+              [-85.698665, 13.960078],
+              [-85.801295, 13.836055],
+              [-86.096264, 14.038187],
+              [-86.312142, 13.771356],
+              [-86.520708, 13.778487],
+              [-86.755087, 13.754845],
+              [-86.733822, 13.263093],
+              [-86.880557, 13.254204],
+              [-87.005769, 13.025794],
+              [-87.316654, 12.984686],
+            ],
+          ],
+        },
+        id: "HND",
+      },
+      {
+        type: "Feature",
+        properties: { name: "Guatemala", coffee: 3606 },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [-90.095555, 13.735338],
+              [-90.608624, 13.909771],
+              [-91.23241, 13.927832],
+              [-91.689747, 14.126218],
+              [-92.22775, 14.538829],
+              [-92.20323, 14.830103],
+              [-92.087216, 15.064585],
+              [-92.229249, 15.251447],
+              [-91.74796, 16.066565],
+              [-90.464473, 16.069562],
+              [-90.438867, 16.41011],
+              [-90.600847, 16.470778],
+              [-90.711822, 16.687483],
+              [-91.08167, 16.918477],
+              [-91.453921, 17.252177],
+              [-91.002269, 17.254658],
+              [-91.00152, 17.817595],
+              [-90.067934, 17.819326],
+              [-89.14308, 17.808319],
+              [-89.150806, 17.015577],
+              [-89.229122, 15.886938],
+              [-88.930613, 15.887273],
+              [-88.604586, 15.70638],
+              [-88.518364, 15.855389],
+              [-88.225023, 15.727722],
+              [-88.68068, 15.346247],
+              [-89.154811, 15.066419],
+              [-89.22522, 14.874286],
+              [-89.145535, 14.678019],
+              [-89.353326, 14.424133],
+              [-89.587343, 14.362586],
+              [-89.534219, 14.244816],
+              [-89.721934, 14.134228],
+              [-90.064678, 13.88197],
+              [-90.095555, 13.735338],
+            ],
+          ],
+        },
+        id: "GTM",
+      },
+      {
+        type: "Feature",
+        properties: { name: "El Salvador", coffee: 661 },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [-87.793111, 13.38448],
+              [-87.904112, 13.149017],
+              [-88.483302, 13.163951],
+              [-88.843228, 13.259734],
+              [-89.256743, 13.458533],
+              [-89.812394, 13.520622],
+              [-90.095555, 13.735338],
+              [-90.064678, 13.88197],
+              [-89.721934, 14.134228],
+              [-89.534219, 14.244816],
+              [-89.587343, 14.362586],
+              [-89.353326, 14.424133],
+              [-89.058512, 14.340029],
+              [-88.843073, 14.140507],
+              [-88.541231, 13.980155],
+              [-88.503998, 13.845486],
+              [-88.065343, 13.964626],
+              [-87.859515, 13.893312],
+              [-87.723503, 13.78505],
+              [-87.793111, 13.38448],
+            ],
+          ],
+        },
+        id: "SLV",
+      },
+    ],
+  };
 
   d3.json(
     "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk_temp_retry.geojson"
   ).then((data) => {
     hondurasDroughtData = data;
+  });
+
+  d3.json(
+    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/guatemala-regions.geojson"
+  ).then((data) => {
+    guatemalaRegions = data;
+  });
+
+  d3.json(
+    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/el-salvador-regions.geojson"
+  ).then((data) => {
+    elSalvadorRegions = data;
   });
 
   // d3.json(
@@ -48,7 +223,7 @@
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v11",
-      center: [-86.34342167629684,15.368649575406508],
+      center: [-85.0, 15.368649575406508],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -78,67 +253,96 @@
     });
 
     map.on("load", () => {
-    map.addSource('northernTriangle', {
-          type: 'geojson',
-          data: norTriData
+      map.addSource("northernTriangle", {
+        type: "geojson",
+        data: norTriData,
       });
 
-    map.addSource('hondurasDrought', {
-          type: 'geojson',
-          data: hondurasDroughtData
+      map.addSource("hondurasDrought", {
+        type: "geojson",
+        data: hondurasDroughtData,
+      });
+
+      map.addSource("guatemala-regions", {
+        type: "geojson",
+        data: guatemalaRegions,
+      });
+
+      map.addSource("el-salvador-regions", {
+        type: "geojson",
+        data: elSalvadorRegions,
       });
 
       map.addLayer({
-          id: 'country-fills',
-          type: 'fill',
-          source: 'northernTriangle',
-          // filter: ['==', ['get', 'name'], 'Guatemala'],
-          layout: {},
-          paint: {
-          'fill-color': '#627BC1', 
-          'fill-opacity': 0
-          }
+        id: "country-fills",
+        type: "fill",
+        source: "northernTriangle",
+        // filter: ['==', ['get', 'name'], 'Guatemala'],
+        layout: {},
+        paint: {
+          "fill-color": "#627BC1",
+          "fill-opacity": 0,
+        },
       });
 
+      map.addLayer({
+        id: "country-borders",
+        type: "line",
+        source: "northernTriangle",
+        layout: {},
+        paint: {
+          "line-color": "#627BC1",
+          "line-width": 0,
+        },
+      });
 
       map.addLayer({
-          'id': 'country-borders',
-          'type': 'line',
-          'source': 'northernTriangle',
-          'layout': {},
-          'paint': {
-          'line-color': '#627BC1',
-          'line-width': 0
-          }
-        });
+        id: "honduras-temp-fills",
+        type: "fill",
+        source: "hondurasDrought",
+        layout: {},
 
+        paint: {
+          "fill-color": {
+            property: "temp_change",
+            stops: stops,
+          },
+          "fill-opacity": 0.5,
+        },
+      });
 
+      map.addLayer({
+        id: "guatemala-temp-fills",
+        type: "fill",
+        source: "guatemala-regions",
+        layout: {},
 
-        // color palette from: https://www.color-hex.com/color-palette/20901
-        const stops =  [[0, '#62a1db'],
-        [1.0, '#e7d87d'],
-        [1.5, '#dd9f40'],
-        [2.0, '#b4451f'],
-        [2.5, '#b01111']]
-  
-        map.addLayer({
-            id: 'temp-fills',
-            type: 'fill',
-            source: 'hondurasDrought',
-            layout: {},
+        paint: {
+          "fill-color": {
+            property: "temp_change",
+            stops: stops,
+          },
+          "fill-opacity": 0.5,
+        },
+      });
 
-            paint: {
-              'fill-color': {
-                property: 'temp_change',
-                stops: stops
-              },
-              "fill-opacity": 0.5
-            }
-                
-          });
+      map.addLayer({
+        id: "el-salvador-temp-fills",
+        type: "fill",
+        source: "el-salvador-regions",
+        layout: {},
+
+        paint: {
+          "fill-color": {
+            property: "temp_change",
+            stops: stops,
+          },
+          "fill-opacity": 0.5,
+        },
       });
     });
-  
+  });
+
   function updateBounds() {
     const bounds = map.getBounds();
     geoJsonToFit.features[0].geometry.coordinates = [
@@ -150,24 +354,49 @@
       bounds._sw.lat,
     ];
   }
-let isVisible = false;
+  let isVisible = false;
 
-$: if (index === 9) {
-  isVisible = true;
-} else {
-  isVisible = false;
-}
-
+  $: if (index === 9) {
+    isVisible = true;
+  } else {
+    isVisible = false;
+  }
 </script>
 
 <svelte:head>
   <link
     rel="stylesheet"
     href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css"
-  />  
+  />
 </svelte:head>
 
 <div class="map" class:visible={isVisible} bind:this={container} />
+
+{#if isVisible}
+  <div class="scale">
+    <p><strong style:font-size="30px">{scaleLabel}</strong></p>
+    <div>
+      <span class="legend-key" style:background-color={stops[0][1]} />
+      <span class="legend-label"> &lt;{stops[0][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[1][1]} />
+      <span class="legend-label"> {stops[0][0]}-{stops[1][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[2][1]} />
+      <span class="legend-label"> {stops[1][0]}-{stops[2][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[3][1]} />
+      <span class="legend-label"> {stops[2][0]}-{stops[3][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[4][1]} />
+      <span class="legend-label"> {stops[3][0]}+</span>
+    </div>
+  </div>
+{/if}
 
 <style>
   .map {
@@ -184,5 +413,49 @@ $: if (index === 9) {
     opacity: 1;
     visibility: visible;
   }
-</style>
 
+  .scale {
+    position: absolute;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
+    z-index: 1000;
+    bottom: -10px;
+    left: 30px;
+    width: 25vh;
+    height: 40vh;
+
+    /* background-color: rgb(255, 255, 255); */
+    opacity: 1;
+    /* outline-style: solid;
+    outline-width: 5px;
+    outline-color: rgb(0, 0, 0); */
+    transition: 1s all;
+  }
+
+  .scale div {
+    width: max(300px, 100%);
+    height: 50px;
+    margin: 5px;
+    opacity: 0.9;
+  }
+
+  .scale p {
+    font-family: "Space Mono", monospace;
+    width: max(300px, 100%);
+  }
+
+
+  .legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    opacity: 0.8;
+  }
+  
+  .legend-label {
+    font-size: 25px;
+    margin-top: 40px;
+    font-family: "Space Mono", monospace;
+  }
+</style>

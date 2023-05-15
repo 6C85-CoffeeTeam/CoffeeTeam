@@ -42,7 +42,7 @@
       map = new mapboxgl.Map({
         container,
         style: "mapbox://styles/mapbox/light-v11",
-        center: [-86.34342167629684,15.368649575406508],
+        center: [-85.0,15.368649575406508],
         zoom: zoomLevel,
         // minZoom: 6.2,
 		// maxZoom: 8,

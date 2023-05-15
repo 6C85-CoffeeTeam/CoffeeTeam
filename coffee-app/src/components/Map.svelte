@@ -5,6 +5,26 @@
   export let index;
   export let geoJsonToFit;
 
+  // indicate coffee production quantities and the color that
+  // they get - palette is from https://www.color-hex.com/color-palette/30023
+  const stops = [
+    [5, "#ffffff"],
+    [20, "#ece0d1"],
+    [80, "#dbc1ac"],
+    [320, "#967259"],
+    [1280, "#634832"],
+    [5120, "#38220f"],
+  ];
+
+  let hoverColor ="red";
+
+  let scaleLabel = "Thousands of 60kg bags";
+  let colorScale = d3
+    .scaleThreshold()
+    .domain([5, 20, 80, 320, 1280])
+    .range(["#ffffff", "#ece0d1", "#dbc1ac", "#967259", "#634832", "#38220f"]);
+  // let colorScale = d3.scaleSequential(d3.interpolateReds);
+  let domain = [0, 58211];
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoiZXVuaGFlMTU3MCIsImEiOiJjbGdsNGlzMGIwMGpqM3BtZXZ3MHRzZWM2In0.VyD5HQxUxjsF9gkC7Z5TgQ";
@@ -18,10 +38,10 @@
   let countriesData;
 
   d3.json(
-      "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/world.geojson"
-    ).then((data) => {
-      countriesData = data;
-    });
+    "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/world.geojson"
+  ).then((data) => {
+    countriesData = data;
+  });
 
   function updateZoomLevel() {
     const screenWidth = window.innerWidth;
@@ -37,9 +57,9 @@
     updateZoomLevel();
     map = new mapboxgl.Map({
       container,
-      projection: 'mercator',
+      projection: "mercator",
       style: "mapbox://styles/mapbox/light-v11",
-      center: [10,10],
+      center: [10, 10],
       zoom: zoomLevel,
       attributionControl: false, // removes attribution from the bottom of the map
     });
@@ -59,136 +79,124 @@
         map.setLayoutProperty(layerId, "visibility", "none");
       }
     }
- 
+
     let hoveredStateId = null;
 
     map.on("load", () => {
+      map.addSource("countries", {
+        type: "geojson",
+        data: countriesData,
+      });
 
-      map.addSource('countries', {
-            type: 'geojson',
-            data: countriesData
-        });
+      //     map.addLayer({
+      //     "id": 'counties',
+      //     "type": "fill",
+      //     "source": {
+      //         "type": "geojson",
+      //         "data": {
+      //             "type": "FeatureCollection",
+      //             "features": counties
+      //         }
+      //     },
+      //     "layout": {},
+      //     "paint": {
+      //         "fill-color": oc,
+      //         "fill-opacity": 0.8
+      //     }
+      // });
 
-      // indicate coffee production quantities and the color that
-      // they get - palette is from https://www.color-hex.com/color-palette/30023
-      const stops =  [[5, '#ffffff'],
-        [20, '#ece0d1'],
-        [80, '#dbc1ac'],
-        [320, '#967259'],
-        [1280, '#634832'],
-        [5120, '#38220f']]
-
-    //     map.addLayer({
-    //     "id": 'counties',
-    //     "type": "fill",
-    //     "source": {
-    //         "type": "geojson",
-    //         "data": {
-    //             "type": "FeatureCollection",
-    //             "features": counties
-    //         }
-    //     },
-    //     "layout": {},
-    //     "paint": {
-    //         "fill-color": oc,
-    //         "fill-opacity": 0.8
-    //     }
-    // });
-  
-        map.addLayer({
-            id: 'country-fills',
-            type: 'fill',
-            source: 'countries',
-            layout: {},
-
-            paint: {
-              'fill-color': {
-                property: 'coffee',
-                stops: stops
-              },
-              "fill-opacity": 0.6
-            }
-        
-        });
-
-        map.addLayer({
-            'id': 'country-borders',
-            'type': 'line',
-            'source': 'countries',
-            'layout': {},
-            'paint': {
-            'line-color': '#bcbcbc',
-            'line-width': 1
-            }
-          });
-      
-        // When the user moves their mouse over the country-fill layer, we'll update the
-        // feature state for the feature under the mouse.
-        map.on('mousemove', 'country-fills', (e) => {
-          if (e.features.length > 0) {
-            if (hoveredStateId !== null) {
-              map.setFeatureState(
-                { source: 'countries', id: hoveredStateId },
-                { hover: false }
-                );
-              }
-            hoveredStateId = e.features[0].id;
-              map.setFeatureState(
-                { source: 'countries', id: hoveredStateId },
-                { hover: true }
-            );
-          }
-        });
-        // When the mouse leaves the country-fill layer, update the feature state of the
-        // previously hovered feature.
-        map.on('mouseleave', 'country-fills', () => {
+      // When the user moves their mouse over the country-fill layer, we'll update the
+      // feature state for the feature under the mouse.
+      map.on("mousemove", "country-fills", (e) => {
+        if (e.features.length > 0) {
           if (hoveredStateId !== null) {
             map.setFeatureState(
-              { source: 'countries', id: hoveredStateId },
+              { source: "countries", id: hoveredStateId },
               { hover: false }
-              );
-            }
-          hoveredStateId = null;
-        }); 
-        hideLabelLayers();
-          updateBounds();
-          map.on("zoom", updateBounds);
-          map.on("drag", updateBounds);
-          map.on("move", updateBounds);
-        });
+            );
+          }
+          hoveredStateId = e.features[0].id;
+          map.setFeatureState(
+            { source: "countries", id: hoveredStateId },
+            { hover: true }
+          );
+        }
+      });
+      // When the mouse leaves the country-fill layer, update the feature state of the
+      // previously hovered feature.
+      map.on("mouseleave", "country-fills", () => {
+        if (hoveredStateId !== null) {
+          map.setFeatureState(
+            { source: "countries", id: hoveredStateId },
+            { hover: false }
+          );
+        }
+        hoveredStateId = null;
+      });
 
+      map.addLayer({
+        id: "country-fills",
+        type: "fill",
+        source: "countries",
+        layout: {},
 
-        // create legend
-        legend = document.getElementById('legend');
-        const item = document.createElement('div');
-        const key = document.createElement('span');
-        key.className = 'legend-key';
-        key.style.backgroundColor = '#ece0d1';
-        const value = document.createElement('span');
-          value.innerHTML = `${'awdawd'}`;
-          //value.innerHTML = stop[0];
-          item.appendChild(key);
-          item.appendChild(value);
-          legend.appendChild(item);
+        paint: {
+          "fill-color": {
+            property: "coffee",
+            stops: stops,
+          },
+          "fill-opacity": 0.6,
+        },
+      });
 
+      map.addLayer({
+        id: "country-borders",
+        type: "line",
+        source: "countries",
+        layout: {},
+        paint: {
+          "line-color": "#bcbcbc",
+          "line-width": 1,
+        },
+      });
 
-        // stops.forEach((stop, i) => {
-        //   const color = stop[1];
-        //   const item = document.createElement('div');
-        //   const key = document.createElement('span');
-        //   key.className = 'legend-key';
-        //   // key.style.backgroundColor = color;
-        //   key.style.backgroundColor = '#ece0d1';
+      hideLabelLayers();
+      updateBounds();
+      map.on("zoom", updateBounds);
+      map.on("drag", updateBounds);
+      map.on("move", updateBounds);
+    });
 
-        //   const value = document.createElement('span');
-        //   value.innerHTML = `${'awdawd'}`;
-        //   //value.innerHTML = stop[0];
-        //   item.appendChild(key);
-        //   item.appendChild(value);
-        //   legend.appendChild(item);
-        // });
+    // // create legend
+    // legend = document.getElementById("legend");
+    // const item = document.createElement("div");
+    // const key = document.createElement("span");
+    // key.className = "legend-key";
+    // key.style.backgroundColor = "#ece0d1";
+    // const value = document.createElement("span");
+    // value.innerHTML = `${"awdawd"}`;
+    // //value.innerHTML = stop[0];
+    // item.appendChild(key);
+    // item.appendChild(value);
+    // legend.appendChild(item);
+
+    // stops.forEach((stop, i) => {
+    //   const color = stop[1];
+    //   const item = document.createElement('div');
+    //   const key = document.createElement('span');
+    //   key.className = 'legend-key';
+    //   // key.style.backgroundColor = color;
+    //   key.style.backgroundColor = '#ece0d1';
+
+    //   const value = document.createElement('span');
+    //   value.innerHTML = `${'awdawd'}`;
+    //   //value.innerHTML = stop[0];
+    //   item.appendChild(key);
+    //   item.appendChild(value);
+    //   legend.appendChild(item);
+    // });
   });
-  
+
   function updateBounds() {
     const bounds = map.getBounds();
     geoJsonToFit.features[0].geometry.coordinates = [
@@ -201,14 +209,13 @@
     ];
   }
 
-let isVisible = false;
+  let isVisible = false;
 
-$: if (index === 1) {
-  isVisible = true;
-} else {
-  isVisible = false;
-}
-
+  $: if (index === 1) {
+    isVisible = true;
+  } else {
+    isVisible = false;
+  }
 </script>
 
 <svelte:head>
@@ -219,25 +226,76 @@ $: if (index === 1) {
 </svelte:head>
 
 <div id="map" class:visible={isVisible} bind:this={container} />
-<div class='map-overlay' id='legend' class:visible={isVisible} bind:this={container}/>
 
+<!-- {#if isVisible}
+  <div class="scale">
+    <p><strong style:font-size="25px">{scaleLabel}</strong></p>
+    <div
+      style:background-image="linear-gradient(to right, {colorScale(domain[0])}, {colorScale(
+        (domain[1] - domain[0]) * 0.25
+      )}, {colorScale((domain[1] - domain[0]) * 0.5)}, {colorScale(
+        (domain[1] - domain[0]) * 0.75
+      )}, {colorScale(domain[1])})"
+    />
+    <p style:font-size="25px">
+      <span style:float="left">{domain[0]}</span>
+      <span style:float="right">{domain[1]}</span>
+    </p>
+  </div>
+{/if} -->
 
+<!-- const stops = [
+    [5, "#ffffff"],
+    [20, "#ece0d1"],
+    [80, "#dbc1ac"],
+    [320, "#967259"],
+    [1280, "#634832"],
+    [5120, "#38220f"],
+  ]; -->
 
-<!-- <div class="legend" class:visible={isVisible} bind:this={container} /> -->
-<!-- <div class="legend" class:visible={isVisible} bind:this={container} /> -->
-<!-- <div class='map-overlay' id='legend' class:visible={isVisible} bind:this={container}></div> -->
+{#if isVisible}
+  <div class="scale">
+    <p><strong style:font-size="30px">{scaleLabel}</strong></p>
+    <div>
+      <span class="legend-key" style:background-color={stops[0][1]} />
+      <span class="legend-label"> &lt;{stops[0][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[1][1]} />
+      <span class="legend-label"> {stops[0][0]}-{stops[1][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[2][1]} />
+      <span class="legend-label"> {stops[1][0]}-{stops[2][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[3][1]} />
+      <span class="legend-label"> {stops[2][0]}-{stops[3][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[4][1]} />
+      <span class="legend-label"> {stops[3][0]}-{stops[4][0]}</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color={stops[5][1]} />
+      <span class="legend-label"> {stops[4][0]}+</span>
+    </div>
+  </div>
+{/if}
+
+<!-- <div
+      style:background-image="linear-gradient(to right, {colorScale(domain[0])}, {colorScale(
+        (domain[1] - domain[0]) * 0.25
+      )}, {colorScale((domain[1] - domain[0]) * 0.5)}, {colorScale(
+        (domain[1] - domain[0]) * 0.75
+      )}, {colorScale(domain[1])})"
+    />
+    <p style:font-size="25px">
+      <span style:float="left">{domain[0]}</span>
+      <span style:float="right">{domain[1]}</span>
+    </p> -->
+
 <style>
-  .map-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #fff;
-    margin-right: 0px;
-    font-family: Arial, sans-serif;
-    overflow: auto;
-    border-radius: 3px;
-  }
-
   #map {
     width: 100%;
     height: 100vh; /* check problem when setting width */
@@ -253,29 +311,65 @@ $: if (index === 1) {
     visibility: visible;
   }
 
-
-  #legend {
-  padding: 0px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  line-height: 18px;
-  height: 100vh;
-  margin-bottom: 0px;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 2s, visibility 2s;
-}
-
-#legend.visible {
+  .scale {
+    position: absolute;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
+    z-index: 1000;
+    bottom: 45px;
+    left: 30px;
+    width: 275px;
+    height: 53vh;
     opacity: 1;
-    visibility: visible;
+    /* outline-style: solid;
+    outline-width: 5px;
+    outline-color: rgb(0, 0, 0); */
+    transition: 1s all;
   }
 
-#legend-key {
-  display: inline-block;
-  border-radius: 20%;
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
-}
+  .scale div {
+    width: max(300px, 100%);
+    height: 50px;
+    margin: 5px;
+    opacity: 0.9;
+  }
+
+  .scale p {
+    font-family: "Space Mono", monospace;
+    width: max(300px, 100%);
+  }
+
+
+  .legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    opacity: 0.8;
+  }
+  
+  .legend-label {
+    font-size: 25px;
+    margin-top: 40px;
+    font-family: "Space Mono", monospace;
+  }
+
+  /* #legend {
+    padding: 0px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    height: 100vh;
+    margin-bottom: 0px;
+    width: 100%;
+    opacity: 0;
+    visibility: visible;
+    transition: opacity 2s, visibility 2s;
+  } */
+
+  /* #legend.visible {
+    opacity: 1;
+    visibility: visible;
+  } */
+
+
 </style>
