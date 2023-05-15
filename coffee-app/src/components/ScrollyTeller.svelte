@@ -332,11 +332,11 @@
       <!-- <h1>Migration from the Northern Triangle</h1> -->
       <div class="textbox">
         <h1>
-          Migration to US and World
+          Migration to the US v/s the World
         </h1>
         <div class="graph">
           <Button {index}/>
-          
+        <p>Hover over to learn more.</p>  
         </div>
         
       <!-- <iframe 
