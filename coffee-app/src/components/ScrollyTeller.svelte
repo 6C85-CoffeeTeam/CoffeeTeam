@@ -336,7 +336,7 @@
         </h1>
         <div class="graph">
           <Button {index}/>
-        <p>Hover over to learn more.</p>  
+        <p style:font-size="10px">Hover over to learn more</p>
         </div>
         
       <!-- <iframe 
