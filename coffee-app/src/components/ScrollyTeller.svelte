@@ -1,21 +1,23 @@
 <script>
-  import Scroller from "@sveltejs/svelte-scroller";
-  import Map from "./Map.svelte";
-  import Map1 from "./Map1.svelte";
-  import Map1_1 from "./Map1-1.svelte";
-  import Map1_1Coffee from "./Map1-1_coffee.svelte";
-  import Map1_1TempChange from "./Map1-1_temp_change.svelte";
-  import MapBelt from "./MapBelt.svelte";
-  // import MapMigration from "./MapMigration.svelte";
-  import Background from "./Background.svelte";
-  import Quiz from "./Quiz.svelte";
-  import { geoMercator } from "d3-geo";
-  // import Graph from "./Graph.svelte";
-  import { fade, fly } from "svelte/transition";
-  import ChartCoffee from "./Chart_coffee.svelte";
+    import Scroller from "@sveltejs/svelte-scroller";
+    import * as d3 from "d3";
+    import Map from "./Map.svelte";
+    import Map1 from "./Map1.svelte";
+    import Map1_1 from "./Map1-1.svelte";
+    import Map1_1Coffee from "./Map1-1_coffee.svelte";
+    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
+    import MapBelt from "./MapBelt.svelte";
+    // import MapMigration from "./MapMigration.svelte";
+    import Background from "./Background.svelte";
+    import Quiz from "./Quiz.svelte";
+    import { geoMercator } from "d3-geo";
+    // import Graph from "./Graph.svelte";
+    import { fade, fly } from 'svelte/transition';
+    import ChartCoffee from "./Chart_coffee.svelte";
+    import Quote from "./Quote.svelte";
 
-  let count, index, offset, progress;
-  let width, height;
+    let count, index, offset, progress;
+    let width, height;
 
     // let coffee_data = [];
     // CoffeeProduction.forEach((element) =>
@@ -145,7 +147,7 @@
       </div>
     </section> -->
 
-    <section class="chapterOne">
+    <section>
       <div class="textbox">
         Here's a map of the world. And these are the countries that produce
         coffee.
@@ -158,7 +160,7 @@
         Do you notice a pattern?
       </div>
     </section>
-    <section class="beanbelt">
+    <section>
       <div class="textbox">
         Coffee trees grow best in a region called <span class="emphasize"
           >"The Bean Belt"</span
@@ -181,10 +183,10 @@
       </div>
       <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
         Or, jump to next section
-      </button> -->
+      </button>
     </section>
 
-    <section class="farmerStory">
+    <section class="quote">
       <div class="textbox"> 
         <p>
           Warming climate may affect coffee in many ways, including reduced
@@ -300,15 +302,6 @@
         <p>Hurricanes in the past few years</p>
       </div>
     </section>
-    <section class="quote">
-      <div class="textbox">
-        <p>
-          "When coffee is not doing well, that's when you see big migrations
-          from Honduras, El Salvador, Guatemala, Nicaragua."
-        </p>
-        <em>– René León-Gómez, executive secretary of PROMECAFE</em>
-      </div>
-    </section>
     <section class="farmerStory">
       <div class="textbox">
         <h1>
@@ -321,30 +314,32 @@
         
       </div>
     </section>
+
+    <section class="quote">
+      <div class="textbox">
+        <Quote {index} />
+
+      </div>
+    </section>
+
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>
         Click the "play" button on the bottom to see how migration flow changes
         over the years.
         <br />
-        Hover outside the map to continue scrolling down.
-      </p>
-      <iframe
-        width="100%"
+        Hover outside the map to continue scrolling down.</p>
+      <!-- <iframe 
+        width="100%" 
         height="600"
         title="flowmap"
         src="https://flowmap.blue/1ODcincYj0MjnBWdE6v2FFHltR2JCNV6buBM3aQlLhc0?v=23.301426%2C-92.632810%2C4.43%2C0%2C0&a=1&as=1&b=1&bo=84&c=0&ca=0&cz=4&d=0&fe=1&lt=0&lfm=ALL&t=19900101T000000%2C19960101T000000&col=BuGn&f=19"
         frameborder="0"
         allowfullscreen
-      />
-      <br />
-    </section>
-
-    <section class="ending">
-      <p>Learned something new? Go out there and spill the beans!</p>
+        ></iframe>
+        <br /> -->
       <p>Click the bean to learn more.</p>
 
-      <button>
         <img
           class="bean"
           src="./images/coffeebean.png"
@@ -385,8 +380,7 @@
 
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Mono&display=swap');
 
   .background {
     width: 100%; /* to get rid of the weird margin */
@@ -416,8 +410,7 @@
     pointer-events: auto;
   }
 
-
-  /* .progress-bars {
+    /* .progress-bars {
     position: absolute;
     background: rgba(170, 51, 120, 0.2);
     visibility: visible;
@@ -445,6 +438,63 @@
     padding: 5em 3em;
     margin: 2em 1em; 
   }
+    .intro .textbox {
+      background-color: rgba(255, 255, 255, 0); 
+      padding: 2em 2em;
+      /* position: relative; */
+      top: 40%; /* vertically center */
+    }
+    .intro .latte {
+      margin: 0 0 0 50px;
+    }
+    .intro .latte:hover {
+      filter: drop-shadow(8px 8px 8px #848484);
+      text-align: center;
+      margin: 0 0 0 35px;
+    }
+    .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 2em 2em;
+      position: relative;
+      top: 40%; /* vertically center */
+      -ms-transform: translateY(-50%); /* vertically center */
+      transform: translateY(-50%); /* vertically center */
+      margin: 3em auto;
+    }
+
+    
+
+    .quote {
+      max-width: 80%; /* adjust at will */
+      padding: 3em;
+      margin: 0 auto;
+      font-family:'EB Garamond', serif;
+      font-size: 28px;
+    }
+
+    .quote .textbox {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 3em;
+      /* position: relative; */
+      top: 30%; /* vertically center */
+      text-align: center;
+    }
+    .coffeeQuiz {
+      max-width: 70%; /* adjust at will */
+      padding: 10em 0 0 0;
+      /* margin-left: 10px;
+      margin-right: 10px; */
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .farmerStory {
+      /* height: 120vh; */
+      max-width: 100%; /* adjust at will */
+      padding: 3em;
+      margin: 2em 1em; 
+      /* background-color: rgba(255, 255, 255, 0.65);  */
+    }
 
   .intro .textbox {
     background-color: rgba(255, 255, 255, 0); 

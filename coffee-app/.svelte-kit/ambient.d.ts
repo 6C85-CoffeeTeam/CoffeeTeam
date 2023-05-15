@@ -41,6 +41,8 @@ declare module '$env/static/private' {
 	export const CONDA_SHLVL: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const CONDA_PROMPT_MODIFIER: string;
+	export const MallocNanoZone: string;
+	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const COLOR: string;
 	export const TERM_SESSION_ID: string;
 	export const npm_config_noproxy: string;
@@ -57,7 +59,6 @@ declare module '$env/static/private' {
 	export const npm_package_json: string;
 	export const npm_config_engine_strict: string;
 	export const _: string;
-	export const LaunchInstanceID: string;
 	export const npm_config_userconfig: string;
 	export const npm_config_init_module: string;
 	export const __CFBundleIdentifier: string;
@@ -67,14 +68,15 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const EDITOR: string;
 	export const npm_package_name: string;
+	export const LOCAL_GIT_DIRECTORY: string;
 	export const LANG: string;
 	export const XPC_FLAGS: string;
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
 	export const _CE_M: string;
-	export const SHLVL: string;
 	export const HOME: string;
+	export const SHLVL: string;
 	export const HOMEBREW_PREFIX: string;
 	export const npm_config_cache: string;
 	export const LOGNAME: string;
@@ -84,7 +86,6 @@ declare module '$env/static/private' {
 	export const npm_config_user_agent: string;
 	export const HOMEBREW_CELLAR: string;
 	export const INFOPATH: string;
-	export const SECURITYSESSIONID: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
 	export const NODE_ENV: string;
@@ -132,6 +133,8 @@ declare module '$env/dynamic/private' {
 		CONDA_SHLVL: string;
 		TERM_PROGRAM_VERSION: string;
 		CONDA_PROMPT_MODIFIER: string;
+		MallocNanoZone: string;
+		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		COLOR: string;
 		TERM_SESSION_ID: string;
 		npm_config_noproxy: string;
@@ -148,7 +151,6 @@ declare module '$env/dynamic/private' {
 		npm_package_json: string;
 		npm_config_engine_strict: string;
 		_: string;
-		LaunchInstanceID: string;
 		npm_config_userconfig: string;
 		npm_config_init_module: string;
 		__CFBundleIdentifier: string;
@@ -158,14 +160,15 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		EDITOR: string;
 		npm_package_name: string;
+		LOCAL_GIT_DIRECTORY: string;
 		LANG: string;
 		XPC_FLAGS: string;
 		npm_config_node_gyp: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
 		_CE_M: string;
-		SHLVL: string;
 		HOME: string;
+		SHLVL: string;
 		HOMEBREW_PREFIX: string;
 		npm_config_cache: string;
 		LOGNAME: string;
@@ -175,7 +178,6 @@ declare module '$env/dynamic/private' {
 		npm_config_user_agent: string;
 		HOMEBREW_CELLAR: string;
 		INFOPATH: string;
-		SECURITYSESSIONID: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
 		NODE_ENV: string;

@@ -152,7 +152,7 @@
     }
     let isVisible = false;
   
-    $: if (index === 12) {
+    $: if (index === 11) {
         isVisible = true;
     } else {
         isVisible = false;
@@ -360,10 +360,8 @@
 
 <style>
     .visualization {
-        margin: 60px 160px;
-        margin-top: 1px;
+        margin: 0 160px;
         text-align: middle;
-        visibility: visible;
         /* opacity: 0; */
         /* transition: opacity 2s, visibility 2s; */ 
     }

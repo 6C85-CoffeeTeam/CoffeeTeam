@@ -169,7 +169,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 	.app {
 		position:relative;
-		top:0px;
+		top:40px;
 		left:0px;
 		width:70vw;
 		height:80vh;
