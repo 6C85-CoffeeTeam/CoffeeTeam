@@ -11,5 +11,7 @@
 </main>
 
 <style>
-
+    main {
+      pointer-events: none;
+    }
 </style>

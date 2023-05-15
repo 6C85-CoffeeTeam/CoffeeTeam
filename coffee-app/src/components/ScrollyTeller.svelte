@@ -1,5 +1,4 @@
 <script>
-<<<<<<< HEAD
   import Scroller from "@sveltejs/svelte-scroller";
   import Map from "./Map.svelte";
   import Map1 from "./Map1.svelte";
@@ -13,29 +12,10 @@
   import { geoMercator } from "d3-geo";
   // import Graph from "./Graph.svelte";
   import { fade, fly } from "svelte/transition";
+  import ChartCoffee from "./Chart_coffee.svelte";
 
   let count, index, offset, progress;
   let width, height;
-
-  let foregroundClicked = width;
-  let backgroundClicked = height;
-=======
-    import Scroller from "@sveltejs/svelte-scroller";
-    import * as d3 from "d3";
-    import Map from "./Map.svelte";
-    import Map1 from "./Map1.svelte";
-    import Map1_1 from "./Map1-1.svelte";
-    import Map1_1Coffee from "./Map1-1_coffee.svelte";
-    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
-    import MapBelt from "./MapBelt.svelte";
-    // import MapMigration from "./MapMigration.svelte";
-    import Background from "./Background.svelte";
-    import Quiz from "./Quiz.svelte";
-    import { geoMercator } from "d3-geo";
-    // import Graph from "./Graph.svelte";
-    import { fade, fly } from 'svelte/transition';
-    import ChartCoffee from "./Chart_coffee.svelte";
->>>>>>> 39fe81bb478393796ce205ef7508a523245816ab
 
     // let coffee_data = [];
     // CoffeeProduction.forEach((element) =>
@@ -73,22 +53,11 @@
     ],
   };
 
-  // width = 1;
-  // height = 1;  
-
   $: projection = geoMercator().fitSize([width, height], geoJsonToFit);
 
   function scrollToNextPage() {
     const nextPagePosition = window.innerHeight + window.pageYOffset;
     window.scrollTo({ top: nextPagePosition, behavior: "smooth" });
-  }
-
-  function handleForegroundClick() {
-    foregroundClicked = "FOREGROUND CLICKED!";
-  }
-
-  function handleBackgroundClick() {
-    backgroundClicked = "BACKGROUND CLICKED!";
   }
 </script>
 
@@ -106,8 +75,6 @@
     slot="background"
     bind:clientWidth={width}
     bind:clientHeight={height}
-
-    on:click={handleBackgroundClick}
   >
   <!-- on:click={handleClick} -->
 
@@ -141,7 +108,7 @@
       </div> -->
   </div>
 
-  <div class="foreground" slot="foreground" on:click={handleForegroundClick} >
+  <div class="foreground" slot="foreground">
     <section class="intro" >
       <div class="textbox">
         <h1>Hi there, how's the coffee? </h1>
@@ -181,7 +148,7 @@
     <section class="chapterOne">
       <div class="textbox">
         Here's a map of the world. And these are the countries that produce
-        coffee. {foregroundClicked} {backgroundClicked}
+        coffee.
         <br />
         <br />
         Hover over each country to see how much coffee they produce.
@@ -428,25 +395,25 @@
     top: 0px; 
     left: -8px; /* to get rid of the weird margin */
     /* pointer-events: fill; */
-    pointer-events: all;
-    z-index: 2;
+    /* pointer-events: all;
+    z-index: 2; */
   }
 
   .foreground {
-    width: 100vw;
-    z-index: 1;
+    width: 95%;
+    /* z-index: 1; */
     margin: 0 auto;
     height: auto;
     position: relative;
-    pointer-events: none;
+    /* pointer-events: none; */
   }
     
   [slot="background"] {
-  pointer-events: all;
+    pointer-events: all;
   }
 
   [slot="foreground"] {
-  pointer-events: none;
+    pointer-events: auto;
   }
 
 
@@ -535,6 +502,7 @@
       max-width: 750px; /* adjust at will */
       padding: 10em 0 0 0;
       margin: 10em auto;
+    }
 
   .quote .textbox {
     background-color: rgba(255, 255, 255, 0.8); 
