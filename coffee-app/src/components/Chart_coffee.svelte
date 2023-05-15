@@ -2,8 +2,9 @@
     // imports
     import * as d3 from "d3";
     import {scaleLinear} from "d3-scale";
-    import { CoffeeProduction } from "../data/coffeeproduction";
     import { scaleOrdinal } from 'd3';
+    import { CoffeeProduction } from "../data/coffeeproduction";
+    import { NaturalDisasters } from "../data/natural_disasters";
 
     export let index;
 
@@ -19,6 +20,8 @@
             index: element["Year"],
             size: element["Production"],
             country: element["Country"],
+            event: element["Event"],
+            impact: element["Impact"],
         })
     );
 
@@ -135,6 +138,7 @@
             ];
         return data.filter((d) => xScale(d.index) >= value)[0].index - 1;
     }
+    
     function getDifference(lineData, currentIndex) {
         let currentData = lineData.find(d => d.index === currentIndex);
         let prevData = lineData.find(d => d.index === currentIndex - 1);
@@ -148,7 +152,8 @@
             return `<span style="color: red; font-size: 14px">↓ ${-diff}</span>`;
         } else {
             return '';
-        }
+        } 
+
     }
     let isVisible = false;
   
@@ -187,6 +192,13 @@
         on:mouseleave={removePointer}
         id={idContainer}
     >
+    <rect
+        x={xScale(2012)}
+        y={paddings.top}
+        width={xScale(2015) - xScale(2012)}
+        height={chartHeight - paddings.bottom - paddings.top}
+        fill="rgba(128, 128, 128, 0.2)"
+    />
         <g>
             <line
                 x1={paddings.left}
@@ -330,6 +342,7 @@
     <!-- <div
     style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y + 10}px"
     > -->
+
     <div class="tooltip">
         {#if mousePosition.x !== null}
             The number of 60kg bags of coffee produced in {computeSelectedXValue(mousePosition.x)}:
@@ -341,6 +354,21 @@
             {/each}
         {/if}
     </div>
+    <!-- <div class="tooltip">
+        {#if mousePosition.x !== null}
+            The number of 60kg bags of coffee produced in {computeSelectedXValue(mousePosition.x).index}:
+            {#each lines as lineData, i (lineData[0].country)}
+                {#if lineData.find(d => d.index === computeSelectedXValue(mousePosition.x).index)}
+                    <br>{lineData[0].country}: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x).index).size}
+                    <br>Event: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x).index).event}
+                    <br>Impact: {lineData.find(d => d.index === computeSelectedXValue(mousePosition.x).index).impact}
+                    {@html getDifference(lineData, computeSelectedXValue(mousePosition.x).index)}
+                {/if}
+            {/each}
+        {/if}
+    </div> -->
+
+
     <!-- <div
         style="left: {pageMousePosition.x + 10}px; top: {pageMousePosition.y +
             10}px"
