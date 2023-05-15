@@ -66,8 +66,7 @@
 
     <!-- <Background {index} /> -->
 
-    <!-- <Map bind:geoJsonToFit {index} hover {hovered} on:hover={doHover}/> -->
-    <Map bind:geoJsonToFit {index}/>
+    <!-- <Map bind:geoJsonToFit {index}/> -->
 
     <MapBelt bind:geoJsonToFit {index} />
 
@@ -130,7 +129,7 @@
       </div>
     </section> -->
 
-    <section>
+    <section class="worldmap">
       <div class="textbox">
         Here's a map of the world. And these are the countries that produce
         coffee.
@@ -141,6 +140,9 @@
         <br />
         <br />
         Do you notice a pattern?
+      </div>
+      <div class="map">
+        <Map bind:geoJsonToFit {index}/>
       </div>
     </section>
     <section>
@@ -377,7 +379,7 @@
   }
 
   .foreground {
-    width: 95%;
+    width: 100%;
     /* z-index: 1; */
     margin: 0 auto;
     height: auto;
@@ -402,12 +404,12 @@
   section {
     height: 100vh;
     background-color: rgba(255, 255, 255, 0); 
-    max-width: 33%; /* adjust at will */
+    max-width: 100%; /* adjust at will */
     color: black;
     padding: 1em;
     /* margin: 1em 0 2em 45em; */
-    margin-left: auto;
-    margin-right: 0px;
+    /* margin-left: auto;
+    margin-right: 0px; */
     text-align: center;
     font-family: 'Space Mono', monospace;
     font-size: 18px;
@@ -445,7 +447,23 @@
       margin: 3em auto;
     }
 
-    
+    .worldmap {
+      height: 150vh;
+      max-width: 100%; 
+      padding: 3em;
+      margin: 0 auto;
+    }
+
+    .worldmap .map {
+      z-index: 0;
+    }
+    .worldmap .textbox {
+      top: 20em;
+      margin: 0 auto;
+      width: 500px;
+      background-color: rgba(255, 255, 255, 0.8); 
+      z-index: 1;
+    }
 
     .quote {
       max-width: 80%; /* adjust at will */

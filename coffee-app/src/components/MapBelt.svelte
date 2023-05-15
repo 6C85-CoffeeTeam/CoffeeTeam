@@ -60,11 +60,7 @@
       style: "mapbox://styles/mapbox/light-v11",
       center: [10,10],
       zoom: zoomLevel,
-      attributionControl: false, // removes attribution from the bottom of the map
-      // 'transition': {
-      //         'duration': 5000, // Duration in milliseconds
-      //         'delay': 1000, // Delay in milliseconds
-      //       }
+      attributionControl: false // removes attribution from the bottom of the map
     });
   
       window.addEventListener("resize", handleResize);
