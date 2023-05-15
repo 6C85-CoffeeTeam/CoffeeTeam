@@ -14,6 +14,7 @@
     // import Graph from "./Graph.svelte";
     import { fade, fly } from 'svelte/transition';
     import ChartCoffee from "./Chart_coffee.svelte";
+    import Quote from "./Quote.svelte";
 
     // let coffee_data = [];
     // CoffeeProduction.forEach((element) =>
@@ -140,7 +141,7 @@
       </div>
     </section> -->
 
-    <section class="chapterOne">
+    <section>
       <div class="textbox">
         Here’s a map of the world. And these are the countries that produce coffee.
         <br />
@@ -152,7 +153,7 @@
         Do you notice a pattern?
       </div>
     </section>
-    <section class="beanbelt">
+    <section>
       <div class="textbox">
         Coffee trees grow best in a region called <span class="emphasize">"The Bean Belt"</span> which is located near the Equator, between latitudes 23.5 degrees North and 23.5 degrees South. 
         <br />
@@ -167,12 +168,12 @@
       <div>
         <Quiz />
       </div>       
-      <!-- <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
+      <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
         Or, jump to next section
-      </button> -->
+      </button>
     </section>
 
-    <section class="farmerStory">
+    <section class="quote">
       <div class="textbox"> 
         <p>
           Warming climate may affect coffee in many ways, including reduced growing area, increased pests, and loss of quality.
@@ -257,15 +258,7 @@
       </div>
 
     </section>
-    <section class="quote">
-      <div class="textbox">
-        <p>
-          "When coffee is not doing well, that's when you see big migrations from Honduras, El Salvador, Guatemala, Nicaragua."
-        </p>
-        <em>– René León-Gómez, executive secretary of PROMECAFE</em>
 
-      </div>
-    </section>
     <section class="farmerStory">
       <div class="textbox">
         <h1>
@@ -278,12 +271,20 @@
         
       </div>
     </section>
+
+    <section class="quote">
+      <div class="textbox">
+        <Quote {index} />
+
+      </div>
+    </section>
+
     <section class="flowmap">
       <h1>Migration from the Northern Triangle</h1>
       <p>Click the "play" button on the bottom to see how migration flow changes over the years.
         <br />
         Hover outside the map to continue scrolling down.</p>
-      <iframe 
+      <!-- <iframe 
         width="100%" 
         height="600"
         title = "flowmap" 
@@ -291,7 +292,7 @@
         frameborder="0" 
         allowfullscreen
         ></iframe>
-        <br />
+        <br /> -->
     </section>
     
     <section class="ending">
@@ -333,8 +334,7 @@
 </Scroller>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Mono&display=swap');
 
     .background {
       width: 105%; /* to get rid of the weird margin */
@@ -399,7 +399,7 @@
       background-color: rgba(255, 255, 255, 0.8); 
       padding: 2em 2em;
       position: relative;
-      top: 50%; /* vertically center */
+      top: 40%; /* vertically center */
       -ms-transform: translateY(-50%); /* vertically center */
       transform: translateY(-50%); /* vertically center */
       margin: 3em auto;
@@ -413,23 +413,23 @@
     }
 
     .quote {
-      height: 70vh;
       max-width: 80%; /* adjust at will */
-      padding: 5em 3em;
+      padding: 3em;
       margin: 0 auto;
+      font-family:'EB Garamond', serif;
+      font-size: 28px;
     }
 
     .quote .textbox {
       background-color: rgba(255, 255, 255, 0.8); 
       padding: 3em;
       /* position: relative; */
-      top: 50%; /* vertically center */
+      top: 30%; /* vertically center */
       text-align: center;
     }
     .coffeeQuiz {
-      height: 100vh;
       max-width: 70%; /* adjust at will */
-      padding: 0em;
+      padding: 10em 0 0 0;
       /* margin-left: 10px;
       margin-right: 10px; */
       margin: 0 auto;
@@ -437,7 +437,7 @@
     }
 
     .farmerStory {
-      height: 120vh;
+      /* height: 120vh; */
       max-width: 100%; /* adjust at will */
       padding: 3em;
       margin: 2em 1em; 

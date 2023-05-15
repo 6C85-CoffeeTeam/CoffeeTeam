@@ -152,28 +152,28 @@
     }
     let isVisible = false;
   
-    $: if (index === 12) {
+    $: if (index === 11) {
         isVisible = true;
     } else {
         isVisible = false;
     }
     
-    let observer = new IntersectionObserver((entries, observer) => { 
-        entries.forEach(entry => {
-            // If the element is in the viewport
-            if(entry.isIntersecting){
-                entry.target.classList.add('visible'); // Add the 'visible' class to the element
-            }
-        });
-    });
+    // let observer = new IntersectionObserver((entries, observer) => { 
+    //     entries.forEach(entry => {
+    //         // If the element is in the viewport
+    //         if(entry.isIntersecting){
+    //             entry.target.classList.add('visible'); // Add the 'visible' class to the element
+    //         }
+    //     });
+    // });
 
-    // Get all the '.visualization' elements
-    let elements = document.querySelectorAll('.visualization');
+    // // Get all the '.visualization' elements
+    // let elements = document.querySelectorAll('.visualization');
 
-    // Observe each '.visualization' element
-    elements.forEach(element => {
-        observer.observe(element);
-    });
+    // // Observe each '.visualization' element
+    // elements.forEach(element => {
+    //     observer.observe(element);
+    // });
     
 </script>
 
@@ -360,10 +360,8 @@
 
 <style>
     .visualization {
-        margin: 60px 160px;
-        margin-top: 1px;
+        margin: 0 160px;
         text-align: middle;
-        visibility: visible;
         /* opacity: 0; */
         /* transition: opacity 2s, visibility 2s; */ 
     }
