@@ -188,9 +188,7 @@
     <section class="chapterTwo">
       <div class="textbox">
         <p>
-          Let's zoom into a region named the <span class="emphasize"
-            >Northern Triangle</span
-          >, which includes Guatemala, Honduras, and El Salvador.
+          Let's zoom into a region named the <span class="emphasize">Northern Triangle</span>, which includes Guatemala, Honduras, and El Salvador.
         </p>
         <p>
           <span class="emphasize">1.3 million</span> people in this region grow
@@ -226,7 +224,12 @@
         <p>
           This affected over <span class="emphasize">55%</span> of the region's
           coffee farms and left around <span class="emphasize">350,000</span> people
-          jobless.
+          jobless <a
+          class="source"
+          href="https://www.climate.gov/news-features/climate-and/climate-coffee"
+          target="_blank"
+          rel="noopener noreferrer">[3]</a
+        >.
         </p>
       </div>
     </section>
@@ -293,6 +296,9 @@
         <h1>
           Coffee production in Northern Triangle
         </h1>
+        <p>Between 2012-2015, the coffee rust affected over <span class="emphasize">55%</span> of the region's
+          coffee farms <br /> and left around <span class="emphasize">350,000</span> people
+          jobless.</p>
         <div class="graph">
           <ChartCoffee {index}/>
           
@@ -332,7 +338,7 @@
           <Button {index}/>
           
         </div>
-
+        
       <!-- <iframe 
         width="100%" 
         height="600"
@@ -342,6 +348,9 @@
         allowfullscreen
         ></iframe>
         <br /> -->
+
+    </section>
+    <section class="ending">
       <p>Click the bean to learn more.</p>
         <button>
         <img
@@ -365,16 +374,44 @@
         World Food Programme <br />
         GADM.org
       </p>
+      <em>Other</em>
       <p>
-        <em>Other Sources</em>
-        Images: Vecteezy
+        Image source: Vecteezy
       </p>
+      <!-- <p>
+      <a
+        class="source"
+        href="https://www.ipcc.ch/site/assets/uploads/2018/02/WGIIAR5-Chap27_FINAL.pdf"
+        target="_blank"
+        rel="noopener noreferrer">[1]</a
+      >,
+      <a
+        class="source"
+        href="https://crsreports.congress.gov/product/pdf/IF/IF11151/7"
+        target="_blank"
+        rel="noopener noreferrer">[2]</a
+      >,
+      <a
+          class="source"
+          href="https://www.climate.gov/news-features/climate-and/climate-coffee"
+          target="_blank"
+          rel="noopener noreferrer">[3]</a
+        >
+        
+      </p> -->
 
       <p class="credit">
         This data visualization was made with data contributed by the United
         Nations World Food Programme.
         <br />
-        Copyright © All rights reserved by the creators
+        <br />
+        Copyright © All rights reserved by the creators (Eunhae Lee, Austin Stromme, Nishtha Sardana, Muqing Bai)
+        <a
+          class="credit"
+          href="https://github.com/6C85-CoffeeTeam/CoffeeTeam"
+          target="_blank"
+          rel="noopener noreferrer">Github Source</a
+        >
         <br />
         <br />
       </p>
@@ -562,18 +599,6 @@
     .graph {
       margin: 0 auto;
     }
-    .flowmap {
-      height: 80vh;
-      max-width: 900px; /* adjust at will */
-      padding: 0;
-      margin: 0 auto;
-    }
-    .ending {
-      height: 80vh;
-      max-width: 750px; /* adjust at will */
-      padding: 10em 0 0 0;
-      margin: 10em auto;
-    }
 
   .quote .textbox {
     background-color: rgba(255, 255, 255, 0.8); 
@@ -624,12 +649,6 @@
     background-color: rgba(255, 255, 255, 0.8); 
     padding: 6em;
   }
-  .flowmap {
-    height: 80vh;
-    max-width: 900px; /* adjust at will */
-    padding: 0;
-    margin: 0 auto;
-  }
   
   p {
     text-align: center;
@@ -665,15 +684,13 @@
   h1 {
     margin: 8px 0 20px 0;
   }
-
+  .flowmap,
   .ending {
-    height: 80vh;
-
-    max-width: 750px; /* adjust at will */
-    padding: 10em 0 0 0;
-    margin: 10em auto;
-
-  }
+      height: 80vh;
+      max-width: 900px; /* adjust at will */
+      padding: 0;
+      margin: 0 auto;
+    }
   .source {
     font-size: 14px;
   }

@@ -1,4 +1,4 @@
-export let naturalDisasters =[
+export let NaturalDisasters =[
     {
       "Country": "Honduras",
       "Year": 2020,
