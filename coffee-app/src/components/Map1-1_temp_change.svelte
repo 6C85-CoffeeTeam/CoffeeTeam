@@ -17,7 +17,7 @@
 
   let zoomLevel;
 
-  let scaleLabel="Change in temperature between 2010 and 2020"
+  let scaleLabel="Change in temperature (°C) between 2010 and 2020"
   let stops;
 
   // color palette from: https://www.color-hex.com/color-palette/20901
