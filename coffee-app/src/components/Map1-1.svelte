@@ -180,6 +180,31 @@ $: if (index === 10 ) {
 
 <div class="map" class:visible={isVisible} bind:this={container} />
 
+<!-- risk, colors:
+  low, #A59555
+  medium, #DD9d12
+  high, 
+ -->
+
+{#if isVisible}
+  <div class="scale" class:visible={isVisible}>
+    <p><strong style:font-size="18px"> Drought risk</strong></p>
+    <div>
+      <span class="legend-key" style:background-color="#A59555" />
+      <span class="legend-label">Low</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color="#DD9d12" />
+      <span class="legend-label"> Moderate</span>
+    </div>
+    <div>
+      <span class="legend-key" style:background-color="#E12D02" />
+      <span class="legend-label"> High</span>
+    </div>
+  </div>
+{/if}
+
+
 <style>
   .map {
     width: 100%;
@@ -195,5 +220,48 @@ $: if (index === 10 ) {
     opacity: 1;
     visibility: visible;
   }
+
+  .scale {
+    position: absolute;
+    z-index: 1000;
+    bottom: -30px;
+    left: 30px;
+    width: 275px;
+    height: 42vh;
+    opacity: 1;
+    visibility: hidden;
+    text-align: left;
+  }
+  .scale.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 10s, visibility 10s;
+  }
+
+  .scale div {
+    width: max(300px, 100%);
+    height: 35px;
+    margin: 10px;
+    opacity: 1;
+  }
+  .scale p {
+    font-family: "Space Mono", monospace;
+    width: max(300px, 100%);
+  }
+  .legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 35px;
+    height: 35px;
+    margin-left: 0px;
+    opacity: 1;
+  }
+  .legend-label {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 10px;
+    font-family: "Space Mono", monospace;
+  }
+
 </style>
 
