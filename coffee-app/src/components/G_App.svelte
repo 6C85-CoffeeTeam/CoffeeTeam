@@ -5,13 +5,13 @@
 	import { json } from '@sveltejs/kit';
   import Button from "./buttons.svelte"
 
-  const marginTop = 40; // the top margin, in pixels
+  const marginTop = 60; // the top margin, in pixels
   const marginRight = 10; // the right margin, in pixels
   const marginBottom = 30; // the bottom margin, in pixels
   const marginLeft = 50; // the left margin, in pixels
   const inset = 0; // inset the default range, in pixels
-  const width = 600; // the outer width of the chart, in pixels
-  const height = 350; // the outer height of the chart, in pixels
+  const width = 700; // the outer width of the chart, in pixels
+  const height = 450; // the outer height of the chart, in pixels
   const xLabel = ''; // a label for the y-axis
   const yLabel = '↑ Population (in 10,000)'; // a label for the y-axis
   const xFormat = ''; // a format specifier string for the y-axis
@@ -152,7 +152,7 @@
           <text text-align="right"x="-{marginLeft}" y="5">{tick + yFormat}</text>
         </g>
       {/each}
-      <text x="-{marginLeft}" y={marginTop - 10}>{yLabel}</text>
+      <text x="-{marginLeft}" y={marginTop - 30}>{yLabel}</text>
     </g>
     <!-- X-axis and vertical grid lines -->
     <g class="x-axis" transform="translate(0,{height - marginBottom - insetBottom})" pointer-events='none'>
@@ -163,7 +163,7 @@
           {#if verticalGrid}
             <line class="tick-grid" y2={-height} />
           {/if}
-          <text font-size='8px' x={-marginLeft/4} y="20">{xTicksFormatted[i] + xFormat}</text>
+          <text font-size='18px' x={-marginLeft/4} y="30">{xTicksFormatted[i] + xFormat}</text>
         </g>
       {/each}
       <text x={width - marginLeft - marginRight - 40} y={marginBottom}>{xLabel}</text>
@@ -193,7 +193,7 @@
   .chart-container {
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 8
     0px;
   }

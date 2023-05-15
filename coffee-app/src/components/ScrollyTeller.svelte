@@ -43,7 +43,8 @@
   $: projection = geoMercator().fitSize([width, height], geoJsonToFit);
 
   function scrollToNextPage() {
-    const nextPagePosition = window.innerHeight + window.pageYOffset;
+    const additionalYOffset = 350;
+    const nextPagePosition = window.innerHeight + window.pageYOffset + additionalYOffset;
     window.scrollTo({ top: nextPagePosition, behavior: "smooth" });
   }
 </script>
@@ -132,19 +133,22 @@
 
     <section class="worldmap">
       <div class="textbox">
-        Here's a map of the world. And these are the countries that produce
-        coffee.
-        <br />
-        <br />
-        Hover over each country to see how much coffee they produce.
-
-        <br />
-        <br />
-        Do you notice a pattern?
+        <p>
+          Here's a map of the world, and the countries that produce coffee.
+        </p>
+        <p>
+          Hover over each country to see how much coffee they produced in 2020.
+          Do you notice a pattern?
+        </p>
+        
+        <button class="nextPageButtonText" on:click={scrollToNextPage} style:font-size="14px">
+          Jump to next section
+        </button>
       </div>
       <div class="map">
         <Map bind:geoJsonToFit {index}/>
       </div>
+
     </section>
     <section class="worldmap">
       <div class="textbox">
@@ -168,7 +172,7 @@
         <Quiz />
       </div>
       <button class="nextPageButtonText" on:click={scrollToNextPage} transition:fade>
-        Or, jump to next section
+        Jump to next section
       </button>
     </section>
 
@@ -236,11 +240,12 @@
 
     <section class="farmerStory">
       <div class="container">
-        <div>
-          <img class="farmerimage" src="./images/farmer.png" alt="farmer" />
-        </div>
+
         <div class="farmertext-title">
           Meet Juan, <br />a smallholder coffee farmer in Honduras.
+        </div>
+        <div>
+          <img class="farmerimage" src="./images/farmer.png" alt="farmer" />
         </div>
       </div>
     </section>
@@ -259,7 +264,7 @@
         </p>
         <img
           class="farmerimage"
-          src="./images/farmer.png"
+          src="./images/farmer2.png"
           alt="farmer"
           width="300"
         />
@@ -268,41 +273,44 @@
 
     <section class="chapterThree">
       <div class="textbox">
-        <h1>Climate change in Northern Triangle</h1>
-        <p>Change in average temperature between 2010 and 2020</p>
-
+        <h1>Climate change in the Northern Triangle</h1>
         <p>
-          We have seen temperatures rise above 25 degrees during the day, which
+          <em>
+            "We have seen temperatures rise above 25 degrees during the day, which
           has caused the coffee plants to grow slowly, decreasing yield and
-          quality.
+          quality."
+          </em>
         </p>
-        <img
+        <!-- <img
           class="farmerimage"
           src="./images/farmer.png"
           alt="farmer"
           width="300"
-        />
+        /> -->
       </div>
     </section>
     <section class="chapterThree">
       <div class="textbox">
         <h1>Natural disasters in the Northern Triangle</h1>
-        <p>Mapping the drought risk in Honduras</p>
-        <p>Hurricanes in the past few years</p>
+        <p>
+          <em>"We experienced extreme droughts in 2014 and 2018. Also, the hurricane in 2020 wiped out most of our coffee plants."</em>
+        </p>
+        <p style:font-size="14px">Heatmap description: Mapping the drought risk in Honduras. The warmer the color, the higher the drought risk.</p>
       </div>
     </section>
     <section class="farmerStory">
       <div class="textbox">
         <h1>
-          Coffee production in Northern Triangle
+          Coffee production in the Northern Triangle
         </h1>
         <p>Between 2012-2015, the coffee rust affected over <span class="emphasize">55%</span> of the region's
           coffee farms <br /> and left around <span class="emphasize">350,000</span> people
           jobless.</p>
-        <div class="graph">
-          <ChartCoffee {index}/>
-          
-        </div>
+        <p style:font-size="14px">Hover over the graph to learn more</p>
+      <div class="graph">
+        <ChartCoffee {index}/>
+        
+      </div>
         
       </div>
     </section>
@@ -314,29 +322,15 @@
       </div>
     </section>
 
-    <!-- <section>
-      <div class="textbox">
-        <h1>
-          Migration to US and World
-        </h1>
-        <div class="graph">
-          <Button {index}/>
-          
-        </div>
-        
-      </div>
-    </section> -->
-
-
     <section class="flowmap">
       <!-- <h1>Migration from the Northern Triangle</h1> -->
       <div class="textbox">
         <h1>
-          Migration to the US v/s the World
+          Migration from the Northern Triangle to the US vs the World
         </h1>
+        <p style:font-size="14px">Hover over the graph to learn more</p>
         <div class="graph">
           <Button {index}/>
-        <p style:font-size="10px">Hover over to learn more</p>
         </div>
         
       <!-- <iframe 
@@ -351,7 +345,8 @@
 
     </section>
     <section class="ending">
-      <p>Click the bean to learn more.</p>
+      <h1>Want to learn more?</h1>
+      <p>Click the bean to find out.</p>
         <button>
         <img
           class="bean"
@@ -515,9 +510,9 @@
       margin-left: 0;
     }
     .worldmap .textbox {
-      top: 25em;
+      top: 30em;
       margin: 0 auto;
-      width: 500px;
+      width: 450px;
       background-color: rgba(255, 255, 255, 0.8); 
       z-index: 1;
     }
@@ -546,14 +541,6 @@
       position: relative;
     }
 
-    .farmerStory {
-      /* height: 120vh; */
-      max-width: 100%; /* adjust at will */
-      padding: 3em;
-      margin: 2em 1em; 
-      /* background-color: rgba(255, 255, 255, 0.65);  */
-    }
-
   .intro .textbox {
     background-color: rgba(255, 255, 255, 0); 
     padding: 2em 2em;
@@ -568,32 +555,44 @@
     text-align: center;
     margin: 0 0 0 35px;
   }
-  .textbox {
-    background-color: rgba(255, 255, 255, 0.8); 
-    padding: 2em 2em;
-    position: relative;
-    top: 50%; /* vertically center */
-    -ms-transform: translateY(-50%); /* vertically center */
-    transform: translateY(-50%); /* vertically center */
-    margin: 3em auto;
-  }
 
+  .farmerStory {
+      height: 120vh;
+      max-width: 90%; /* adjust at will */
+      padding: 3em;
+      margin: 2em; 
+      /* background-color: rgba(255, 255, 255, 0.65);  */
+    }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3em 0;
+  }
     .farmerimage {
-      max-width: 70%;
-      max-height: 70%;
+      max-width: 65%;
+      max-height: 65%;
     }
     .farmertext-title {
-      font-size: 28px;
-      padding-left: 20px;
+      font-size: 34px;
+      margin: 0 2em;
+      padding: 1em;
       font-style: italic;
-      font-family: 'Space Mono', monospace;
+      font-family: 'EB Garamond', serif;
+      /* font-weight: bolder; */
+
     }
     .farmertext-body {
+      width: 80%;
       font-size: 18px;
       font-style: italic;
       font-family: 'Space Mono', monospace;
       background-color: rgba(255, 255, 255, 0.8); 
-      padding: 6em;
+      padding: 4em;
+      margin: 0 auto;
     }
 
     .graph {
@@ -616,39 +615,6 @@
     margin: 0 auto;
     position: relative;
   }
-
-  .farmerStory {
-    height: 120vh;
-    max-width: 100%; /* adjust at will */
-    padding: 3em;
-    margin: 2em 1em; 
-    /* background-color: rgba(255, 255, 255, 0.65);  */
-  }
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Mono', monospace;
-  }
-
-  .farmerimage {
-    max-width: 70%;
-    max-height: 70%;
-  }
-  .farmertext-title {
-    font-size: 28px;
-    padding-left: 20px;
-    font-style: italic;
-    font-family: 'Space Mono', monospace;
-  }
-  .farmertext-body {
-    font-size: 18px;
-    font-style: italic;
-    font-family: 'Space Mono', monospace;
-    background-color: rgba(255, 255, 255, 0.8); 
-    padding: 6em;
-  }
   
   p {
     text-align: center;
@@ -656,7 +622,7 @@
 
   .emphasize {
     font-size: 23px;
-    color: #b43223;
+    color: #c0491d;
     font-weight:800;
   }
 
@@ -680,14 +646,14 @@
     display:block;
     font-family: 'Space Mono', monospace;
     font-size: 16px;
+    z-index: 2;
   }
   h1 {
     margin: 8px 0 20px 0;
   }
   .flowmap,
   .ending {
-      height: 80vh;
-      max-width: 900px; /* adjust at will */
+      max-width: 80%; /* adjust at will */
       padding: 0;
       margin: 0 auto;
     }

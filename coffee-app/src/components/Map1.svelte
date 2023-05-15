@@ -42,7 +42,7 @@
       map = new mapboxgl.Map({
         container,
         style: "mapbox://styles/mapbox/light-v11",
-        center: [-85.0,14.9],
+        center: [-85.3,14.9],
         zoom: zoomLevel,
         attributionControl: false, // removes attribution from the bottom of the map
       });

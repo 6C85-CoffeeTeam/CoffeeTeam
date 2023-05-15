@@ -26,32 +26,54 @@
       selectedChart=country;
       showChart(country);
   }
+
+    export let index;
+
+    let isVisible = false;
+
+    $: if (index === 13) {
+        isVisible = true;
+    } else {
+        isVisible = false;
+    }
   </script>
   
+  <div class="chart" class:visible={isVisible}>
   <div>
-
     <button class={selectedChart=="E"?"selected-button":"button"} on:click={() => handleClick('E')}>El Salvador</button>
     <button class={selectedChart=="H"?"selected-button":"button"} on:click={() => handleClick('H')}>Honduras</button>
     <button class={selectedChart=="G"?"selected-button":"button"} on:click={() => handleClick('G')}>Guatemala</button>
-
-    <!-- <button id="E" class="button" on:click={() => handleClick('E')}>El Salvador</button>
-    <button id="H" class="button" on:click={() => handleClick('H')}>Honduras</button>
-    <button id="G" class="button" on:click={() => handleClick('G')}>Guatemala</button> -->
-  </div>
-  
-  {#if selectedChart === 'E'}
-    <EChart />
-  {/if}
-  
-  {#if selectedChart === 'H'}
-    <HChart />
-  {/if}
-  
-  {#if selectedChart === 'G'}
-    <GChart />
-  {/if}
+    </div>
+    
+    {#if selectedChart === 'E'}
+      <EChart />
+    {/if}
+    
+    {#if selectedChart === 'H'}
+      <HChart />
+    {/if}
+    
+    {#if selectedChart === 'G'}
+      <GChart />
+    {/if}
+</div>
 
   <style>
+    .chart.visible {
+        /* visibility: visible; */
+        animation: floatIn 2s forwards; 
+    }
+
+    @keyframes floatIn {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
     .button {
 
       padding:10px 30px;
