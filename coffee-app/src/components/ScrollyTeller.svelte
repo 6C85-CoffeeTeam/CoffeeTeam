@@ -15,6 +15,7 @@
     import { fade, fly } from 'svelte/transition';
     import ChartCoffee from "./Chart_coffee.svelte";
     import Quote from "./Quote.svelte";
+    import Button from "./buttons.svelte"
 
     let count, index, offset, progress;
     let width, height;
@@ -307,13 +308,31 @@
       </div>
     </section>
 
+    <!-- <section>
+      <div class="textbox">
+        <h1>
+          Migration to US and World
+        </h1>
+        <div class="graph">
+          <Button {index}/>
+          
+        </div>
+        
+      </div>
+    </section> -->
+
+
     <section class="flowmap">
-      <h1>Migration from the Northern Triangle</h1>
-      <p>
-        Click the "play" button on the bottom to see how migration flow changes
-        over the years.
-        <br />
-        Hover outside the map to continue scrolling down.</p>
+      <!-- <h1>Migration from the Northern Triangle</h1> -->
+      <div class="textbox">
+        <h1>
+          Migration to US and World
+        </h1>
+        <div class="graph">
+          <Button {index}/>
+          
+        </div>
+
       <!-- <iframe 
         width="100%" 
         height="600"
