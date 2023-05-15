@@ -43,7 +43,7 @@
   $: projection = geoMercator().fitSize([width, height], geoJsonToFit);
 
   function scrollToNextPage() {
-    const additionalYOffset = 350;
+    const additionalYOffset = 300;
     const nextPagePosition = window.innerHeight + window.pageYOffset + additionalYOffset;
     window.scrollTo({ top: nextPagePosition, behavior: "smooth" });
   }
@@ -97,7 +97,7 @@
   <div class="foreground" slot="foreground">
     <section class="intro" >
       <div class="textbox">
-        <h1>Hi there, how's the coffee? </h1>
+        <h1>Hi there, how's your coffee? </h1>
         <p>
           Have you ever wondered where your coffee comes from?
           <br />
@@ -586,7 +586,6 @@
 
     }
     .farmertext-body {
-      width: 80%;
       font-size: 18px;
       font-style: italic;
       font-family: 'Space Mono', monospace;
