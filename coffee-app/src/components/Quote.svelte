@@ -17,6 +17,12 @@
         "When coffee is not doing well, that's when you see big migrations from Honduras, El Salvador, Guatemala, Nicaragua."
     </p>
     <em>– René León-Gómez, Executive Secretary of PROMECAFE</em>
+    <br />
+    <br />
+    <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
+    <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+    <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+    <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
 </div>
 
 <style>

@@ -66,7 +66,7 @@
   >
   <!-- on:click={handleClick} -->
 
-    <Background {index} />
+    <!-- <Background {index} /> -->
 
     <!-- <Map bind:geoJsonToFit {index}/> -->
 
@@ -186,6 +186,10 @@
           While these changes would be inconvenient for coffee drinkers, they
           could be catastrophic for coffee growers.
         </p>
+        <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50" />
+        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
+        <img class="smallbean" src="./images/smallbean-hor.png" alt="coffeebean" width="50"/>
+        <img class="smallbean" src="./images/smallbean.png" alt="coffeebean" width="30"/>
       </div>
     </section>
 
@@ -295,16 +299,15 @@
         <p>
           <em>"We experienced extreme droughts in 2014 and 2018. Also, the hurricane in 2020 wiped out most of our coffee plants."</em>
         </p>
-        <p style:font-size="14px">Heatmap description: Mapping the drought risk in Honduras. The warmer the color, the higher the drought risk.</p>
       </div>
     </section>
     <section class="farmerStory">
       <div class="textbox">
         <h1>
-          Coffee production in the Northern Triangle
+          How does all of this link to coffee production?
         </h1>
-        <p>Between 2012-2015, the coffee rust affected over <span class="emphasize">55%</span> of the region's
-          coffee farms <br /> and left around <span class="emphasize">350,000</span> people
+        <p style:font-size="16px">Between 2012-2015 (shaded in gray), the coffee rust affected over 55% of <br />the region's
+          coffee farms and left around 350,000 people
           jobless.</p>
         <p style:font-size="14px">Hover over the graph to learn more</p>
       <div class="graph">
@@ -318,7 +321,6 @@
     <section class="quote">
       <div class="textbox">
         <Quote {index} />
-
       </div>
     </section>
 
@@ -332,6 +334,16 @@
         <div class="graph">
           <Button {index}/>
         </div>
+        <br />
+        <br />
+        <p>
+          Juan is just one of millions of smallholder coffee farmers that have been affected by climate change, which is causing significant disruptions to agriculture and natural ecosystems. 
+        </p>
+        <p>When people can no longer sustain their livelihoods, they are often forced to make the difficult decision to migrate in search of a more stable and secure future, often risking their lives.</p>
+        <br />
+        <br />
+        <br />
+        <br />
         
       <!-- <iframe 
         width="100%" 
@@ -345,16 +357,21 @@
 
     </section>
     <section class="ending">
+
       <h1>Want to learn more?</h1>
       <p>Click the bean to find out.</p>
+      <a href="https://coffeeandclimate.org/"          
+        target="_blank"
+        rel="noopener noreferrer" >
         <button>
-        <img
-          class="bean"
-          src="./images/coffeebean.png"
-          alt="coffeebean"
-          width="500"
-        />
-      </button>
+          <img
+            class="bean"
+            src="./images/coffeebean.png"
+            alt="coffeebean"
+            width="500"
+          />
+        </button>
+      </a>
 
       <br />
       <br />
@@ -518,6 +535,7 @@
     }
 
     .quote {
+      height: 100vh;
       max-width: 80%; /* adjust at will */
       padding: 3em;
       margin: 0 auto;
@@ -526,7 +544,7 @@
     }
 
     .quote .textbox {
-      background-color: rgba(165, 165, 165, 0.6); 
+      background-color: rgba(207, 207, 207, 0.5); 
       padding: 3em;
       /* position: relative; */
       top: 30%; /* vertically center */
@@ -597,14 +615,6 @@
     .graph {
       margin: 0 auto;
     }
-
-  .quote .textbox {
-    background-color: rgba(255, 255, 255, 0.8); 
-    padding: 3em;
-    /* position: relative; */
-    top: 50%; /* vertically center */
-    text-align: center;
-  }
   .coffeeQuiz {
     height: 100vh;
     max-width: 70%; /* adjust at will */
@@ -661,7 +671,13 @@
   }
 
   .bean {
-    margin: 2em auto;
+    margin: 2em 0 2em 0;
+  }
+
+  .bean:hover {
+    filter: drop-shadow(8px 8px 8px #848484);
+    text-align: center;
+    margin: 2em 0 2em 10px;
   }
 
   .credit {
