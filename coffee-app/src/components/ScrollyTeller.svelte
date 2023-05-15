@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
   import Scroller from "@sveltejs/svelte-scroller";
   import Map from "./Map.svelte";
   import Map1 from "./Map1.svelte";
@@ -18,7 +19,39 @@
 
   let foregroundClicked = width;
   let backgroundClicked = height;
+=======
+    import Scroller from "@sveltejs/svelte-scroller";
+    import * as d3 from "d3";
+    import Map from "./Map.svelte";
+    import Map1 from "./Map1.svelte";
+    import Map1_1 from "./Map1-1.svelte";
+    import Map1_1Coffee from "./Map1-1_coffee.svelte";
+    import Map1_1TempChange from "./Map1-1_temp_change.svelte";
+    import MapBelt from "./MapBelt.svelte";
+    // import MapMigration from "./MapMigration.svelte";
+    import Background from "./Background.svelte";
+    import Quiz from "./Quiz.svelte";
+    import { geoMercator } from "d3-geo";
+    // import Graph from "./Graph.svelte";
+    import { fade, fly } from 'svelte/transition';
+    import ChartCoffee from "./Chart_coffee.svelte";
+>>>>>>> 39fe81bb478393796ce205ef7508a523245816ab
 
+    // let coffee_data = [];
+    // CoffeeProduction.forEach((element) =>
+    //     coffee_data.push({
+    //         index: element["Year"],
+    //         size: element["Production"],
+    //         country: element["Country"],
+    //     })
+    // );
+
+
+    // d3.json(
+    //   "https://raw.githubusercontent.com/6C85-CoffeeTeam/CoffeeTeam/main/coffee-app/src/data/honduras_drought_risk.geojson"
+    // ).then((data) => {
+    //   coffee_data = data;
+    // });
 
   let geoJsonToFit = {
     type: "FeatureCollection",
@@ -184,8 +217,8 @@
       </button> -->
     </section>
 
-    <section>
-      <div class="textbox">
+    <section class="farmerStory">
+      <div class="textbox"> 
         <p>
           Warming climate may affect coffee in many ways, including reduced
           growing area, increased pests, and loss of quality.
@@ -309,9 +342,16 @@
         <em>– René León-Gómez, executive secretary of PROMECAFE</em>
       </div>
     </section>
-    <section class="chapterThree">
+    <section class="farmerStory">
       <div class="textbox">
-        <h1>Coffee production in Northern Triangle</h1>
+        <h1>
+          Coffee production in Northern Triangle
+        </h1>
+        <div class="graph">
+          <ChartCoffee {index}/>
+          
+        </div>
+        
       </div>
     </section>
     <section class="flowmap">
@@ -463,19 +503,38 @@
     margin: 3em auto;
   }
 
-  .textbox .emphasize {
-    font-weight: 800;
-    color:rgb(185, 48, 27);
-    font-size: larger;
-    display: inline;
-  }
+    .farmerimage {
+      max-width: 70%;
+      max-height: 70%;
+    }
+    .farmertext-title {
+      font-size: 28px;
+      padding-left: 20px;
+      font-style: italic;
+      font-family: 'Space Mono', monospace;
+    }
+    .farmertext-body {
+      font-size: 18px;
+      font-style: italic;
+      font-family: 'Space Mono', monospace;
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 6em;
+    }
 
-  .quote {
-    height: 70vh;
-    max-width: 80%; /* adjust at will */
-    padding: 5em 3em;
-    margin: 0 auto;
-  }
+    .graph {
+      margin: 0 auto;
+    }
+    .flowmap {
+      height: 80vh;
+      max-width: 900px; /* adjust at will */
+      padding: 0;
+      margin: 0 auto;
+    }
+    .ending {
+      height: 80vh;
+      max-width: 750px; /* adjust at will */
+      padding: 10em 0 0 0;
+      margin: 10em auto;
 
   .quote .textbox {
     background-color: rgba(255, 255, 255, 0.8); 
@@ -543,6 +602,7 @@
   .source {
     font-size: 14px;
   }
+  
   p {
     text-align: center;
   }
